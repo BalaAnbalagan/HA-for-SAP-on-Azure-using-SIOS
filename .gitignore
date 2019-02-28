@@ -1,0 +1,4 @@
+*.exe
+*.tfstate
+*.backup
+lock.jason
