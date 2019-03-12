@@ -6,17 +6,6 @@
 | -   for RHEL, OEL & SUSE Linux                                              |
 +-----------------------------------------------------------------------------+
 
-+-------------------------------+
-| Balamuralikrishnan Anbalagan  |
-|                               |
-| 2-27-2019                     |
-|                               |
-| Bala.Anbalagan\@Microsoft.com |
-+-------------------------------+
-
-![cid:image001.png\@01D3CB5A.56717E50]
-
-Draft
 
 Contents {#contents .TOCHeading}
 ========
