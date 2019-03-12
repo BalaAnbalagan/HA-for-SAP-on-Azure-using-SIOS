@@ -240,11 +240,11 @@ SAP HA Scenario
 7.  RHEL
     ----
 
-    3.  ### Import the Microsoft repository key.
+## Import the Microsoft repository key.
 
 > \#sudo rpm \--import <https://packages.microsoft.com/keys/microsoft.asc>
 
-### Create local azure-cli repository information
+## Create local azure-cli repository information
 
 > \#sudo sh -c \'echo -e \"\[azure-cli\]\\nname=Azure CLI\\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\\nenabled=1\\ngpgcheck=1\\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\" \> /etc/yum.repos.d/azure-cli.repo\'
 
@@ -333,10 +333,10 @@ SAP HA Scenario
 6.  SIOS Protection Suite 9.3.1
     ===========================
 
-    8.  Preparation - Only for RHEL
+8.  Preparation - Only for RHEL
         ---------------------------
 
-        7.  #### Disable SELinux (RHEL specific)
+1. #### Disable SELinux (RHEL specific)
 
 >  
 >
@@ -412,7 +412,7 @@ SAP HA Scenario
 
 > If SELinux is not disabled, the installation will fail with the following error
 >
-> ![Machine generated alternative text: SIOS protection Suite for Linux g. 3.1-6750 setup pre-lnstall check failed: : SELinux appears to be enabled. please disable SELinux before installing SPS for Linux. ]*Screen clipping taken: 2/15/2019 7:44 AM*
+> ![Error - SELinux Enabled](/99_images/image007.png)
 
  
 
@@ -448,12 +448,14 @@ Setup SIOS Protection Suite -- Witness Nodes
 --------------------------------------------
 
 > \#mount /sapmedia/SIOS931/sps.img /DVD -t iso9660 -o loop
+
+> \#./setup
 >
-> ![][1]
+> ![](/99_images/image008.png)
 >
-> ![][2]
+> ![](/99_images/image009.png)
 >
-> ![][3]
+> ![](/99_images/image010.png)
 
 Setup SIOS Protection Suite - SAP Recovery Kit 
 -----------------------------------------------
@@ -462,15 +464,19 @@ Setup SIOS Protection Suite - SAP Recovery Kit
 >
 > \#./setup
 >
-> ![Machine generated alternative text: SIOS protection Suite for Linux g. 3.1-6750 setup Arrow keys navigate the menu. selects submenus to exit, for Help, for Search. (or empty submenus Maln configuration Highlighted letters are hotkeys . pressing Installs features , Removes features . Your OS IS Red Hat Enter r 1 se Install Java Runtime (JRE) Use Quorum / Witness Functions LifeKeeper Authentication Install License Key File(s) Recovery Kit Selection Menu •:select:• Done Help Linux Server 7.4 Save \< Load \> ]*Select Install License Key*
+> ![Select install License Key](/99_images/image011.png)
 >
->  ![A screenshot of a cell phone Description automatically generated]*Enter the license path & click ok*
+>  *Select install License Key*
+
+> ![Enter the license path & click ok](/99_images/image012.png)
+
+>  *Enter the license path & click ok*
 >
->  ![Machine generated alternative text: SIOS protection Suite for Linux g. 3.1-6750 setup Arrow keys navigate the menu. selects submenus to exit, for Help, for Search. (or empty submenus Maln configuration Highlighted letters are hotkeys . pressing Installs features , Removes features . Your OS is Red Hat Enterprise Install Java Runtime (JRE) Use Quorum / Witness Functions LifeKeeper Authentication ) Install License Ke File(s) Recover Kit Selection Menu LifeKeeper Startup After Install •:select:• Done Help Linux Server 7.4 Save \< Load \> ]*Select Recovery kit Selection Menu*
+>  ![Select Recovery kit Selection Menu](/99_images/image013.png)*Select Recovery kit Selection Menu*
 
  
 
-> ![Machine generated alternative text: SIOS protection Suite for Linux g. 3.1-6750 setup Kit Selection Menu --- Recover Arrow keys navigate the menu. selects submenus to exit, for Help, for Search. (or A empty submenus llcatlon suite Recovery kit selection. Highlighted letters are hotkeys . pressing Installs features , Removes features . Network/Commun1cat10n Database service Miscellaneous service Mail service Storage support WEB service •:select:• Done Help Save \< Load \> ]*Select Application Suite*
+> ![Select Application Suite](/99_images/image014.png)*Select Application Suite*
 
 \* *
 
@@ -480,13 +486,13 @@ Setup SIOS Protection Suite - SAP Recovery Kit
 
  
 
-> ![Machine generated alternative text: SIOS Protection Sulte tor Linux g. 3.1-6750 setup Recover Kit Selection Menu -A lication suite Arrow keys navigate the menu. \<Enter\> selects submenus \--\> to exit, for Help, for Search. u (or empty \] LifeKee Application suite kits list submenus Highlighted letters are hotkeys . pressing Installs features , Removes features . er Webs here MQ/MQSer1es Recover \] LifeKeeper SAP Recovery Kit •:select:• Done Help Kit Save \< Load \> ] *Select Lifekeeper SAP Recovery kit*
+> ![Select Lifekeeper SAP Recovery kit](/99_images/image015.png)*Select Lifekeeper SAP Recovery kit*
 
  
 
  
 
-> ![Machine generated alternative text: SIOS protection Suite for Linux g. 3.1-6750 setup Arrow keys navigate the menu. selects submenus to exit, for Help, for Search. (or empty submenus Maln configuration Highlighted letters are hotkeys . pressing Installs features , Removes features . Your OS is Red Hat Enterprise Install Java Runtime (JRE) Use Quorum / Witness Functions LifeKeeper Authentication ) Install License Key File(s) Recover Kit Selection Menu LifeKee er Startu After Install Done Help Linux Server 7.4 Save \< Load \> ] *Select Lifekeeper Startup after install & Select Done*
+> ![Select Lifekeeper Startup after install & Select Done](/99_images/image016.png)*Select Lifekeeper Startup after install & Select Done*
 
  
 
@@ -496,17 +502,17 @@ Setup SIOS Protection Suite - SAP Recovery Kit
 
  
 
-> ![Machine generated alternative text: SIOS protection Suite for Linux 9.3.1-6750 setup Would you like to start installing SPS for Linux with the current settings? Start the installation. Yes setup will abort. Cancel return to configuration . \< No \> Cancel \> ]*Select Yes & Press Enter* 
+> ![Select Yes & Press Enter](/99_images/image017.png)*Select Yes & Press Enter* 
 
  
 
  
 
-> ![Machine generated alternative text: 310S protection Suite for Linux setup :ollecting system information . \'reparlng configuration information . \'erforming package installation and updating \[nstaII LifeKeeper and dependent packages -I . done . . done . configuration information for SPS for Linux. ]
+> ![](/99_images/image018.png)
+>*Installation completed*
 >
-> *Installation completed*
->
->  ![Machine generated alternative text: SIOS protection Suite for Linux setup Collecting system information . preparing configuration information . .done . .done . performing package installation and updating configuration information for SPS for Linux. Install LifeKeeper and dependent packages done . Configure LifeKeeper management group Install licenses. Starting LifeKeeper. . Broadcast message from systemd-journaId\@azrhs4p31 (Fri 2€19-€2-15 PST) : Icdinit\[14303\]: EÆRG:Icd.IcdchksemI: • LifeKeeper product on this system is using an evaluation license key which will expire at midnight on €3/€3/19. me, a permanent license key must be obtained . Message from sysIogd\@azrhs4p31 at Feb 15 €8: 38: 53 Icdinit\[14303\] • LifeKeeper product on this system is using an evaluation license key which will expire at midnight on €3/€3/19. me, a permanent license key must be obtained . Important notice For large configurations, may need to change some settings . please check the Technical Documentation-\>lns tallation and Configuration . Setup complete. \[root\@azrhs4p31 To continue functioning beyond that ti To continue functioning beyond that ti ] *license check message*
+> ![](/99_images/image019.png) 
+>*license check message*
 
 Setup SIOS Protection Suite - SAP HANA V2 Recovery Kit
 ------------------------------------------------------
@@ -561,7 +567,7 @@ verify
 >
 > -rwxr-xr-x 1 root root 13151 Sep 1 2017 restore.pl
 >
-> ![Machine generated alternative text: total 52 - rwxr-xr-x - rwxr-xr-x - rwxr-xr-x - rwxr-xr-x root root root root root root root root 9084 9502 12178 13151 Aug Aug Aug Sep 16 16 16 2017 2017 2017 2017 remove . pl quickcheck . pl recover.pl restore. pl ]
+> ![Check for the .pl files](/99_images/image020.png)*Check for the .pl files*
 
 Select lkGUIapp Node
 --------------------
@@ -576,13 +582,13 @@ a.  Login to azsuascs1 as root
 >
 > Create communication path
 >
-> ![A picture containing screenshot Description automatically generated]
+> ![Create communication path](/99_images/image021.png)
 
  
 
 > click comm path icon to create communication path between all the systems in both directions. The output will look like the below screenshot
 >
-> ![A close up of a logo Description automatically generated]
+> ![Create communication path](/99_images/image022.png)
 >
 > Note:
 >
