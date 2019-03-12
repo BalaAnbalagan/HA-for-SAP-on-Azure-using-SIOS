@@ -15,13 +15,13 @@ location = "WESTUS2"
 
 scs_vm_type = "Standard_D2s_v3"
 
-scs_server_hostnamelist = ["azrhs4p11", "azrhs4p12"]
+scs_server_hostnamelist = ["azrhascs1", "azrhascs2"]
 
 scs_server_niclist = ["11.1.2.11", "11.1.2.12"]
 
 scs_ipmap = {
-  "azrhs4p11" = "11.1.2.11"
-  "azrhs4p12" = "11.1.2.12"
+  "azrhascs1" = "11.1.2.11"
+  "azrhascs2" = "11.1.2.12"
 }
 
 wd_vm_type = "Standard_D2s_v3"
@@ -37,34 +37,34 @@ wd_ipmap = {
 
 sios_vm_type = "Standard_B2s"
 
-sios_server_hostnamelist = ["azrhs4p15", "azrhs4p16"]
+sios_server_hostnamelist = ["azrhsapwit1", "azrhsapwit2"]
 
 sios_server_niclist = ["11.1.2.15", "11.1.2.16"]
 
 sios_ipmap = {
-  "azrhs4p15" = "11.1.2.15"
-  "azrhs4p16" = "11.1.2.16"
+  "azrhsapwit1" = "11.1.2.15"
+  "azrhsapwit2" = "11.1.2.16"
 }
 
 app_vm_type = "Standard_D4s_v3"
  
-app_server_hostnamelist = ["azrhs4p21", "azrhs4p22"]
+app_server_hostnamelist = ["azrhsap1", "azrhsap2"]
 
 app_server_niclist = ["11.1.2.21", "11.1.2.22"]
 
 app_server_ipmap = {
-  "azrhs4p21" = "11.1.2.21"
-  "azrhs4p22" = "11.1.2.22"
+  "azrhsap1" = "11.1.2.21"
+  "azrhsap2" = "11.1.2.22"
 }
 
-db_vm_type = "Standard_M32ms"
+db_vm_type = "Standard_M8ms"
 
-db_server_hostnamelist = ["azrhs4p31", "azrhs4p32"]
+db_server_hostnamelist = ["azrhhana1", "azrhhana2"]
 
 db_server_niclist = ["11.1.2.31", "11.1.2.32"]
 
 db_server_ipmap = {
-  "azrhs4p31" = "11.1.2.31"
-  "azrhs4p32" = "11.1.2.32"
+  "azrhhana1" = "11.1.2.31"
+  "azrhhana2" = "11.1.2.32"
 }
 
