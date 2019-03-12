@@ -187,7 +187,7 @@ Version Table
 
 5.  Reference Architecture Diagram
     ------------------------------
-
+<IMG=\99_images\arch.ong>
 This document uses SuSE landscape for illustration
 
 Infrastructure Provisioning
