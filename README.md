@@ -187,7 +187,7 @@ Version Table
 
 5.  Reference Architecture Diagram
     ------------------------------
-<IMG=\99_images\arch.ong>
+![Archtecture Diagram](/99_images/arch.png)
 This document uses SuSE landscape for illustration
 
 Infrastructure Provisioning
@@ -213,12 +213,13 @@ SAP HA Scenario
 5.  Azure CLI Installation for Linux
     ================================
 
-    6.  SuSE
+6.  SuSE
         ----
 
         1.  ### Install curl:
 
-> \#sudo zypper install -y curl![azsuhanal:--- \# sudo zypper install -y curl Refreshing service \'SMT-http\_smt-azure\_susecIoud\_net• . Refreshing service •cloud \_ update\' . Retrieving repository \'SLE-Module-pubIic-C10ud12-Updates• metadata Building repository \'SLE-Module-pub1ic-C10ud12-Updates• cache Retrieving repository \'SLE-SDK12-SP3-Updates• metadata Building repository \'SLE-SDK12-SP3-Updates• cache . Retrieving repository \'SLES12-SP3-Updates• metadata Building repository \'SLES12-SP3-Updates• cache Loading repository data. Reading installed packages . . Resolving package dependencies. . The following package is going to be upgraded: curl 1 package to upgrade . Overall download size: 153.4 KiB. Already cached: Continue? \[yin/ . ? shows all options\] (y): Y Retrieving package curl-7.37.0-37.31.1. x86 64 Retrieving: curl-7.37.0-37.31.1.x86 64. rpm Checking for file conflicts : (1/1) Installing: curl-7.37.e-37.31.1.x86 64 azsuhanal:--- \# e B. additional space will be used or f reed after the ope ration . (1/1), . \[done\] . \[done\] . \[done\] . \[done\] . \[done\] . \[done\] 153.4 KiB (312.9 KiB unpacked) . \[done\] . \[done\] . \[done\] ]
+> \#sudo zypper install -y curl
+![Install Curl](/99_images/image004.png)
 
 ### Import the Microsoft repository key:
 
@@ -228,13 +229,13 @@ SAP HA Scenario
 >
 >  
 >
-> ![\*zsuhanal:--- \*zsuhanal:--- sudo rpm - -Import https ://packages.mlcrosott.com/keys/mlcrosott . asc \# sudo zypper add repo -check https://packages.mlcrosoft . com/yumrepos/azure-cli azure-cli -name \'Azure CLI\' Xdding repository \'Azure CLI\' {epository \'Azure CLI\' successfully added https : //packages . mic rosoft . com/yumrepos/azure-cli . \[done\] Enabled 3PG Check W to refresh \'rlority Yes Yes 99 (default priority) {epository priorities are without effect . \*zsuhanal:--- \# All enabled repositories share the same priority. ]*Screen clipping taken: 12/19/2018 4:07 PM*
+![Import Repostory Key](/99_images/image005.png)
 >
 >  
 >
 >  
 >
-> ![azsuhanal:--- sudo zypper addrepo -name Adding repository \'Azure CLI\' Repository \'Azure CLI\' successfully added \'Azure CLI\' https://packages.mlcrosott . com/yumrepos/azure-cll azure-cL1 Enabled GPG Check Auto ref resh priority https : //packages . mic rosoft . com/yumrepos/azure-cli Yes 99 (default priority) Repository priorities are without effect. All enabled azsuhanal:--- \# sudo zypper install -from azure-cli -y Refreshing service \'SMT-http\_smt-azure\_susecIoud\_net\' . Refreshing service •cloud \_ update\' . Building repository \'Azure CLI\' cache Loading repository data. Reading installed packages. . . Resolving package dependencies . . . The following NEW package is going to be installed: azure-cli The following package has no support information from azure-cli 1 new package to install. Overall download size: 25.1 MiB. Already cached: € B. Continue? \[yin/ . ? shows all options\] (y): Y Retrieving package azure-cli-2.e.53-1.e17. x86 64 Retrieving: azure-cli-2.€.53-1.e17.x86 64. rpm Checking for file conflicts : (1/1) Installing: azure-cli-2.€.53-1.e17. x86 64 azsuhanal:--- \# repositories share the same priority. azure-cli it\'s vendor: After the operation, additional 177 .5 Mie will be used . (1/1), . \[done\] . \[done\] 25.1 Mie (177.5 Mie unpacked) . \[done\] . \[done\] . \[done\] ]*Screen clipping taken: 12/19/2018 4:08 PM*
+>![Addrepo Azure CLI](/99_images/image006.png)
 
 7.  RHEL
     ----
