@@ -1,12 +1,8 @@
 
-+--------------------------------------------------------------------------------------------------------+
-| High Availability Solution for SAP NetWeaver & SAP HANA on Azure using SIOS for RHEL, OEL & SUSE Linux |
-+--------------------------------------------------------------------------------------------------------+
+# High Availability Solution for SAP NetWeaver (RHEL, OEL & SuSE*) & SAP HANA (RHEL & SuSE*)on Azure using SIOS
 
 
-Introduction
-============
-
+## 1. Introduction
 > This document describes the procedure to implement High Availability solution SAP NW & SAP HANA on Azure using SIOS Protection Suite (SPS) for Linux. "SIOS Enhanced Azure Gen App" is used to switch IP address between cluster nodes instead using of Azure Internal Load balancer.
 >
 > The solution is certified\* for the following versions of Operating Systems
@@ -25,8 +21,7 @@ Introduction
 >
 > run sapinst with SAPINST\_USE\_HOSTNAME=\<virtual hostname\> for ASCS, ERS installations
 
-Reference Architecture
-======================
+## 2. Reference Architecture
 
   Components      hostname      IP address   VIP         VHOSTNAME
   --------------- ------------- ------------ ----------- -----------
@@ -55,19 +50,19 @@ Version Table
   SIOS HANA2.0 ARK                  2.0       
   SIOS Enhanced Azure Gen App       2.4       
 
-1.  Virtual IP & Hostnames
+### 1. Virtual IP & Hostnames
     ----------------------
 
     Create the following A-Record in your DNS on similar update /etc/hosts file accordingly
 
-    ![A screenshot of a social media post Description automatically generated]
+    ![DNS](/99_images/image002.png)
 
-2.  Witness or Quorum Hosts
+### 2. Witness or Quorum Hosts
     -----------------------
 
     Create 2 witness hosts, one for SAP Application Cluster and one for SAP DB Cluster.
 
-3.  Disk layout for ASCS Cluster Nodes
+### 3. Disk layout for ASCS Cluster Nodes
     ----------------------------------
 
     Please create separate volumes/Disk for /usr/sap/ASCS00
@@ -82,17 +77,17 @@ Version Table
 
     Note: The disk used for replication should be of same size
 
-4.  Firewall
+### 4. Firewall
     --------
 
     For simplicity disabled the firewall in all the nodes
 
-5.  Reference Architecture Diagram
+### 5.  Reference Architecture Diagram
     ------------------------------
-![Archtecture Diagram](/99_images/arch.png)
-This document uses SuSE landscape for illustration
+    ![Archtecture Diagram](/99_images/arch.png)
+    This document uses SuSE landscape for illustration
 
-Infrastructure Provisioning
+## 3. Infrastructure Provisioning
 ===========================
 
 > Used terraform to provision the infrastructure and used shell script to perform post processing. The source code is available in github.
@@ -105,52 +100,44 @@ Infrastructure Provisioning
 >
 > SAP HANA or SAP Installation is not part of the terraform script
 
-SAP HA Scenario
+## 4. SAP HA Scenario
 ===============
 
 > The SIOS Protection Suite will protect the ASCS instance and SAP will own the ERS instance.
 >
 > The S4D\_ASCS00 instance will have /usr/sap/S4D/ASCS00 data replication and IP Resource with Azure IP Gen App resource as child.
 
-5.  Azure CLI Installation for Linux
+## 5. Azure CLI Installation for Linux
     ================================
 
-6.  SuSE
-        ----
-
-        1.  ### Install curl:
+### 1. SuSE
+       
+#### 1. Install curl:
 
 > \#sudo zypper install -y curl
 ![Install Curl](/99_images/image004.png)
 
-### Import the Microsoft repository key:
+#### 2. Import the Microsoft repository key:
 
 > \#sudo rpm \--import <https://packages.microsoft.com/keys/microsoft.asc>
 >
 > \#sudo zypper addrepo \--name \'Azure CLI\' \--check <https://packages.microsoft.com/yumrepos/azure-cli> azure-cli
 >
->  
->
-![Import Repostory Key](/99_images/image005.png)
->
->  
->
->  
+>![Import Repostory Key](/99_images/image005.png)
 >
 >![Addrepo Azure CLI](/99_images/image006.png)
 
-7.  RHEL
-    ----
+### 2. RHEL
 
-## Import the Microsoft repository key.
+#### 1. Import the Microsoft repository key.
 
 > \#sudo rpm \--import <https://packages.microsoft.com/keys/microsoft.asc>
 
-## Create local azure-cli repository information
+#### 2. Create local azure-cli repository information
 
 > \#sudo sh -c \'echo -e \"\[azure-cli\]\\nname=Azure CLI\\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\\nenabled=1\\ngpgcheck=1\\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\" \> /etc/yum.repos.d/azure-cli.repo\'
 
-### Install with the yum install command.
+#### 3.  Install with the yum install command.
 
 > \#sudo yum install azure-cli
 >
@@ -226,20 +213,17 @@ SAP HA Scenario
 >
 > Complete!
 
-### Run the login command
+#### 4. Run the login command
 
 > \# az login
 >
 > To sign in, use a web browser to open the page <https://microsoft.com/devicelogin> and enter the code B7TYYXDDV to authenticate.
 
-6.  SIOS Protection Suite 9.3.1
-    ===========================
-
-8.  Preparation - Only for RHEL
-        ---------------------------
-
-1. #### Disable SELinux (RHEL specific)
-
+## 6. SIOS Protection Suite 9.3.1
+>
+### 1. Preparation - Only for RHEL
+>
+#### 1. Disable SELinux (RHEL specific)
 >  
 >
 > \# cat /etc/selinux/config
@@ -302,7 +286,7 @@ SAP HA Scenario
 >
 >  
 
-#### Reboot the VM
+#### 2. Reboot the VM
 
 >  
 >
@@ -310,7 +294,7 @@ SAP HA Scenario
 >
 >  
 
-#### Error for SELinux 
+#### 3. Error for SELinux 
 
 > If SELinux is not disabled, the installation will fail with the following error
 >
@@ -346,7 +330,7 @@ SAP HA Scenario
 
  
 
-Setup SIOS Protection Suite -- Witness Nodes
+### 2. Setup SIOS Protection Suite -- Witness Nodes
 --------------------------------------------
 
 > \#mount /sapmedia/SIOS931/sps.img /DVD -t iso9660 -o loop
@@ -359,7 +343,7 @@ Setup SIOS Protection Suite -- Witness Nodes
 >
 > ![](/99_images/image010.png)
 
-Setup SIOS Protection Suite - SAP Recovery Kit 
+### 3. Setup SIOS Protection Suite - SAP Recovery Kit 
 -----------------------------------------------
 
 > Install SAP Recovery kit in ASCS and HANA Nodes
@@ -416,15 +400,13 @@ Setup SIOS Protection Suite - SAP Recovery Kit
 > ![](/99_images/image019.png) 
 >*license check message*
 
-Setup SIOS Protection Suite - SAP HANA V2 Recovery Kit
-------------------------------------------------------
+#### 4. Setup SIOS Protection Suite - SAP HANA V2 Recovery Kit
 
 > \# ls -ltr \|grep HANA2\*
 >
 > -rwxr\--r\-- 1 root root 24236 Feb 15 08:54 HANA2-ARK.run
 
-Run HANA2-ARK.run
------------------
+#### 1. Run HANA2-ARK.run
 
 \# ./HANA2-ARK.run
 
@@ -450,7 +432,7 @@ Run HANA2-ARK.run
 >
 > Installation of SAP HANA v2 Application Recovery Kit was successful
 
-verify
+#### 2. verify
 ------
 
 > verify the HANA.pm file copied to /opt/LifeKeeper/lkadm/subsys/gen/app/bin
@@ -471,8 +453,8 @@ verify
 >
 > ![Check for the .pl files](/99_images/image020.png)*Check for the .pl files*
 
-Select lkGUIapp Node
---------------------
+#### 3. Select lkGUIapp Node
+
 
 > As per the current architecture the most expected/anticipated node to be available is azsuascs2, hence choosing it to perform the SIOS cluster configurations.
 
@@ -482,7 +464,7 @@ a.  Login to azsuascs1 as root
 >
 > \#[]{#_Toc2191416 .anchor}/opt/LifeKeeper/bin/lkGUIapp
 >
-> Create communication path
+#### 4. Create communication path
 >
 > ![Create communication path](/99_images/image021.png)
 
@@ -500,14 +482,12 @@ a.  Login to azsuascs1 as root
 
  
 
-8.  SAP HANA System Replication Configuration
-    =========================================
+## 7. SAP HANA System Replication Configuration
 
-    1.  Take Backup of both SYSTEMDB and Tenant DB
-        ------------------------------------------
+### 1. Take Backup of both SYSTEMDB and Tenant DB
+       
 
-    2.  Copy keys from primary to secondary HANA nodes
-        ----------------------------------------------
+### 2. Copy keys from primary to secondary HANA nodes
 
 > SSFS\_S4D.KEY & SSFS\_S4D.DAT from the following paths respectively
 >
@@ -515,7 +495,7 @@ a.  Login to azsuascs1 as root
 >
 > /hana/shared/S4D/global/security/rsecssfs/data
 
-Enable HANA System Replication in Primary
+### 3. Enable HANA System Replication in Primary
 -----------------------------------------
 
 > \#*hdbnsutil -sr\_state*
@@ -540,8 +520,7 @@ Enable HANA System Replication in Primary
 
  
 
-Stop HANA in secondary node before registering
-----------------------------------------------
+### 4. Stop HANA in secondary node before registering
 
 >  \#hdbnsutil -sr\_register \--remoteName=left \--remoteHost=azsuhana1 \--remoteInstance=00 \--repliccationMode=syncmem \--operationMode=logreplay \--name=right
 >
@@ -550,7 +529,7 @@ Stop HANA in secondary node before registering
 >
 > *Note: make sure the ini file gets updated*
 
-*Check HANA System Replication Status*
+### 5. Check HANA System Replication Status
 --------------------------------------
 
 >  \#hdbnsutil -sr\_state
@@ -574,31 +553,14 @@ Stop HANA in secondary node before registering
 >
 > *HSR status from secondary node*
 
-9.  SAP HANA Database Protection Configuration
+## 8. SAP HANA Database Protection Configuration
     ==========================================
 
-    6.  Create Virtual IP for HANA DB
-        -----------------------------
-
- 
-
- 
-
- 
+### 1. Create Virtual IP for HANA DB
 
 > ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image032.png)*Select Generic Application*
 
- 
-
- 
-
 > ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image033.png)*Select Intelligent, can be changed later*
-
- 
-
- 
-
- 
 
 > ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Restore Script opt/LifeKeeper/ip\_genapp/restore Enter the pathname for the shell script or object program which starts the application. The restore script is responsible for bringing a protected application resource in-service. The restore script should not impact an active resource application when invoked. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that NeKt\> Cancel ](/99_images/image034.png)*provide the path of restore script example: /opt/LifeKeeper/ip\_genapp/restore*
 
@@ -738,8 +700,8 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 
  
 
-Create HANA Resource HANA-S4D
------------------------------
+### 2. Create HANA Resource HANA-S4D
+
 
 > ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image053.png)*Select Generic Application*
 >
@@ -795,18 +757,12 @@ Create HANA Resource HANA-S4D
 >
 > *Click Done*
 
-Create Dependency HANA DB Resource & Azure IP
----------------------------------------------
+### 3. Create Dependency HANA DB Resource & Azure IP
 
 > Add IP-11.1.2.50 as dependent to HANA-S4D
 >
 > ![Machine generated alternative text: Create Dependency\@azsuascs2 NeKt\> Child Resource Tag Cancel ](/99_images/image070.png)*Screen clipping taken: 2/21/2019 2:49 PM*
 
- 
-
- 
-
- 
 
 > ![Machine generated alternative text: Create Dependency\@azsuascs2 The following dependency will be created: Parent: HANA-S40 child: ip-11.1.2.50 \<Back Cancel ](/99_images/image071.png)
 >
@@ -824,13 +780,10 @@ Create Dependency HANA DB Resource & Azure IP
 
  
 
-Install SAP Components
-======================
-
+## 9. Install SAP Components
 > Please follow SAP installation procedure with the recommended settings mentioned in each type of installation
 
-Install SAP (A) System Central Server on Node1 
------------------------------------------------
+### 1. Install SAP (A) System Central Server on Node1 
 
 > Add virtual hostname and IP address in /etc/host file
 >
@@ -838,13 +791,12 @@ Install SAP (A) System Central Server on Node1
 >
 > \#./sapinst SAPINST\_USE\_HOSTNAME=s4dascs
 
-Install SAP Enqueue Replication Server on Node 1
-------------------------------------------------
+### 2. Install SAP Enqueue Replication Server on Node 1
 
 > \#./sapinst SAPINST\_USE\_HOSTNAME=s4ders (not protected/ no failover)
 
-Install Primary Application Server
-----------------------------------
+### 3. Install Primary Application Server
+
 
 > Make sure you give DBHOST name as virtual hostname s4ddb (11.1.2.50)
 >
@@ -866,13 +818,13 @@ Install Primary Application Server
 >
 > azsusap1:s4dadm 54\>
 
-Install Addition Application Server (optional)
-----------------------------------------------
+### 4. Install Addition Application Server (optional)
 
-11. SAP ASCS/ERS cluster configuration
-    ==================================
 
-    13. Create floating IP for ASCS
+## 10. SAP ASCS/ERS cluster configuration
+ 
+
+### 1. Create floating IP for ASCS
         ---------------------------
 
 > In this step we are creating Enhanced Azure GenApp resource which will create the secondary ip address on the node using azure cli which we installed in earlier step.
@@ -979,8 +931,8 @@ Install Addition Application Server (optional)
 >
 >  
 
-Create IP Resource Kit
-----------------------
+### 2. Create IP Resource Kit
+
 
 > ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image092.png)*q*
 >
@@ -1018,7 +970,7 @@ Create IP Resource Kit
 >
 > ![Machine generated alternative text: Create Dependency\@azsuascs2 Create De endenc arent vi -11.1.2.60 of child i -11.1.2.60 Creating the dependency on the server azsuascsl The dependency creation was successful Done ](/99_images/image106.png)*5*
 
-Create Data Replication Resource for ASCS mount
+### 3. Create Data Replication Resource for ASCS mount
 -----------------------------------------------
 
 > ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image107.png)*6*
@@ -1055,7 +1007,7 @@ Create Data Replication Resource for ASCS mount
 >
 > Click close and don\'t click next to extent the resource to the target side yet. The screen will be as shown below.
 
-Create SAP Resource SAP-S4D\_ASCS00
+### 4. Create SAP Resource SAP-S4D\_ASCS00
 -----------------------------------
 
 > ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image123.png)*11*
@@ -1086,7 +1038,7 @@ Create SAP Resource SAP-S4D\_ASCS00
 >
 > ![Machine generated alternative text: Hierarchies unprotected SAP-S4D ASCSOO /usr/sap/S4D/Ascsoo datarep-Ascsoo vip-11.1.2.60 azsusapwitl azsusapwit2 azsuascsl azsuascs2 ](/99_images/image135.png)*11*
 
-Create SAP Resource SAP-S4D\_ERS10
+### 5. Create SAP Resource SAP-S4D\_ERS10
 ----------------------------------
 
 > ![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit Yiew Help Hierarchies unprotected SAP-S4D ASCSOO /usr/sap/S4D/Ascsoo datarep-Ascsoo vip-11.1.2.60 azsusapwitl azsusapwit2 azsu Disconnect\... Refresh.. View Logs\... Create Resource Hierarchy\... Create Comm Path\... Delete Comm Path\... properties\... azsuascs2 ](/99_images/image136.png)*11*
@@ -1125,139 +1077,47 @@ Create SAP Resource SAP-S4D\_ERS10
 >
 > Click finish and Done in the next screen
 
-12. SIOS Failover Testing
-    =====================
+## 11.SIOS Failover Testing
 
-    18. SAP HANA Database Failover
-        --------------------------
+### 1. SAP HANA Database Failover
 
 > ![Machine generated alternative text: Eile Edit View Help Hierarchies Active Protected SAP-S4D ERSIO SAP-S4D ASCSOO e /usr/sap/S4D/Ascsoo e datarep-Ascsoo e vip-11.1.2.60 HANA-S In Service.. e ip-l Out of Service\... Extend Resource Hierarchy\... unextend Resource Hierarchy\... Create Dependency\... Delete Dependency\... Delete Resource Hierarchy\... properties\... azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target azsuhanal azsuhana2 ](/99_images/image152.png)*12*
 
- 
-
-*Screen clipping taken: 2/20/2019 8:44 PM*
-
- 
-
- 
-
 > ![Machine generated alternative text: InService\@azsuascs2 NeKt\> Cancel ](/99_images/image153.png)*12*
-
- 
-
-*Screen clipping taken: 2/20/2019 8:45 PM*
-
- 
-
  
 
 ![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Active Protected azsusapwitl SAP-S4D ERSIO SAP-S4D ASCSOO e /usr/sap/S4D/Ascsoo e datarep-Ascsoo e vip-11.1.2.60 HANA-S40 n Service\@azsuascs2 Confirm in service action for Server: azsuhana2 Resource: HANA-S40 azsusapwit2 azsuascsl azsuascs2 Target azsuhanal azsuhana2 \<Back Cancel ](/99_images/image154.png)*12*
 
- 
-
-*Screen clipping taken: 2/20/2019 8:46 PM*
-
- 
 
 ![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Not Active SAP-S4D ERSIO SAP-S4D ASCSOO e /usr/sap/S4D/Ascsoo e datarep-Ascsoo e vip-11.1.2.60 HANA-S40 InService\@azsuascs2 Brin in HANA-S4D in service on azsuhana2 Put resource \"HANA-S4D\" in-service Done azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target azsuhanal azsuhana2 ](/99_images/image155.png)*12*
-
- 
-
-*Screen clipping taken: 2/20/2019 8:47 PM*
-
- 
-
  
 
 ![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Not Active SAP-S4D ERSIO SAP-S4D ASCSOO e /usr/sap/S4D/Ascsoo azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target \--private-ip-address 11.1.2.50 azsuhanal azsuhana2 e datarep-Ascsoo e vip-11.1.2.60 HANA-S40 InService\@azsuascs2 Brin in HANA-S4D in service on azsuhana2 Put resource \"HANA-S4D\" in-service BEGIN restore of \'lip-11.1.2.50\" INFORMATION: BEGIN restore of ip-11.1.2.50 on azsuhana2 Note: This process could take up to 2 minutes Running command (az network nic ip-config create \--resource-group SIOS-SUSE INFORMATION: END successful restore of ip-11.1.2.50 on azsuhana2 END successful restore of \"ip-11.1.2.50\" BEGIN restore of \"HANA-S40\" restore for HANA-S4D started SAP host agent is running on node azsuhana2 sapstartsrv for instance S4D 00 is running on node azsuhana2 Takeover of System Replication started on node azsuhana2 Done \--nic-name NIC APP-azsuhana2 \--name ipconfig2 \> /dev/null 2\>&1) on azsuhanal ](/99_images/image156.png)*12*
 
- 
-
-*Screen clipping taken: 2/20/2019 8:50 PM*
-
- 
-
- 
 
 ![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Active Protected SAP-S4D ERSIO SAP-S4D ASCSOO e /usr/sap/S4D/Ascsoo e datarep-Ascsoo e vip-11.1.2.60 HANA-S40 n Service\@azsuascs2 azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target azsuhanal azsuhana2 Brin in HANA-S4D in service on azsuhana2 SAP host agent is running on node azsuhana2 sapstartsrv for instance S4D 00 is running on node azsuhana2 Takeover of System Replication started on node azsuhana2 Node azsuhana2 is now PRIMARY master Takeover of System Replication finished successful on node azsuhana2 HANA-DB S4D 00 is already running on node azsuhana2 DEBUG\[0524\]: getRemoteHostParmName: set profileHostName=azsuhana2. dflt=azsuhana2 Replication mode on node azsuhanal is now syncrnem Reenable system replication on node azsuhanal finished successful Node azsuhanal is now registered in system replication mode syncrnem at node azsuhana2 SAP host agent is running on node azsuhanal sapstartsrv for instance S4D 00 is running on node azsuhanal Starting HANA-DB S4D 00 on node azsuhanal Start of HANA-DB S4D 00 on node azsuhanal successful Create LifeKeeper flag \"!volatile!noHANAremove HANA-S4D\" on node azsuhana2 Restore for resorce HANA-S4D finished END successful restore of \"HANA-S4D\" Put \"HANA-S4D\" in-service successful Done ](/99_images/image157.png)*12*
 
- 
 
-*Screen clipping taken: 2/20/2019 8:52 PM*
 
- 
-
- 
-
- 
-
- 
-
- 
-
-SAP ASCS Failover
------------------
+### 2. SAP ASCS Failover
 
 ![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Active Protected azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target azsuhanal azsuhana2 SAP-S4D SAP-S e e HANA-S4 update Protection Level update Recoveru Level Handle Warnings SSCC HA Actions In Service\... Out of Service\... Extend Resource Hierarchy.. unextend Resource Hierarchy\... Create Dependency.. Delete Dependency\... Delete Resource Hierarchy.. properties\... ](/99_images/image158.png)*12*
 
- 
-
-*Screen clipping taken: 2/21/2019 11:48 AM*
-
- 
-
- 
-
- 
-
- 
 
 ![Machine generated alternative text: InService\@azsuascs2 NeKt\> Cancel ](/99_images/image159.png)*12*
 
- 
-
-*Screen clipping taken: 2/21/2019 11:48 AM*
-
- 
-
- 
 
 ![Machine generated alternative text: n Service\@azsuascs2 Confirm in service action for Server: azsuascs2 Resource: SAP-S4D ERSIO (SAPID-S40-ERSIO) \<Back Cancel ](/99_images/image160.png)*12*
 
  
 
-*Screen clipping taken: 2/21/2019 11:48 AM*
-
- 
-
- 
-
 ![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Not Active azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target azsuhanal azsuhana2 SAP-S4D ERSIO SAP-S4D ASCSOO e /usr/sap/S4D/Ascsoo e datarep-Ascsoo vip-11.1.2.60 HANA-S40 InService\@azsuascs2 Brin in SAP-S4D ERSIO in service on azsuascs2 Put resource \"SAP-S4D ERSIO\" in-service Communication failure: destination system \"azsuersl \" is out of service. Lock for azsuersl is ignored because system is OOS Done ](/99_images/image161.png)*12*
 
- 
-
-*Screen clipping taken: 2/21/2019 11:49 AM*
-
- 
-
- 
 
 ![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Not Active SAP-S4D ERSIO SAP-S4D ASCSOO azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target azsuhanal azsuhana2 e /usr/sap/S4D/Ascsoo e datarep-Ascsoo vip-11.1.2.60 HANA-S40 InService\@azsuascs2 Brin in SAP-S4D ERSIO in service on azsuascs2 Put resource \"SAP-S4D ERSIO\" in-service Communication failure: destination system \"azsuersl \" is out of service. Lock for azsuersl is ignored because system is OOS BEGIN restore of \'lip-11.1.2.60\" INFORMATION: BEGIN restore of ip-11.1.2.60 on azsuascs2 Note: This process could take up to 2 minutes Done ](/99_images/image162.png)*12*
 
- 
 
-*Screen clipping taken: 2/21/2019 11:50 AM*
-
- 
-
- 
-
-![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Not Active SAP-S4D ERSIO SAP-S4D ASCSOO /usr/sap/S4D/Ascsoo azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target \--name S4DASCS \> /dev/null 2\>&1) on azsuascsl azsuhanal azsuhana2 e datarep-Ascsoo vip-11.1.2.60 HANA-S40 InService\@azsuascs2 Brin in SAP-S4D ERSIO in service on azsuascs2 Communication failure: destination system \"azsuersl \" is out of service. Lock for azsuersl is ignored because system is OOS BEGIN restore of \'lip-11.1.2.60\" INFORMATION: BEGIN restore of ip-11.1.2.60 on azsuascs2 Note: This process could take up to 2 minutes Running command (az network nic ip-config create \--resource-group SIOS-SUSE INFORMATION: END successful restore of ip-11.1.2.60 on azsuascs2 END successful restore of \"ip-11.1.2.60\" BEGIN restore of \"vip-11.1.2.60\" END successful restore of \"vip-11.1.2.60\" Done \--nic-name NIC APP-azsuersl \--private-ip-address 11.1.2.60 ](/99_images/image163.png)*12*
-
- 
-
-*Screen clipping taken: 2/21/2019 11:51 AM*
-
+![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Not Active SAP-S4D ERSIO SAP-S4D ASCSOO /usr/sap/S4D/Ascsoo azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target \--name S4DASCS \> /dev/null 2\>&1) on azsuascsl azsuhanal azsuhana2 e datarep-Ascsoo vip-11.1.2.60 HANA-S40 InService\@azsuascs2 Brin in SAP-S4D ERSIO in service on azsuascs2 Communication failure: destination system \"azsuersl \" is out of service. Lock for azsuersl is ignored because system is OOS BEGIN restore of \'lip-11.1.2.60\" INFORMATION: BEGIN restore of ip-11.1.2.60 on azsuascs2 Note: This process could take up to 2 minutes Running command (az network nic ip-config create \--resource-group SIOS-SUSE INFORMATION: END successful restore of ip-11.1.2.60 on azsuascs2 END successful restore of \"ip-11.1.2.60\" BEGIN restore of \"vip-11.1.2.60\" END successful restore of \"vip-11.1.2.60\" Done \--nic-name NIC APP-azsuersl \--private-ip-address 11.1.2.60 ](/99_images/image163.png)*Successfully Tested Failover: 2/21/2019 11:51 AM*
  
 
  
@@ -1268,5 +1128,5 @@ SAP ASCS Failover
 
  
 
-Lesson's learned
-================
+## 12. Lesson's learned
+
