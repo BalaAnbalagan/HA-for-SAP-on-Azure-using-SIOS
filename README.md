@@ -51,20 +51,18 @@ Version Table
   SIOS Enhanced Azure Gen App       2.4       
 
 ### 1. Virtual IP & Hostnames
-    ----------------------
-
+  
     Create the following A-Record in your DNS on similar update /etc/hosts file accordingly
 
     ![DNS](/99_images/image002.png)
 
 ### 2. Witness or Quorum Hosts
-    -----------------------
+ 
 
     Create 2 witness hosts, one for SAP Application Cluster and one for SAP DB Cluster.
 
 ### 3. Disk layout for ASCS Cluster Nodes
-    ----------------------------------
-
+   
     Please create separate volumes/Disk for /usr/sap/ASCS00
 
     /dev/sdc1 /usr/sap
@@ -78,17 +76,17 @@ Version Table
     Note: The disk used for replication should be of same size
 
 ### 4. Firewall
-    --------
+  
 
     For simplicity disabled the firewall in all the nodes
 
 ### 5.  Reference Architecture Diagram
-    ------------------------------
+   
     ![Archtecture Diagram](/99_images/arch.png)
     This document uses SuSE landscape for illustration
 
 ## 3. Infrastructure Provisioning
-===========================
+
 
 > Used terraform to provision the infrastructure and used shell script to perform post processing. The source code is available in github.
 >
@@ -101,14 +99,14 @@ Version Table
 > SAP HANA or SAP Installation is not part of the terraform script
 
 ## 4. SAP HA Scenario
-===============
+
 
 > The SIOS Protection Suite will protect the ASCS instance and SAP will own the ERS instance.
 >
 > The S4D\_ASCS00 instance will have /usr/sap/S4D/ASCS00 data replication and IP Resource with Azure IP Gen App resource as child.
 
 ## 5. Azure CLI Installation for Linux
-    ================================
+  
 
 ### 1. SuSE
        
@@ -256,9 +254,9 @@ Version Table
 >
 >  
 >
-> \# sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config
+>`sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config'
 >
-> \# cat /etc/selinux/config
+```\# cat /etc/selinux/config
 >
 >  
 >
@@ -283,7 +281,7 @@ Version Table
 > \# mls - Multi Level Security protection.
 >
 > SELINUXTYPE=targeted
->
+```
 >  
 
 #### 2. Reboot the VM
@@ -344,7 +342,6 @@ Version Table
 > ![](/99_images/image010.png)
 
 ### 3. Setup SIOS Protection Suite - SAP Recovery Kit 
------------------------------------------------
 
 > Install SAP Recovery kit in ASCS and HANA Nodes
 >
@@ -366,33 +363,12 @@ Version Table
 
 \* *
 
- 
-
- 
-
- 
 
 > ![Select Lifekeeper SAP Recovery kit](/99_images/image015.png)*Select Lifekeeper SAP Recovery kit*
 
- 
-
- 
-
 > ![Select Lifekeeper Startup after install & Select Done](/99_images/image016.png)*Select Lifekeeper Startup after install & Select Done*
 
- 
-
- 
-
- 
-
- 
-
 > ![Select Yes & Press Enter](/99_images/image017.png)*Select Yes & Press Enter* 
-
- 
-
- 
 
 > ![](/99_images/image018.png)
 >*Installation completed*
@@ -821,7 +797,7 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 
 
 ## 10. SAP ASCS/ERS cluster configuration
- 
+
 
 ### 1. Create floating IP for ASCS
         ---------------------------
@@ -1007,7 +983,7 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 > Click close and don\'t click next to extent the resource to the target side yet. The screen will be as shown below.
 
 ### 4. Create SAP Resource SAP-S4D\_ASCS00
------------------------------------
+
 
 > ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image123.png)*11*
 >
@@ -1038,7 +1014,7 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 > ![Machine generated alternative text: Hierarchies unprotected SAP-S4D ASCSOO /usr/sap/S4D/Ascsoo datarep-Ascsoo vip-11.1.2.60 azsusapwitl azsusapwit2 azsuascsl azsuascs2 ](/99_images/image135.png)*11*
 
 ### 5. Create SAP Resource SAP-S4D\_ERS10
-----------------------------------
+
 
 > ![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit Yiew Help Hierarchies unprotected SAP-S4D ASCSOO /usr/sap/S4D/Ascsoo datarep-Ascsoo vip-11.1.2.60 azsusapwitl azsusapwit2 azsu Disconnect\... Refresh.. View Logs\... Create Resource Hierarchy\... Create Comm Path\... Delete Comm Path\... properties\... azsuascs2 ](/99_images/image136.png)*11*
 >
