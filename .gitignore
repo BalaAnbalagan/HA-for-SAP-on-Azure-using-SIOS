@@ -2,5 +2,5 @@
 *.tfstate
 *.backup
 *.code-workspace
-*.git*
+.terraform
 lock.jason
