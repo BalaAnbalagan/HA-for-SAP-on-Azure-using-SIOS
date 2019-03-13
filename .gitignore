@@ -1,4 +1,6 @@
 *.exe
 *.tfstate
 *.backup
+*.code-workspace
+*.git*
 lock.jason

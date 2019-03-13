@@ -530,7 +530,7 @@ a.  Login to azsuascs1 as root
 > *Note: make sure the ini file gets updated*
 
 ### 5. Check HANA System Replication Status
---------------------------------------
+
 
 >  \#hdbnsutil -sr\_state
 >
@@ -554,7 +554,6 @@ a.  Login to azsuascs1 as root
 > *HSR status from secondary node*
 
 ## 8. SAP HANA Database Protection Configuration
-    ==========================================
 
 ### 1. Create Virtual IP for HANA DB
 
