@@ -400,7 +400,7 @@ Version Table
 > ![](/99_images/image019.png) 
 >*license check message*
 
-#### 4. Setup SIOS Protection Suite - SAP HANA V2 Recovery Kit
+### 4. Setup SIOS Protection Suite - SAP HANA V2 Recovery Kit
 
 > \# ls -ltr \|grep HANA2\*
 >
