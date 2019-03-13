@@ -136,81 +136,79 @@ Version Table
 > \#sudo sh -c \'echo -e \"\[azure-cli\]\\nname=Azure CLI\\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\\nenabled=1\\ngpgcheck=1\\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\" \> /etc/yum.repos.d/azure-cli.repo\'
 
 #### 3.  Install with the yum install command.
+```console
+#sudo yum install azure-cli
 
-> \#sudo yum install azure-cli
->
-> Loaded plugins: langpacks, product-id, search-disabled-repos
->
-> azure-cli \| 2.9 kB 00:00:00
->
-> azure-cli/primary\_db \| 39 kB 00:00:00
->
-> Resolving Dependencies
->
-> \--\> Running transaction check
->
-> \-\--\> Package azure-cli.x86\_64 0:2.0.59-1.el7 will be installed
->
-> \--\> Finished Dependency Resolution
->
->  
->
-> Dependencies Resolved
->
->  
->
-> =========================================================================================================================================================================================
->
-> Package Arch Version Repository Size
->
-> =========================================================================================================================================================================================
->
-> Installing:
->
-> azure-cli x86\_64 2.0.59-1.el7 azure-cli 30 M
->
->  
->
-> Transaction Summary
->
-> =========================================================================================================================================================================================
->
-> Install 1 Package
->
->  
->
-> Total download size: 30 M
->
-> Installed size: 209 M
->
-> Is this ok \[y/d/N\]: y
->
-> Downloading packages:
->
-> azure-cli-2.0.59-1.el7.x86\_64.rpm \| 30 MB 00:00:00
->
-> Running transaction check
->
-> Running transaction test
->
-> Transaction test succeeded
->
-> Running transaction
->
-> Installing : azure-cli-2.0.59-1.el7.x86\_64 1/1
->
-> Verifying : azure-cli-2.0.59-1.el7.x86\_64 1/1
->
->  
->
-> Installed:
->
-> azure-cli.x86\_64 0:2.0.59-1.el7
->
->  
->
-> Complete!
+Loaded plugins: langpacks, product-id, search-disabled-repos
 
+azure-cli \| 2.9 kB 00:00:00
+
+azure-cli/primary\_db \| 39 kB 00:00:00
+
+Resolving Dependencies
+
+\--\> Running transaction check
+
+\-\--\> Package azure-cli.x86\_64 0:2.0.59-1.el7 will be installed
+
+\--\> Finished Dependency Resolution
+  
+
+Dependencies Resolved
+
+  
+=========================================================================================================================================================================================
+
+Package Arch Version Repository Size
+
+=========================================================================================================================================================================================
+
+Installing:
+
+azure-cli x86\_64 2.0.59-1.el7 azure-cli 30 M
+
+  
+
+Transaction Summary
+
+=========================================================================================================================================================================================
+
+Install 1 Package
+
+ 
+
+Total download size: 30 M
+
+Installed size: 209 M
+
+Is this ok \[y/d/N\]: y
+
+Downloading packages:
+
+azure-cli-2.0.59-1.el7.x86\_64.rpm \| 30 MB 00:00:00
+
+Running transaction check
+
+Running transaction test
+
+Transaction test succeeded
+
+Running transaction
+
+Installing : azure-cli-2.0.59-1.el7.x86\_64 1/1
+
+Verifying : azure-cli-2.0.59-1.el7.x86\_64 1/1
+
+  
+
+Installed:
+
+azure-cli.x86\_64 0:2.0.59-1.el7
+
+  
+
+Complete!
+```
 #### 4. Run the login command
 
 > \# az login
@@ -254,33 +252,32 @@ Version Table
 >
 >  
 >
->`sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config'
+`sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config`
 >
-```\# cat /etc/selinux/config
->
->  
->
-> \# This file controls the state of SELinux on the system.
->
-> \# SELINUX= can take one of these three values:
->
-> \# enforcing - SELinux security policy is enforced.
->
-> \# permissive - SELinux prints warnings instead of enforcing.
->
-> \# disabled - No SELinux policy is loaded.
->
-> SELINUX=disabled
->
-> \# SELINUXTYPE= can take one of three two values:
->
-> \# targeted - Targeted processes are protected,
->
-> \# minimum - Modification of targeted policy. Only selected processes are protected.
->
-> \# mls - Multi Level Security protection.
->
-> SELINUXTYPE=targeted
+```console
+ # cat /etc/selinux/config
+
+ # This file controls the state of SELinux on the system.
+
+ # SELINUX= can take one of these three values:
+
+ # enforcing - SELinux security policy is enforced.
+
+ # permissive - SELinux prints warnings instead of enforcing.
+
+ # disabled - No SELinux policy is loaded.
+
+ SELINUX=disabled
+
+ # SELINUXTYPE= can take one of three two values:
+
+ # targeted - Targeted processes are protected,
+
+ # minimum - Modification of targeted policy. Only selected processes are protected.
+
+ # mls - Multi Level Security protection.
+
+ SELINUXTYPE=targeted
 ```
 >  
 
@@ -299,33 +296,33 @@ Version Table
 > ![Error - SELinux Enabled](/99_images/image007.png)
 
  
+```console
+# cat /etc/selinux/config
 
-> \# cat /etc/selinux/config
->
->  
->
-> \# This file controls the state of SELinux on the system.
->
-> \# SELINUX= can take one of these three values:
->
-> \# enforcing - SELinux security policy is enforced.
->
-> \# permissive - SELinux prints warnings instead of enforcing.
->
-> \# disabled - No SELinux policy is loaded.
->
-> SELINUX=disabled
->
-> \# SELINUXTYPE= can take one of three two values:
->
-> \# targeted - Targeted processes are protected,
->
-> \# minimum - Modification of targeted policy. Only selected processes are protected.
->
-> \# mls - Multi Level Security protection.
->
-> SELINUXTYPE=targeted
+  
 
+# This file controls the state of SELinux on the system.
+
+# SELINUX= can take one of these three values:
+
+# enforcing - SELinux security policy is enforced.
+
+# permissive - SELinux prints warnings instead of enforcing.
+
+# disabled - No SELinux policy is loaded.
+
+SELINUX=disabled
+
+# SELINUXTYPE= can take one of three two values:
+
+# targeted - Targeted processes are protected,
+
+# minimum - Modification of targeted policy. Only selected processes are protected.
+
+# mls - Multi Level Security protection.
+
+SELINUXTYPE=targeted
+```
  
 
 ### 2. Setup SIOS Protection Suite -- Witness Nodes
