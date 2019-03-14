@@ -3,7 +3,7 @@
 
 
 ## 1. Introduction
-> This document describes the procedure to implement High Availability solution SAP NW & SAP HANA on Azure using SIOS Protection Suite (SPS) for Linux. "SIOS Enhanced Azure Gen App" is used to switch IP address between cluster nodes instead using of Azure Internal Load balancer.
+> This document describes the procedure to implement High Availability Solution to protect SAP NW & SAP HANA on Azure using SIOS Protection Suite (SPS) for Linux. "SIOS Enhanced Azure Gen App" is used to switch IP address between cluster nodes instead using of Azure Internal Load balancer.
 >
 > The solution is certified\* for the following versions of Operating Systems
 
@@ -13,48 +13,48 @@
 
 > Note:
 >
-> \*SuSE certification process in-progress
+> - \*SuSE certification process in-progress
 >
-> The steps in this document is suitable and similar for RHEL 7.4 as well
+> - The steps in this document is suitable and similar for RHEL 7.4 as well
 >
-> SAP installation screens not included.
+> - SAP installation screens not included.
 >
-> run sapinst with SAPINST\_USE\_HOSTNAME=\<virtual hostname\> for ASCS, ERS installations
+> - run sapinst with SAPINST\_USE\_HOSTNAME=\<virtual hostname\> for SAP ASCS installation
 
 ## 2. Reference Architecture
 
-  Components      hostname      IP address   VIP         VHOSTNAME
-  --------------- ------------- ------------ ----------- -----------
-  SAP ASCS Pool   azsuascs1     11.1.2.61    11.1.2.60   s4dascs
-                  azsuascs2     11.1.2.62                
-  SAP App Pool    azsusap1      11.1.2.53                
-                  azsusap2      11.1.2.54                
-  SAP DB Pool     azsuhana1     11.1.2.51    11.1.2.50   s4ddb
-                  azsuhana2     11.1.2.52                
-  SIOS Witness    azsusapwit1   11.1.2.65                
-                  azsusapwit2   11.1.2.66                
-  NFS             pg-nfs        11.1.1.11                
-  DNS             pg-dns        11.1.1.5                 
-  Jumpbox         pg-rdp00      11.0.1.5                 
+  |Components     | hostname     | IP address |  VIP       |  VHOSTNAME |
+  | --------------| -------------|------------| -----------|----------- |
+  |SAP ASCS Pool  | azsuascs1    | 11.1.2.61  |  11.1.2.60 |  s4dascs   |
+  |               | azsuascs2    | 11.1.2.62  |            |            |  
+  |SAP App Pool   | azsusap1     | 11.1.2.53  |            |            |
+  |               | azsusap2     | 11.1.2.54  |            |            |
+  |SAP DB Pool    | azsuhana1    | 11.1.2.51  |  11.1.2.50 |  s4ddb     |
+  |               | azsuhana2    | 11.1.2.52  |            |            |
+  |SIOS Witness   | azsusapwit1  | 11.1.2.65  |            |            |
+  |               | azsusapwit2  | 11.1.2.66  |            |            |
+  |NFS            | pg-nfs       | 11.1.1.11  |            |            |
+  |DNS            | pg-dns       | 11.1.1.5   |            |            |
+  |Jumpbox        | pg-rdp00     | 11.0.1.5   |            |            |
 
 > The reference architecture consists of the following infrastructure and key software components.
 
 Version Table
-
-  Components                        Release   SPS/Patch
-  --------------------------------- --------- -----------
-  SAP S/4 HANA                      1709      00
-  SAP HANA DB                       2.0       03
-  SAP Kernel                        753       300
-  SIOS Protection Suite for Linux   9.3.1     
-  SIOS HANA2.0 ARK                  2.0       
-  SIOS Enhanced Azure Gen App       2.4       
+-------------
+  | Components                     | Release |  SPS/Patch|
+  | ------------------------------ |:-------:|----------:|
+  |SAP S/4 HANA                    | 1709    | 00        |
+  |SAP HANA DB                     |  2.0    | 03        |
+  |SAP Kernel                      |  753    | 300       |
+  |SIOS Protection Suite for Linux |  9.3.1  |           |
+  |SIOS HANA2.0 ARK                |  2.0    |           |
+  |SIOS Enhanced Azure Gen App     | 2.4     |           |
 
 ### 1. Virtual IP & Hostnames
   
-    Create the following A-Record in your DNS on similar update /etc/hosts file accordingly
+    Create the following A-Record in your DNS or create host enties in /etc/hosts file.
 
-    ![DNS](/99_images/image002.png)
+   ![DNS](/99_images/image002.png)
 
 ### 2. Witness or Quorum Hosts
  
