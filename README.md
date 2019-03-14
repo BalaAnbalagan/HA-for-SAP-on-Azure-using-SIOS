@@ -221,34 +221,21 @@ Complete!
 >
 #### 1. Disable SELinux (RHEL specific)
 >  
->
-> \# cat /etc/selinux/config
->
->  
->
-> \# This file controls the state of SELinux on the system.
->
-> \# SELINUX= can take one of these three values:
->
-> \# enforcing - SELinux security policy is enforced.
->
-> \# permissive - SELinux prints warnings instead of enforcing.
->
-> \# disabled - No SELinux policy is loaded.
->
-> SELINUX=enforcing
->
-> \# SELINUXTYPE= can take one of three two values:
->
-> \# targeted - Targeted processes are protected,
->
-> \# minimum - Modification of targeted policy. Only selected processes are protected.
->
-> \# mls - Multi Level Security protection.
->
-> SELINUXTYPE=targeted
->
->  
+```console
+# cat /etc/selinux/config
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+# enforcing - SELinux security policy is enforced.
+# permissive - SELinux prints warnings instead of enforcing.
+# disabled - No SELinux policy is loaded.
+SELINUX=enforcing
+# SELINUXTYPE= can take one of three two values:
+# targeted - Targeted processes are protected,
+# minimum - Modification of targeted policy. Only selected processes are protected.
+# mls - Multi Level Security protection.
+SELINUXTYPE=targeted
+```
+ 
 >
 >  
 >
@@ -258,35 +245,25 @@ Complete!
  # cat /etc/selinux/config
 
  # This file controls the state of SELinux on the system.
-
  # SELINUX= can take one of these three values:
-
  # enforcing - SELinux security policy is enforced.
-
  # permissive - SELinux prints warnings instead of enforcing.
-
  # disabled - No SELinux policy is loaded.
-
  SELINUX=disabled
-
  # SELINUXTYPE= can take one of three two values:
-
  # targeted - Targeted processes are protected,
-
  # minimum - Modification of targeted policy. Only selected processes are protected.
-
  # mls - Multi Level Security protection.
-
  SELINUXTYPE=targeted
 ```
 >  
 
 #### 2. Reboot the VM
-
+\* mandatory restart
 >  
->
-> \# reboot (\* mandatory)
->
+>```console
+># reboot
+>```
 >  
 
 #### 3. Error for SELinux 
@@ -327,10 +304,11 @@ SELINUXTYPE=targeted
 
 ### 2. Setup SIOS Protection Suite -- Witness Nodes
 --------------------------------------------
-
+```console
 > \#mount /sapmedia/SIOS931/sps.img /DVD -t iso9660 -o loop
 
 > \#./setup
+```
 >
 > ![](/99_images/image008.png)
 >
