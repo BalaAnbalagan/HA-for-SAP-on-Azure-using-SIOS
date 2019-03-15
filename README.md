@@ -182,7 +182,7 @@ Complete!
 ```
 #### 4. Run the login command
 
-```console
+```shell
 # az login
 ```
 > To sign in, use a web browser to open the page <https://microsoft.com/devicelogin> and enter the code B7TYYXDDV to authenticate.
@@ -193,7 +193,7 @@ Complete!
 >
 #### 1. Disable SELinux (RHEL specific)
 >  
-```console
+```shell
 # cat /etc/selinux/config
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
@@ -213,7 +213,7 @@ SELINUXTYPE=targeted
 >
 `sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config`
 >
-```console
+```shell
  # cat /etc/selinux/config
 
  # This file controls the state of SELinux on the system.
@@ -233,7 +233,7 @@ SELINUXTYPE=targeted
 #### 2. Reboot the VM
 \* mandatory restart
 >  
->```console
+>```shell
 ># reboot
 >```
 >  
@@ -245,7 +245,7 @@ SELINUXTYPE=targeted
 > ![Error - SELinux Enabled](/99_images/image007.png)
 
  
-```console
+```shell
 # cat /etc/selinux/config
 
   
@@ -276,7 +276,7 @@ SELINUXTYPE=targeted
 
 ### 2. Setup SIOS Protection Suite -- Witness Nodes
 --------------------------------------------
-```console
+```shell
 > \#mount /sapmedia/SIOS931/sps.img /DVD -t iso9660 -o loop
 
 > \#./setup
