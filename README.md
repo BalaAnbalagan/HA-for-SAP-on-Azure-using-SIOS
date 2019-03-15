@@ -613,10 +613,21 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 
 ### 2. Create HANA Resource HANA-S4D
 
-
-> ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image053.png)*Select Generic Application*
+>- *Select Generic Application*
 >
-> ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image054.png)*Select intelligent*
+> ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image053.png)
+>- *Select intelligent*
+>
+> ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image054.png)
+```shell
+/opt/LifeKeeper/HANA2-ARK/restore.pl
+/opt/LifeKeeper/HANA2-ARK/remove.pl
+/opt/LifeKeeper/HANA2-ARK/quickCheck.pl
+/opt/LifeKeeper/HANA2-ARK/recover.pl
+```
+>
+>- *for the next 4 screens please provide the following path for the scripts*
+> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 opt/LifeKeeper/HANA2-ARKJrecover.pl Local Recovery Script \[optional\] Enter the pathname for the shell script or object program which will attempt to recover a failed application on the local server. This may require stopping and restarting the application. The local recovery script is optional - if you do not want to provide one, simply clear the entry field. If no local recovery script is provided, the protected application will always fail over to the target when a quickCheck error occurs. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that Cancel NeKt\> ](/99_images/image055.png)
 >
 > /opt/LifeKeeper/HANA2-ARK/restore.pl
 >
@@ -625,22 +636,14 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 > /opt/LifeKeeper/HANA2-ARK/quickCheck.pl
 >
 > /opt/LifeKeeper/HANA2-ARK/recover.pl
+>- *Enter Application info as S4D 00 syncmem left logreplay*
 >
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 opt/LifeKeeper/HANA2-ARKJrecover.pl Local Recovery Script \[optional\] Enter the pathname for the shell script or object program which will attempt to recover a failed application on the local server. This may require stopping and restarting the application. The local recovery script is optional - if you do not want to provide one, simply clear the entry field. If no local recovery script is provided, the protected application will always fail over to the target when a quickCheck error occurs. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that Cancel NeKt\> ](/99_images/image055.png)*for the next 4 screens please provide the following path for the scripts*
->
-> /opt/LifeKeeper/HANA2-ARK/restore.pl
->
-> /opt/LifeKeeper/HANA2-ARK/remove.pl
->
-> /opt/LifeKeeper/HANA2-ARK/quickCheck.pl
->
-> /opt/LifeKeeper/HANA2-ARK/recover.pl
->
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Application Info \[optional\] S4D 00 syncrnem left loqreplay Enter any optional data for the application resource instance that may be needed by the restore and remove scripts. The valid characters allowed for the data field are letters, digits, and the following special characters: \_ . = \[space\] \<Back Cancel ](/99_images/image056.png)*Enter Application info as S4D 00 syncmem left logreplay*
->
+> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Application Info \[optional\] S4D 00 syncrnem left loqreplay Enter any optional data for the application resource instance that may be needed by the restore and remove scripts. The valid characters allowed for the data field are letters, digits, and the following special characters: \_ . = \[space\] \<Back Cancel ](/99_images/image056.png)
 > Which is \<SID\> \<Instance\#\> \<replicationMode\> \<name\> \<operantionMode\>
+
+> -*Select Yes to bring up the service right away*
 >
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Bring Resource In Service This field allows the user to specify if the resource should be brought in-service following a successful create. • A user may want to select No if the dependent resources have not been created and the restore command would fail. If No is selected, the resource will be created but will not be brought in-service. The resource cannot be extended until the hierarchy has been placed in-service. • Selecting Yes will cause the resource has been created. \<Back Cancel NeKt\> user provided restore script to be invoked after the ](/99_images/image057.png)*Select Yes to bring up the service right away*
+> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Bring Resource In Service This field allows the user to specify if the resource should be brought in-service following a successful create. • A user may want to select No if the dependent resources have not been created and the restore command would fail. If No is selected, the resource will be created but will not be brought in-service. The resource cannot be extended until the hierarchy has been placed in-service. • Selecting Yes will cause the resource has been created. \<Back Cancel NeKt\> user provided restore script to be invoked after the ](/99_images/image057.png)
 >
 > ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 HANA-S40 Resource Tag Enter a unique name for the resource instance on azsuhanal. The valid characters allowed for the tag are \<Back Create letters, digits, and the following special characters: Cancel Instance ](/99_images/image058.png)*Provide a Resource tag name*
 >
@@ -672,12 +675,15 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 
 > Add IP-11.1.2.50 as dependent to HANA-S4D
 >
-> ![Machine generated alternative text: Create Dependency\@azsuascs2 NeKt\> Child Resource Tag Cancel ](/99_images/image070.png)*Screen clipping taken: 2/21/2019 2:49 PM*
+>- *Screen clipping taken: 2/21/2019 2:49 PM*
+>
+> ![Machine generated alternative text: Create Dependency\@azsuascs2 NeKt\> Child Resource Tag Cancel ](/99_images/image070.png)
 
-
+>- *Click Create Dependency*
+>
 > ![Machine generated alternative text: Create Dependency\@azsuascs2 The following dependency will be created: Parent: HANA-S40 child: ip-11.1.2.50 \<Back Cancel ](/99_images/image071.png)
 >
-> *Click Create Dependency*
+> 
 
  
 >- *HANA-S4D dependency Tree view - move to correction location*
@@ -688,12 +694,14 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 
 
  
-
-> ![Machine generated alternative text: Create Dependency\@azsuascs2 Create De endenc arent HANA-S40 of childi -11.1.2.50 Creating the dependency on the server azsuhanal Creating the dependency on the server azsuhana2 The dependency creation was successful Done ](/99_images/image072.png)*Click Done*
+>- *Click Done*
+>
+> ![Machine generated alternative text: Create Dependency\@azsuascs2 Create De endenc arent HANA-S40 of childi -11.1.2.50 Creating the dependency on the server azsuhanal Creating the dependency on the server azsuhana2 The dependency creation was successful Done ](/99_images/image072.png)
 
  
-
-> ![A screenshot of a cell phone Description automatically generated](/99_images/image073.png)*Screen clipping to show the dependency tree created*
+>- *Done*
+>
+> ![A screenshot of a cell phone Description automatically generated](/99_images/image073.png)
 
  
  
