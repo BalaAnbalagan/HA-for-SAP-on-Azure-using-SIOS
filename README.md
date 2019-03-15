@@ -99,7 +99,7 @@
 ![ASCS](/99_images/ASCS.png)
 
 ### 2. SAP HANA DB Clustering
-![ASCS](/99_images/DB.png)
+![ASCS](/99_images/DB1.png)
 
 ## 4. SIOS Clustering Basics
 
