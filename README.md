@@ -81,9 +81,9 @@ Version Table
     For simplicity disabled the firewall in all the nodes
 
 ### 5.  Reference Architecture Diagram
-   
-    ![Archtecture Diagram](/99_images/arch.png)
-    This document uses SuSE landscape for illustration
+    
+   >![Archtecture Diagram](/99_images/arch.png)
+   >This document uses SuSE landscape for illustration
 
 ## 3. Infrastructure Provisioning
 
@@ -140,79 +140,50 @@ Version Table
 #sudo yum install azure-cli
 
 Loaded plugins: langpacks, product-id, search-disabled-repos
-
 azure-cli \| 2.9 kB 00:00:00
-
 azure-cli/primary\_db \| 39 kB 00:00:00
-
 Resolving Dependencies
-
 \--\> Running transaction check
-
 \-\--\> Package azure-cli.x86\_64 0:2.0.59-1.el7 will be installed
-
 \--\> Finished Dependency Resolution
-  
 
 Dependencies Resolved
-
   
 =========================================================================================================================================================================================
 
 Package Arch Version Repository Size
 
 =========================================================================================================================================================================================
-
 Installing:
 
 azure-cli x86\_64 2.0.59-1.el7 azure-cli 30 M
-
   
-
 Transaction Summary
-
 =========================================================================================================================================================================================
-
 Install 1 Package
 
- 
-
 Total download size: 30 M
-
 Installed size: 209 M
-
 Is this ok \[y/d/N\]: y
-
 Downloading packages:
-
 azure-cli-2.0.59-1.el7.x86\_64.rpm \| 30 MB 00:00:00
-
 Running transaction check
-
 Running transaction test
-
 Transaction test succeeded
-
 Running transaction
-
-Installing : azure-cli-2.0.59-1.el7.x86\_64 1/1
-
-Verifying : azure-cli-2.0.59-1.el7.x86\_64 1/1
-
-  
+ Installing : azure-cli-2.0.59-1.el7.x86\_64 1/1
+ Verifying : azure-cli-2.0.59-1.el7.x86\_64 1/1
 
 Installed:
-
-azure-cli.x86\_64 0:2.0.59-1.el7
-
-  
+ azure-cli.x86\_64 0:2.0.59-1.el7
 
 Complete!
 ```
 #### 4. Run the login command
 
-> \# az login
->
+```console
+# az login
+```
 > To sign in, use a web browser to open the page <https://microsoft.com/devicelogin> and enter the code B7TYYXDDV to authenticate.
 
 ## 6. SIOS Protection Suite 9.3.1
