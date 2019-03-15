@@ -1,5 +1,5 @@
 
-# High Availability Solution for SAP NetWeaver (RHEL, OEL & SuSE*) & SAP HANA (RHEL & SuSE*)on Azure using SIOS
+# High Availability Solution for SAP NetWeaver (RHEL, OEL & SuSE*) & SAP HANA (RHEL & SuSE*) on Azure using SIOS Protection Suite
 
 
 ## 1. Introduction
@@ -96,7 +96,7 @@
 ## 3. SAP HA Scenario 
 
 ### 1. SAP ASCS Clustering
-![ASCS](/99_images/ASCS.png)
+![ASCS](/99_images/ASCS1.png)
 
 ### 2. SAP HANA DB Clustering
 ![ASCS](/99_images/DB1.png)
