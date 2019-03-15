@@ -39,7 +39,7 @@
 
 > The reference architecture consists of the following infrastructure and key software components.
 
-Version Table
+### 1. Version Table
 -------------
   | Components                     | Release |  SPS/Patch|
   | ------------------------------ |:-------:|----------:|
@@ -57,7 +57,6 @@ Version Table
    ![DNS](/99_images/image002.png)
 
 ### 2. Witness or Quorum Hosts
- 
 
     Create 2 witness hosts, one for SAP Application Cluster and one for SAP DB Cluster.
 
@@ -66,11 +65,8 @@ Version Table
     Please create separate volumes/Disk for /usr/sap/ASCS00
 
     /dev/sdc1 /usr/sap
-
     /dev/sde1 /usr/sap/S4D
-
     /dev/sdd1 /usr/sap/S4D/ASCS00
-
     /dev/sdf1 /usr/sap/S4D/ERS10
 
     Note: The disk used for replication should be of same size
@@ -87,7 +83,6 @@ Version Table
 
 ## 3. Infrastructure Provisioning
 
-
 > Used terraform to provision the infrastructure and used shell script to perform post processing. The source code is available in github.
 >
 > <https://github.com/BalaAnbalagan/HA-for-SAP-on-Azure-using-SIOS>
@@ -99,7 +94,6 @@ Version Table
 > SAP HANA or SAP Installation is not part of the terraform script
 
 ## 4. SAP HA Scenario
-
 
 > The SIOS Protection Suite will protect the ASCS instance and SAP will own the ERS instance.
 >
@@ -138,15 +132,16 @@ Version Table
 #### 3.  Install with the yum install command.
 
 ```shell
-#sudo yum install azure-cli
-
+"sudo yum install azure-cli"
+```
+```shell
 Loaded plugins: langpacks, product-id, search-disabled-repos
 azure-cli \| 2.9 kB 00:00:00
 azure-cli/primary\_db \| 39 kB 00:00:00
 Resolving Dependencies
-\--\> Running transaction check
-\-\--\> Package azure-cli.x86\_64 0:2.0.59-1.el7 will be installed
-\--\> Finished Dependency Resolution
+--> Running transaction check
+---> Package azure-cli.x86\_64 0:2.0.59-1.el7 will be installed
+--> Finished Dependency Resolution
 
 Dependencies Resolved
   
@@ -211,7 +206,8 @@ SELINUXTYPE=targeted
 >
 >  
 >
-`sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config`
+```shell
+sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config`
 >
 ```shell
  # cat /etc/selinux/config
@@ -248,38 +244,31 @@ SELINUXTYPE=targeted
 ```shell
 # cat /etc/selinux/config
 
-  
-
-# This file controls the state of SELinux on the system.
-
+This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
-
 # enforcing - SELinux security policy is enforced.
-
 # permissive - SELinux prints warnings instead of enforcing.
-
 # disabled - No SELinux policy is loaded.
-
 SELINUX=disabled
-
 # SELINUXTYPE= can take one of three two values:
-
 # targeted - Targeted processes are protected,
-
 # minimum - Modification of targeted policy. Only selected processes are protected.
-
 # mls - Multi Level Security protection.
-
 SELINUXTYPE=targeted
 ```
  
 
 ### 2. Setup SIOS Protection Suite -- Witness Nodes
 --------------------------------------------
+> Mount sps.img
 ```shell
-> \#mount /sapmedia/SIOS931/sps.img /DVD -t iso9660 -o loop
+mkdir -p /DVD
+mount /sapmedia/SIOS921/sps.img /DVD -t iso9660 -o loop
+```
 
-> \#./setup
+>  mount: /dev/loop0 is write-protected, mounting read-only
+```shell
+./setup
 ```
 >
 > ![](/99_images/image008.png)
@@ -291,9 +280,17 @@ SELINUXTYPE=targeted
 ### 3. Setup SIOS Protection Suite - SAP Recovery Kit 
 
 > Install SAP Recovery kit in ASCS and HANA Nodes
->
-> \#./setup
->
+
+> Mount sps.img
+```shell
+mkdir -p /DVD
+mount /sapmedia/SIOS931/sps.img /DVD -t iso9660 -o loop
+```
+
+>  mount: /dev/loop0 is write-protected, mounting read-only
+```shell
+./setup
+```
 > ![Select install License Key](/99_images/image011.png)
 >
 >  *Select install License Key*
@@ -324,70 +321,56 @@ SELINUXTYPE=targeted
 >*license check message*
 
 ### 4. Setup SIOS Protection Suite - SAP HANA V2 Recovery Kit
-
-> \# ls -ltr \|grep HANA2\*
+```shell
+ls -ltr \|grep HANA2\*
+```
 >
 > -rwxr\--r\-- 1 root root 24236 Feb 15 08:54 HANA2-ARK.run
 
 #### 1. Run HANA2-ARK.run
 
-\# ./HANA2-ARK.run
+```shell
+./HANA2-ARK.run
+```
+```shell
+Creating directory HANA2-ARK
+Verifying archive integrity\... 100% All good.
+Uncompressing SFX archive for SAP HANA v2 Application Recovery Kit Installation \[date: 09-22-2017\] 100%
 
-> Creating directory HANA2-ARK
->
-> Verifying archive integrity\... 100% All good.
->
-> Uncompressing SFX archive for SAP HANA v2 Application Recovery Kit Installation \[date: 09-22-2017\] 100%
->
-> running /opt/LifeKeeper/HANA2-ARK/setup
->
-> Moving HANA.pm to /opt/LifeKeeper/lkadm/subsys/gen/app/bin
->
-> -rwxr-xr-x 1 root root 9502 Aug 10 2017 /opt/LifeKeeper/HANA2-ARK/quickCheck.pl
->
-> -rwxr-xr-x 1 root root 12178 Aug 10 2017 /opt/LifeKeeper/HANA2-ARK/recover.pl
->
-> -rwxr-xr-x 1 root root 9084 Aug 10 2017 /opt/LifeKeeper/HANA2-ARK/remove.pl
->
-> -rwxr-xr-x 1 root root 13151 Sep 1 2017 /opt/LifeKeeper/HANA2-ARK/restore.pl
->
-> -rwxr-xr-x 1 root root 16907 Sep 22 2017 /opt/LifeKeeper/lkadm/subsys/gen/app/bin/HANA.pm
->
-> Installation of SAP HANA v2 Application Recovery Kit was successful
+ running /opt/LifeKeeper/HANA2-ARK/setup
 
+Moving HANA.pm to /opt/LifeKeeper/lkadm/subsys/gen/app/bin
+ -rwxr-xr-x 1 root root 9502 Aug 10 2017 /opt/LifeKeeper/HANA2-ARK/quickCheck.pl
+ -rwxr-xr-x 1 root root 12178 Aug 10 2017 /opt/LifeKeeper/HANA2-ARK/recover.pl
+ -rwxr-xr-x 1 root root 9084 Aug 10 2017 /opt/LifeKeeper/HANA2-ARK/remove.pl
+ -rwxr-xr-x 1 root root 13151 Sep 1 2017 /opt/LifeKeeper/HANA2-ARK/restore.pl
+
+ -rwxr-xr-x 1 root root 16907 Sep 22 2017 /opt/LifeKeeper/lkadm/subsys/gen/app/bin/HANA.pm
+
+ Installation of SAP HANA v2 Application Recovery Kit was successful
+```
 #### 2. verify
 ------
 
 > verify the HANA.pm file copied to /opt/LifeKeeper/lkadm/subsys/gen/app/bin
 >
 > \# cd HANA2-ARK
->
-> \# ls -ltr
->
-> total 52
->
-> -rwxr-xr-x 1 root root 9084 Aug 10 2017 remove.pl
->
-> -rwxr-xr-x 1 root root 9502 Aug 10 2017 quickCheck.pl
->
-> -rwxr-xr-x 1 root root 12178 Aug 10 2017 recover.pl
->
-> -rwxr-xr-x 1 root root 13151 Sep 1 2017 restore.pl
->
+
+```shell
+-rwxr-xr-x 1 root root 9084 Aug 10 2017 remove.pl
+-rwxr-xr-x 1 root root 9502 Aug 10 2017 quickCheck.pl
+-rwxr-xr-x 1 root root 12178 Aug 10 2017 recover.pl
+-rwxr-xr-x 1 root root 13151 Sep 1 2017 restore.pl
+```
 > ![Check for the .pl files](/99_images/image020.png)*Check for the .pl files*
 
-#### 3. Select lkGUIapp Node
 
-
-> As per the current architecture the most expected/anticipated node to be available is azsuascs2, hence choosing it to perform the SIOS cluster configurations.
-
-a.  Login to azsuascs1 as root
-
-> And start lkGUIapp
->
-> \#[]{#_Toc2191416 .anchor}/opt/LifeKeeper/bin/lkGUIapp
->
-#### 4. Create communication path
+#### 3. Create communication path
+Login to azsuascs1 as root
+start lkGUIapp
+```shell
+/opt/LifeKeeper/bin/lkGUIapp
+```
 >
 > ![Create communication path](/99_images/image021.png)
 
@@ -420,33 +403,33 @@ a.  Login to azsuascs1 as root
 
 ### 3. Enable HANA System Replication in Primary
 -----------------------------------------
-
-> \#*hdbnsutil -sr\_state*
+```shell
+hdbnsutil -sr_state
+```
 >
 > ![Current HSR state](/99_images/image023.png)
 >
 > *Check Current HSR state*
 
  
-
-> \# hdbnsutil -sr\_enable --name=left
->
+```shell
+hdbnsutil -sr_enable --name=left
+```
 > ![Enable system replication on primary node](/99_images/image024.png)
 >
 > *Enable system replication on primary node*
 
- 
-
- 
 
 > ![Primary HANA System Replication Enabled](/99_images/image025.png)*Primary HANA System Replication Enabled*
 
  
 
 ### 4. Stop HANA in secondary node before registering
+```shell
+HDB stop
 
->  \#hdbnsutil -sr\_register \--remoteName=left \--remoteHost=azsuhana1 \--remoteInstance=00 \--repliccationMode=syncmem \--operationMode=logreplay \--name=right
->
+hdbnsutil -sr_register --remoteName=left --remoteHost=azsuhana1 --remoteInstance=00 --replicationMode=syncmem --operationMode=logreplay --name=right
+```
 > ![Register Secondary node to primary node](/99_images/image026.png)
 > *Register Secondary node to primary node*
 >
@@ -454,9 +437,9 @@ a.  Login to azsuascs1 as root
 
 ### 5. Check HANA System Replication Status
 
-
->  \#hdbnsutil -sr\_state
->
+```shell
+hdbnsutil -sr_state
+```
 >![Check the HSR state](/99_images/image027.png)
 > *Check the HSR state*
 
@@ -747,7 +730,7 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 
 
 ### 1. Create floating IP for ASCS
-        ---------------------------
+     
 
 > In this step we are creating Enhanced Azure GenApp resource which will create the secondary ip address on the node using azure cli which we installed in earlier step.
 >
