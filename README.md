@@ -463,33 +463,35 @@ hdbnsutil -sr_state
 
 ### 1. Create Virtual IP for HANA DB
 
-> ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image032.png)*Select Generic Application*
+>- *Select Generic Application*
+>
+>  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image032.png)
+> 
+>
+>
+>- *Select Intelligent, can be changed later*
+>
+>  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image033.png)
+>- *provide the path of restore script example: /opt/LifeKeeper/ip\_genapp/restore*
+>
+>  ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Restore Script opt/LifeKeeper/ip\_genapp/restore Enter the pathname for the shell script or object program which starts the application. The restore script is responsible for bringing a protected application resource in-service. The restore script should not impact an active resource application when invoked. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that NeKt\> Cancel ](/99_images/image034.png)
 
-> ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image033.png)*Select Intelligent, can be changed later*
-
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Restore Script opt/LifeKeeper/ip\_genapp/restore Enter the pathname for the shell script or object program which starts the application. The restore script is responsible for bringing a protected application resource in-service. The restore script should not impact an active resource application when invoked. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that NeKt\> Cancel ](/99_images/image034.png)*provide the path of restore script example: /opt/LifeKeeper/ip\_genapp/restore*
-
- 
-
- 
-
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Remove Script opt/LifeKeeper/ip\_genapp/remove Enter the pathname for the shell script or object program which stops the application. The remove script is responsible for stopping a protected application resource and putting it in the out-of-service state. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that \<Back Cancel ](/99_images/image035.png)*provide the path for remove script, example: /opt/LifeKeeper/ip\_genapp/remove*
-
- 
-
- 
-
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 opt/LifeKeeper/ip\_genapp/quickCheck QuickCheck Script \[optional\] Enter the pathname for the shell script or object program which monitors the application. The quickCheck script is called periodically, and is responsible for performing a health check of the protected application. The quickCheck script is optional. If one is not provided it will always be assumed that the application is in an OK state. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that \<Back Cancel ](/99_images/image036.png)*provide the path for qucikCheck script, example : /opt/LifeKeeper/ip\_genapp/quickCheck*
-
- 
+>- *provide the path for remove script, example: /opt/LifeKeeper/ip\_genapp/remove*
+>
+> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Remove Script opt/LifeKeeper/ip\_genapp/remove Enter the pathname for the shell script or object program which stops the application. The remove script is responsible for stopping a protected application resource and putting it in the out-of-service state. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that \<Back Cancel ](/99_images/image035.png)
 
  
 
+ 
+>- *provide the path for qucikCheck script, example : /opt/LifeKeeper/ip\_genapp/quickCheck*
+>
+> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 opt/LifeKeeper/ip\_genapp/quickCheck QuickCheck Script \[optional\] Enter the pathname for the shell script or object program which monitors the application. The quickCheck script is called periodically, and is responsible for performing a health check of the protected application. The quickCheck script is optional. If one is not provided it will always be assumed that the application is in an OK state. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that \<Back Cancel ](/99_images/image036.png)
+
+ 
+
+>- *provide the path for recover script, example : /opt/LifeKeeper/ip\_genapp/recover*
+>
 > ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 opt/LifeKeeper/ip\_genapp/recover Local Recovery Script \[optional\] Enter the pathname for the shell script or object program which will attempt to recover a failed application on the local server. This may require stopping and restarting the application. The local recovery script is optional - if you do not want to provide one, simply clear the entry field. If no local recovery script is provided, the protected application will always fail over to the target when a quickCheck error occurs. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that \<Back Cancel ](/99_images/image037.png)
-
- 
-
-*provide the path for recover script, example : /opt/LifeKeeper/ip\_genapp/recover*
 
  
 
@@ -498,110 +500,114 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
  
 
  
-
+>- *Provide Application info*
+>
 > ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Application Info \[optional\] Enter any optional data for the application resource instance that may be needed by the restore and remove scripts. The valid characters allowed for the data field are letters, digits, and the following special characters: \_ . = \[space\] \<Back NeKt\> Cancel ](/99_images/image038.png)
 
  
 
-*Provide Application info*
+
 
  
 
  
-
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Bring Resource In Service This field allows the user to specify if the resource should be brought in-service following a successful create. • A user may want to select No if the dependent resources have not been created and the restore command would fail. If No is selected, the resource will be created but will not be brought in-service. The resource cannot be extended until the hierarchy has been placed in-service. • Selecting Yes will cause the resource has been created. \<Back Cancel NeKt\> user provided restore script to be invoked after the ](/99_images/image039.png)*Screen clipping taken: 2/21/2019 11:58 AM*
-
- 
-
- 
-
- 
-
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Resource Tag Enter a unique name for the resource instance on azsuhanal. The valid characters allowed for the tag are \<Back Create letters, digits, and the following special characters: Cancel Instance ](/99_images/image040.png)*Screen clipping taken: 2/21/2019 2:43 PM*
-
- 
-
- 
-
- 
-
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Creatin resource -11.1.2.50 on azsuhanal /opt/LifeKeeper/lkadm/subsys/gen/app/bin/creapphier azsuhanal /opt/LifeKeeper/ip\_genapp/restore /opt/LifeKeeper/ip\_genapp/remove ip-11.1.2.50 SIOS-SUSE NIC APP-azsuhanal 11.1.2.51 NIC APP-azsuhana2 11.1.2.52 11.1.2.50 etho S4DDB intelligent /opt/LifeKeeper/ip\_genapp/quickCheck /opt/LifeKeeper/ip\_genapp/recover Yes BEGIN create of \'lip-11.1.2.50\" creating resource \"ip-11.1.2.50\" resource \"ip-11.1.2.50\" successfully created restoring resource \"ip-11.1.2.50\" BEGIN restore of \'lip-11.1.2.50\" INFORMATION: BEGIN restore of ip-11.1.2.50 on azsuhanal Note: This process could take up to 2 minutes Messages produced while creating ip-11.1.2.50 will be displayed in this dialog and the output panel (if open), and logged on azsuhanal. ](/99_images/image041.png)*Screen clipping taken: 2/21/2019 2:44 PM*
-
- 
-
- 
-
-\* *
-
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Creatin resource -11.1.2.50 on azsuhanal In e lgen op e eeper Ip\_genapp quic /opt/LifeKeeper/ip\_genapp/recover Yes BEGIN create of \'lip-11.1.2.50\" creating resource \"ip-11.1.2.50\" resource \"ip-11.1.2.50\" successfully created restoring resource \"ip-11.1.2.50\" BEGIN restore of \'lip-11.1.2.50\" INFORMATION: BEGIN restore of ip-11.1.2.50 on azsuhanal Note: This process could take up to 2 minutes INFORMATION: END successful restore of ip-11.1.2.50 on azsuhanal END successful restore of \"ip-11.1.2.50\" resource \"ip-11.1.2.50\" restored END successful create of \"ip-11.1.2.50\" Messages produced while creating ip-11.1.2.50 will be displayed in this dialog and the output panel (if open), and logged on azsuhanal. NeKt\> ](/99_images/image042.png)*Screen clipping taken: 2/21/2019 2:45 PM*
-
- 
-
-> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Target Server suhana2 You have successfully created the resource hierarchy ip-11.1.2.50 on azsuhanal. Select a target server to which the hierarchy will be extended. If you cancel before extending ip-11.1.2.50 to at least one provide no protection for the applications in the hierarchy. Accept Defaults Cancel NeKt\> other server, LifeKeeper will ](/99_images/image043.png)*Screen clipping taken: 2/21/2019 2:45 PM*
-
- 
-
- 
-
-> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Switchback Type Accept Defaults intelligent Cancel ](/99_images/image044.png)*Screen clipping taken: 2/21/2019 2:46 PM*
-
- 
-
- 
-
- 
-
-> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Template Priority Accept Defaults Cancel ](/99_images/image045.png)*Screen clipping taken: 2/21/2019 2:46 PM*
-
- 
-
- 
-
- 
-
- 
-
-> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Target Priority Accept Defaults Cancel ](/99_images/image046.png)*Screen clipping taken: 2/21/2019 2:46 PM*
-
- 
-
- 
-
-> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Executin the re-extend scri t.. Building independent resource list Checking existence of extend and canextend scripts Checking extendability for ip-11.1.2.50 Pre Extend checks were successful NeKt\> Accept Defaults Cancel ](/99_images/image047.png)*Screen clipping taken: 2/21/2019 2:47 PM*
-
- 
-
- 
-
-> ![Machine generated alternative text: Extend gen/app Resource Hierarchy\@azsuascs2 Template Server: azsuhanal Tag to Extend: ip-11.1.2.50 Target Server: azsuhana2 Resource Tag Enter a unique name for the resource instance on azsuhana2. The valid characters allowed for the tag are letters, digits, and the following special characters: NeKt\> Accept Defaults Cancel ](/99_images/image048.png)*Screen clipping taken: 2/21/2019 2:47 PM*
-
- 
-
- 
-
-> ![Machine generated alternative text: Extend gen/app Resource Hierarchy\@azsuascs2 Template Server: azsuhanal Tag to Extend: ip-11.1.2.50 Target Server: azsuhana2 Application Info \[optional\] SIOS-SUSE NIC APP-azsuhanal 11.1.2.51 NIC Enter any optional data for ip-11.1.2.50 that may be needed by the restore and remove scripts on azsuhana2. The valid characters allowed for the data field are letters, digits, and the following special characters: \_ . = \[space\] \<Back Accept Defaults Cancel ](/99_images/image049.png)*Screen clipping taken: 2/21/2019 2:47 PM*
-
- 
-
- 
-
-> ![Machine generated alternative text: Extend Wizard\@azsuascs2 Extendin resource hierarch -11.1.2.50 to server azsuhana2 Extending resource instances for ip-11.1.2.50 BEGIN extend of \'lip-11.1.2.50\" END successful extend of \"ip-11.1.2.50\" Creating dependencies Setting switchback type for hierarchy Creating equivalencies LifeKeeper Admin Lock (ip-11.1.2.50) Released Hierarchy successfully extended \<Back Accept Defaults ](/99_images/image050.png)*Screen clipping taken: 2/21/2019 2:48 PM*
-
- 
-
- 
-
-> ![Machine generated alternative text: Hierarchy Integrity Verfication\@azsuascs2 Veri in Inte rit of Extended Hierarch Examining hierarchy on azsuhana2 Hierarchy Verification Finished \<Back ne Accept Defaults ](/99_images/image051.png)*Screen clipping taken: 2/21/2019 2:48 PM*
-
- 
-
- 
-
-> ![Machine generated alternative text: HANA-S e ip-ll.l. In Service\... Out of Service\... Extend Resource Hierarchy\... unextend Resource Hierarchy\... Create Dependency.. Delete Dependency\... Delete Resource Hierarchy\... properties\... ](/99_images/image052.png)
+>- *select yes*
 >
-> *Screen clipping taken: 2/21/2019 2:49 PM*
+> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Bring Resource In Service This field allows the user to specify if the resource should be brought in-service following a successful create. • A user may want to select No if the dependent resources have not been created and the restore command would fail. If No is selected, the resource will be created but will not be brought in-service. The resource cannot be extended until the hierarchy has been placed in-service. • Selecting Yes will cause the resource has been created. \<Back Cancel NeKt\> user provided restore script to be invoked after the ](/99_images/image039.png)
 
  
+
+ 
+
+ 
+>- *provide Resource Tag ip-11.1.2.50 & click create Instance*
+>
+> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Resource Tag Enter a unique name for the resource instance on azsuhanal. The valid characters allowed for the tag are \<Back Create letters, digits, and the following special characters: Cancel Instance ](/99_images/image040.png)
+
+ 
+
+ 
+
+ 
+>- *ip recovery in progress*
+>
+> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Creatin resource -11.1.2.50 on azsuhanal /opt/LifeKeeper/lkadm/subsys/gen/app/bin/creapphier azsuhanal /opt/LifeKeeper/ip\_genapp/restore /opt/LifeKeeper/ip\_genapp/remove ip-11.1.2.50 SIOS-SUSE NIC APP-azsuhanal 11.1.2.51 NIC APP-azsuhana2 11.1.2.52 11.1.2.50 etho S4DDB intelligent /opt/LifeKeeper/ip\_genapp/quickCheck /opt/LifeKeeper/ip\_genapp/recover Yes BEGIN create of \'lip-11.1.2.50\" creating resource \"ip-11.1.2.50\" resource \"ip-11.1.2.50\" successfully created restoring resource \"ip-11.1.2.50\" BEGIN restore of \'lip-11.1.2.50\" INFORMATION: BEGIN restore of ip-11.1.2.50 on azsuhanal Note: This process could take up to 2 minutes Messages produced while creating ip-11.1.2.50 will be displayed in this dialog and the output panel (if open), and logged on azsuhanal. ](/99_images/image041.png)
+
+ 
+
+ 
+
+>- *Click next*
+>
+> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Creatin resource -11.1.2.50 on azsuhanal In e lgen op e eeper Ip\_genapp quic /opt/LifeKeeper/ip\_genapp/recover Yes BEGIN create of \'lip-11.1.2.50\" creating resource \"ip-11.1.2.50\" resource \"ip-11.1.2.50\" successfully created restoring resource \"ip-11.1.2.50\" BEGIN restore of \'lip-11.1.2.50\" INFORMATION: BEGIN restore of ip-11.1.2.50 on azsuhanal Note: This process could take up to 2 minutes INFORMATION: END successful restore of ip-11.1.2.50 on azsuhanal END successful restore of \"ip-11.1.2.50\" resource \"ip-11.1.2.50\" restored END successful create of \"ip-11.1.2.50\" Messages produced while creating ip-11.1.2.50 will be displayed in this dialog and the output panel (if open), and logged on azsuhanal. NeKt\> ](/99_images/image042.png)
+
+ 
+>- *Click next*
+>
+> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Target Server suhana2 You have successfully created the resource hierarchy ip-11.1.2.50 on azsuhanal. Select a target server to which the hierarchy will be extended. If you cancel before extending ip-11.1.2.50 to at least one provide no protection for the applications in the hierarchy. Accept Defaults Cancel NeKt\> other server, LifeKeeper will ](/99_images/image043.png)
+
+ 
+
+ 
+>- *Click next*
+>
+> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Switchback Type Accept Defaults intelligent Cancel ](/99_images/image044.png)
+
+ 
+
+ 
+
+ 
+>- *Click next*
+>
+> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Template Priority Accept Defaults Cancel ](/99_images/image045.png)
+
+ 
+
+ 
+
+ 
+
+>- *Click next*
+>
+> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Target Priority Accept Defaults Cancel ](/99_images/image046.png)
+
+ 
+
+ 
+>- *Click next*
+>
+> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Executin the re-extend scri t.. Building independent resource list Checking existence of extend and canextend scripts Checking extendability for ip-11.1.2.50 Pre Extend checks were successful NeKt\> Accept Defaults Cancel ](/99_images/image047.png)
+
+ 
+
+>- *Click next*
+>
+> ![Machine generated alternative text: Extend gen/app Resource Hierarchy\@azsuascs2 Template Server: azsuhanal Tag to Extend: ip-11.1.2.50 Target Server: azsuhana2 Resource Tag Enter a unique name for the resource instance on azsuhana2. The valid characters allowed for the tag are letters, digits, and the following special characters: NeKt\> Accept Defaults Cancel ](/99_images/image048.png)
+
+ 
+
+>- *Click next*
+>
+> ![Machine generated alternative text: Extend gen/app Resource Hierarchy\@azsuascs2 Template Server: azsuhanal Tag to Extend: ip-11.1.2.50 Target Server: azsuhana2 Application Info \[optional\] SIOS-SUSE NIC APP-azsuhanal 11.1.2.51 NIC Enter any optional data for ip-11.1.2.50 that may be needed by the restore and remove scripts on azsuhana2. The valid characters allowed for the data field are letters, digits, and the following special characters: \_ . = \[space\] \<Back Accept Defaults Cancel ](/99_images/image049.png)
+
+ 
+
+ 
+>- *Click next*
+>
+> ![Machine generated alternative text: Extend Wizard\@azsuascs2 Extendin resource hierarch -11.1.2.50 to server azsuhana2 Extending resource instances for ip-11.1.2.50 BEGIN extend of \'lip-11.1.2.50\" END successful extend of \"ip-11.1.2.50\" Creating dependencies Setting switchback type for hierarchy Creating equivalencies LifeKeeper Admin Lock (ip-11.1.2.50) Released Hierarchy successfully extended \<Back Accept Defaults ](/99_images/image050.png)
+
+ 
+
+>- *Click Done*
+>
+> ![Machine generated alternative text: Hierarchy Integrity Verfication\@azsuascs2 Veri in Inte rit of Extended Hierarch Examining hierarchy on azsuhana2 Hierarchy Verification Finished \<Back ne Accept Defaults ](/99_images/image051.png)
+
+ 
+
+ 
+
 
  
 
@@ -674,6 +680,12 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 > *Click Create Dependency*
 
  
+>- *HANA-S4D dependency Tree view - move to correction location*
+>
+> ![Machine generated alternative text: HANA-S e ip-ll.l. In Service\... Out of Service\... Extend Resource Hierarchy\... unextend Resource Hierarchy\... Create Dependency.. Delete Dependency\... Delete Resource Hierarchy\... properties\... ](/99_images/image052.png)
+>
+
+
 
  
 
@@ -683,6 +695,7 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 
 > ![A screenshot of a cell phone Description automatically generated](/99_images/image073.png)*Screen clipping to show the dependency tree created*
 
+ 
  
 
 ## 9. Install SAP Components
@@ -804,37 +817,25 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 >
 > In linux the secondary ip address will be added to the eth0 device
 >
-> azsuascs1:\~ \# ip add show
->
-> 1: lo: \<LOOPBACK,UP,LOWER\_UP\> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
->
-> link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
->
-> inet 127.0.0.1/8 scope host lo
->
-> valid\_lft forever preferred\_lft forever
->
-> inet6 ::1/128 scope host
->
-> valid\_lft forever preferred\_lft forever
->
-> 2: eth0: \<BROADCAST,MULTICAST,UP,LOWER\_UP\> mtu 1500 qdisc mq state UP group default qlen 1000
->
-> link/ether 00:0d:3a:06:27:29 brd ff:ff:ff:ff:ff:ff
->
-> inet 11.1.2.61/24 brd 11.1.2.255 scope global eth0
->
-> valid\_lft forever preferred\_lft forever
->
-> inet 11.1.2.60/24 scope global secondary eth0
->
-> valid\_lft forever preferred\_lft forever
->
-> inet6 fe80::20d:3aff:fe06:2729/64 scope link
->
-> valid\_lft forever preferred\_lft forever
->
->  
+```shell
+ip add show
+```
+```shell
+1: lo: \<LOOPBACK,UP,LOWER\_UP\> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+inet 127.0.0.1/8 scope host lo
+valid\_lft forever preferred\_lft forever
+inet6 ::1/128 scope host
+valid\_lft forever preferred\_lft forever
+2: eth0: \<BROADCAST,MULTICAST,UP,LOWER\_UP\> mtu 1500 qdisc mq state UP group default qlen 1000
+link/ether 00:0d:3a:06:27:29 brd ff:ff:ff:ff:ff:ff
+inet 11.1.2.61/24 brd 11.1.2.255 scope global eth0
+valid\_lft forever preferred\_lft forever
+inet 11.1.2.60/24 scope global secondary eth0
+valid\_lft forever preferred\_lft forever
+inet6 fe80::20d:3aff:fe06:2729/64 scope link
+valid\_lft forever preferred\_lft forever
+```
 
 ### 2. Create IP Resource Kit
 
