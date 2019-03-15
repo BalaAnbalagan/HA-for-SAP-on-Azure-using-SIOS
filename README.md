@@ -81,8 +81,7 @@
    >![Archtecture Diagram](/99_images/arch.png)
    >This document uses SuSE landscape for illustration
 
-## 3. Infrastructure Provisioning
-
+### 6. Infrastructure Provisioning
 > Used terraform to provision the infrastructure and used shell script to perform post processing. The source code is available in github.
 >
 > <https://github.com/BalaAnbalagan/HA-for-SAP-on-Azure-using-SIOS>
@@ -93,7 +92,16 @@
 >
 > SAP HANA or SAP Installation is not part of the terraform script
 
-## 4. SAP HA Scenario 
+
+## 3. SAP HA Scenario 
+
+### 1. SAP ASCS Clustering
+![ASCS](/99_images/ASCS.png)
+
+### 2. SAP HANA DB Clustering
+![ASCS](/99_images/DB.png)
+
+## 4. SIOS Clustering Basics
 
 ### 1. I/O Fencing
 I/O fencing is the locking away of data from a malfunctioning node preventing uncoordinated access to shared storage. In an environment where multiple servers can access the same data, it is essential that all writes are performed in a controlled manner to avoid data corruption. Problems can arise when the failure detection mechanism breaks down because the symptoms of this breakdown can mimic a failed node. For example, in a two-node cluster, if the connection between the two nodes fails, each node would “think” the other has failed, causing both to attempt to take control of the data resulting in data corruption. I/O fencing removes this data corruption risk by blocking access to data from specific nodes.
