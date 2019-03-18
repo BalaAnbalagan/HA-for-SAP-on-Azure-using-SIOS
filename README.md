@@ -101,6 +101,21 @@
 ### 2. SAP HANA DB Clustering
 ![ASCS](/99_images/DB1.png)
 
+### 3. SIOS PORTS
+
+GUI PORT 81 & 82
+Remote Method Inovaction PORT 1024
+Internode Communications 778 can be changed API_SSL_PORT in configuration variable /etc/default/LifeKeeper
+
+LifeKeeper Data Replication
+When using LifeKeeper Data Replication, the firewall should be configured to allow access to any of the ports used by nbd for replication.  The ports used by nbd can be calculated using the following formula:
+
+10001 + <mirror number> + <256 * i>
+
+where i starts at zero and is incremented until the formula calculates a port number that is not in use.  In use constitutes any port found defined in /etc/services, found in the output of netstat -an --inet, or already defined as in use by another LifeKeeper Data Replication resource.
+
+For example: If the mirror number for the LifeKeeper Data Replication resource is 0, then the formula would initially calculate the port to use as 10001, but that number is defined in /etc/services on some Linux distributions as the SCP Configuration port.  In this case, i is incremented by 1 resulting in Port Number 10257, which is not in /etc/services on these Linux distributions.
+
 ## 4. SIOS Clustering Basics
 
 ### 1. I/O Fencing
