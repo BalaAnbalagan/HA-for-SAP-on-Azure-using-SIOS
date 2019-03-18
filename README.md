@@ -101,7 +101,12 @@
 ### 2. SAP HANA DB Clustering
 ![ASCS](/99_images/DB1.png)
 
-### 3. SIOS PORTS
+### 3. 
+
+
+## 4. SIOS Clustering Basics
+
+### 1. SIOS PORTS
 
 GUI PORT 81 & 82
 Remote Method Inovaction PORT 1024
@@ -116,9 +121,7 @@ where i starts at zero and is incremented until the formula calculates a port nu
 
 For example: If the mirror number for the LifeKeeper Data Replication resource is 0, then the formula would initially calculate the port to use as 10001, but that number is defined in /etc/services on some Linux distributions as the SCP Configuration port.  In this case, i is incremented by 1 resulting in Port Number 10257, which is not in /etc/services on these Linux distributions.
 
-## 4. SIOS Clustering Basics
-
-### 1. I/O Fencing
+### 2. I/O Fencing
 I/O fencing is the locking away of data from a malfunctioning node preventing uncoordinated access to shared storage. In an environment where multiple servers can access the same data, it is essential that all writes are performed in a controlled manner to avoid data corruption. Problems can arise when the failure detection mechanism breaks down because the symptoms of this breakdown can mimic a failed node. For example, in a two-node cluster, if the connection between the two nodes fails, each node would “think” the other has failed, causing both to attempt to take control of the data resulting in data corruption. I/O fencing removes this data corruption risk by blocking access to data from specific nodes.
 In principle, I/O fencing using storage reservations is not available in DataKeeper configuration and split brain can occur. Therefore, you need to take steps to prevent a split brain from occurring via the following controls.
 
