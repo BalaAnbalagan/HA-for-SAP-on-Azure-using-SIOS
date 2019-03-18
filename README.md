@@ -110,7 +110,7 @@ Internode Communications 778 can be changed API_SSL_PORT in configuration variab
 LifeKeeper Data Replication
 When using LifeKeeper Data Replication, the firewall should be configured to allow access to any of the ports used by nbd for replication.  The ports used by nbd can be calculated using the following formula:
 
-10001 + <mirror number> + <256 * i>
+10001 + \<mirror number\> + <256 * i>
 
 where i starts at zero and is incremented until the formula calculates a port number that is not in use.  In use constitutes any port found defined in /etc/services, found in the output of netstat -an --inet, or already defined as in use by another LifeKeeper Data Replication resource.
 
