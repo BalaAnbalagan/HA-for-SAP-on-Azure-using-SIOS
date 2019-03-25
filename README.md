@@ -162,7 +162,7 @@ Update the configuration file to enable STONITH and add the power off command li
 
 /opt/LifeKeeper/config/stonith.conf
 
-```consol
+</code></pre>consol
 # LifeKeeper STONITH configuration
 #
 # Each system in the cluster is listed below. To enable STONITH for a
@@ -174,7 +174,7 @@ Update the configuration file to enable STONITH and add the power off command li
 # Example1 : Azure CLI Command
 az vm stop -n azsuers1 -g SIOS-SUSE --no-wait
 #EOF
-```
+</code></pre>
 
 > The SIOS Protection Suite will protect the ASCS instance and SAP will own the ERS instance.
 >
@@ -212,10 +212,10 @@ az vm stop -n azsuers1 -g SIOS-SUSE --no-wait
 
 #### 3.  Install with the yum install command.
 
-```shell
-"sudo yum install azure-cli"
-```
-```shell
+<pre><code>
+sudo yum install azure-cli
+
+
 Loaded plugins: langpacks, product-id, search-disabled-repos
 azure-cli \| 2.9 kB 00:00:00
 azure-cli/primary\_db \| 39 kB 00:00:00
@@ -255,12 +255,13 @@ Installed:
  azure-cli.x86\_64 0:2.0.59-1.el7
 
 Complete!
-```
+</code></pre>
+
 #### 4. Run the login command
 
-```shell
+<pre><code>
 # az login
-```
+</code></pre>
 > To sign in, use a web browser to open the page <https://microsoft.com/devicelogin> and enter the code B7TYYXDDV to authenticate.
 
 ## 6. SIOS Protection Suite 9.3.1
@@ -269,7 +270,7 @@ Complete!
 >
 #### 1. Disable SELinux (RHEL specific)
 >  
-```shell
+<pre><code>
 # cat /etc/selinux/config
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
@@ -282,15 +283,15 @@ SELINUX=enforcing
 # minimum - Modification of targeted policy. Only selected processes are protected.
 # mls - Multi Level Security protection.
 SELINUXTYPE=targeted
-```
+</code></pre>
  
 >
 >  
 >
-```shell
+<pre><code>
 sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config`
 >
-```shell
+<pre><code>
  # cat /etc/selinux/config
 
  # This file controls the state of SELinux on the system.
@@ -304,15 +305,15 @@ sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config`
  # minimum - Modification of targeted policy. Only selected processes are protected.
  # mls - Multi Level Security protection.
  SELINUXTYPE=targeted
-```
+</code></pre>
 >  
 
 #### 2. Reboot the VM
 \* mandatory restart
 >  
->```shell
+><pre><code>
 ># reboot
->```
+></code></pre>
 >  
 
 #### 3. Error for SELinux 
@@ -322,7 +323,7 @@ sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config`
 > ![Error - SELinux Enabled](/99_images/image007.png)
 
  
-```shell
+<pre><code>
 # cat /etc/selinux/config
 
 This file controls the state of SELinux on the system.
@@ -336,21 +337,21 @@ SELINUX=disabled
 # minimum - Modification of targeted policy. Only selected processes are protected.
 # mls - Multi Level Security protection.
 SELINUXTYPE=targeted
-```
+</code></pre>
  
 
 ### 2. Setup SIOS Protection Suite -- Witness Nodes
 --------------------------------------------
 > Mount sps.img
-```shell
+<pre><code>
 mkdir -p /DVD
 mount /sapmedia/SIOS921/sps.img /DVD -t iso9660 -o loop
-```
+</code></pre>
 
 >  mount: /dev/loop0 is write-protected, mounting read-only
-```shell
+<pre><code>
 ./setup
-```
+</code></pre>
 >
 > ![](/99_images/image008.png)
 >
@@ -363,15 +364,15 @@ mount /sapmedia/SIOS921/sps.img /DVD -t iso9660 -o loop
 > Install SAP Recovery kit in ASCS and HANA Nodes
 
 > Mount sps.img
-```shell
+<pre><code>
 mkdir -p /DVD
 mount /sapmedia/SIOS931/sps.img /DVD -t iso9660 -o loop
-```
+</code></pre>
 
 >  mount: /dev/loop0 is write-protected, mounting read-only
-```shell
+<pre><code>
 ./setup
-```
+</code></pre>
 > ![Select install License Key](/99_images/image011.png)
 >
 >  *Select install License Key*
@@ -402,18 +403,18 @@ mount /sapmedia/SIOS931/sps.img /DVD -t iso9660 -o loop
 >*license check message*
 
 ### 4. Setup SIOS Protection Suite - SAP HANA V2 Recovery Kit
-```shell
+<pre><code>
 ls -ltr \|grep HANA2\*
-```
+</code></pre>
 >
 > -rwxr\--r\-- 1 root root 24236 Feb 15 08:54 HANA2-ARK.run
 
 #### 1. Run HANA2-ARK.run
 
-```shell
+<pre><code>
 ./HANA2-ARK.run
-```
-```shell
+</code></pre>
+<pre><code>
 Creating directory HANA2-ARK
 Verifying archive integrity\... 100% All good.
 Uncompressing SFX archive for SAP HANA v2 Application Recovery Kit Installation \[date: 09-22-2017\] 100%
@@ -429,7 +430,7 @@ Moving HANA.pm to /opt/LifeKeeper/lkadm/subsys/gen/app/bin
  -rwxr-xr-x 1 root root 16907 Sep 22 2017 /opt/LifeKeeper/lkadm/subsys/gen/app/bin/HANA.pm
 
  Installation of SAP HANA v2 Application Recovery Kit was successful
-```
+</code></pre>
 #### 2. verify
 ------
 
@@ -437,21 +438,21 @@ Moving HANA.pm to /opt/LifeKeeper/lkadm/subsys/gen/app/bin
 >
 > \# cd HANA2-ARK
 
-```shell
+<pre><code>
 -rwxr-xr-x 1 root root 9084 Aug 10 2017 remove.pl
 -rwxr-xr-x 1 root root 9502 Aug 10 2017 quickCheck.pl
 -rwxr-xr-x 1 root root 12178 Aug 10 2017 recover.pl
 -rwxr-xr-x 1 root root 13151 Sep 1 2017 restore.pl
-```
+</code></pre>
 > ![Check for the .pl files](/99_images/image020.png)*Check for the .pl files*
 
 
 #### 3. Create communication path
 Login to azsuascs1 as root
 start lkGUIapp
-```shell
+<pre><code>
 /opt/LifeKeeper/bin/lkGUIapp
-```
+</code></pre>
 >
 > ![Create communication path](/99_images/image021.png)
 
@@ -484,18 +485,18 @@ start lkGUIapp
 
 ### 3. Enable HANA System Replication in Primary
 -----------------------------------------
-```shell
+<pre><code>
 hdbnsutil -sr_state
-```
+</code></pre>
 >
 > ![Current HSR state](/99_images/image023.png)
 >
 > *Check Current HSR state*
 
  
-```shell
+<pre><code>
 hdbnsutil -sr_enable --name=left
-```
+</code></pre>
 > ![Enable system replication on primary node](/99_images/image024.png)
 >
 > *Enable system replication on primary node*
@@ -506,11 +507,11 @@ hdbnsutil -sr_enable --name=left
  
 
 ### 4. Stop HANA in secondary node before registering
-```shell
+<pre><code>
 HDB stop
 
 hdbnsutil -sr_register --remoteName=left --remoteHost=azsuhana1 --remoteInstance=00 --replicationMode=syncmem --operationMode=logreplay --name=right
-```
+</code></pre>
 > ![Register Secondary node to primary node](/99_images/image026.png)
 > *Register Secondary node to primary node*
 >
@@ -518,9 +519,9 @@ hdbnsutil -sr_register --remoteName=left --remoteHost=azsuhana1 --remoteInstance
 
 ### 5. Check HANA System Replication Status
 
-```shell
+<pre><code>
 hdbnsutil -sr_state
-```
+</code></pre>
 >![Check the HSR state](/99_images/image027.png)
 > *Check the HSR state*
 
@@ -700,12 +701,12 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 >- *Select intelligent*
 >
 > ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image054.png)
-```shell
+<pre><code>
 /opt/LifeKeeper/HANA2-ARK/restore.pl
 /opt/LifeKeeper/HANA2-ARK/remove.pl
 /opt/LifeKeeper/HANA2-ARK/quickCheck.pl
 /opt/LifeKeeper/HANA2-ARK/recover.pl
-```
+</code></pre>
 >
 >- *for the next 4 screens please provide the following path for the scripts*
 > ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 opt/LifeKeeper/HANA2-ARKJrecover.pl Local Recovery Script \[optional\] Enter the pathname for the shell script or object program which will attempt to recover a failed application on the local server. This may require stopping and restarting the application. The local recovery script is optional - if you do not want to provide one, simply clear the entry field. If no local recovery script is provided, the protected application will always fail over to the target when a quickCheck error occurs. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that Cancel NeKt\> ](/99_images/image055.png)
@@ -906,10 +907,10 @@ SIOS-SUSE NIC\_APP-azsuhana1 11.1.2.51 NIC\_APP-azsuhana2 11.1.2.52 11.1.2.50 et
 >
 > In linux the secondary ip address will be added to the eth0 device
 >
-```shell
+<pre><code>
 ip add show
-```
-```shell
+</code></pre>
+<pre><code>
 1: lo: \<LOOPBACK,UP,LOWER\_UP\> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
 link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 inet 127.0.0.1/8 scope host lo
@@ -924,7 +925,7 @@ inet 11.1.2.60/24 scope global secondary eth0
 valid\_lft forever preferred\_lft forever
 inet6 fe80::20d:3aff:fe06:2729/64 scope link
 valid\_lft forever preferred\_lft forever
-```
+</code></pre>
 
 ### 2. Create IP Resource Kit
 
