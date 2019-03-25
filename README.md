@@ -204,8 +204,9 @@ az vm stop -n azsuers1 -g SIOS-SUSE --no-wait
 
 #### 1. Import the Microsoft repository key.
 
-> \#sudo rpm \--import <https://packages.microsoft.com/keys/microsoft.asc>
-
+<pre><code>
+#sudo rpm \--import <https://packages.microsoft.com/keys/microsoft.asc>
+</code></pre>
 #### 2. Create local azure-cli repository information
 
 > \#sudo sh -c \'echo -e \"\[azure-cli\]\\nname=Azure CLI\\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\\nenabled=1\\ngpgcheck=1\\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\" \> /etc/yum.repos.d/azure-cli.repo\'
@@ -269,9 +270,10 @@ Complete!
 ### 1. Preparation - Only for RHEL
 >
 #### 1. Disable SELinux (RHEL specific)
->  
+
 <pre><code>
 # cat /etc/selinux/config
+
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
 # enforcing - SELinux security policy is enforced.
@@ -435,10 +437,10 @@ Moving HANA.pm to /opt/LifeKeeper/lkadm/subsys/gen/app/bin
 ------
 
 > verify the HANA.pm file copied to /opt/LifeKeeper/lkadm/subsys/gen/app/bin
->
-> \# cd HANA2-ARK
+><pre><code>
+> # cd HANA2-ARK
 
-<pre><code>
+
 -rwxr-xr-x 1 root root 9084 Aug 10 2017 remove.pl
 -rwxr-xr-x 1 root root 9502 Aug 10 2017 quickCheck.pl
 -rwxr-xr-x 1 root root 12178 Aug 10 2017 recover.pl
