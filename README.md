@@ -13,8 +13,7 @@
 
 > Note:
 >
-> - \*SuSE certification process in-progress
->
+> 
 > - The steps in this document is suitable and similar for RHEL 7.4 as well
 >
 > - SAP installation screens not included.
@@ -143,10 +142,6 @@ In a distributed system that takes network partitioning into account, there is a
 
 In case of a communication failure, using one node where failure occurred and another multiple nodes (or other devices) will allow a node to get a “second opinion” on the status of the failing node. The node to get a “second opinion” is called a witness node (or a witness device), and getting a “second opinion” is called witness checking. When determining when to fail over, the witness node (the witness device) allows resources to be brought in service on a backup server only in cases where it verifies the primary server has failed and is no longer part of the cluster. This will prevent failovers from happening due to simple communication failures between nodes when those failures don’t affect the overall access to, and performance of, the in-service node. During actual operation, the witness node (the witness device) will be consulted when LifeKeeper is started or the failed communication path is restored. Witness checking can only be performed for nodes having quorum.
 
-
-
-
-
 ### STONITH (Testing in-progress)
 STONITH (Shoot The Other Node in the Head) is a fencing technique for remotely powering down a node in a cluster. LifeKeeper can provide STONITH capabilities by using external power switch controls, IPMI-enabled motherboard controls and hypervisor-provided power capabilities to power off the other nodes in a cluster.
 
@@ -159,8 +154,9 @@ Install the LifeKeeper STONITH script by running the following command:
 
 #### 2. Edit the configuration file
 Update the configuration file to enable STONITH and add the power off command line. Note: Power off is recommended over reboot to avoid fence loops (i.e. two machines have lost communication but can still STONITH each other, taking turns powering each other off and rebooting).
-
-/opt/LifeKeeper/config/stonith.conf
+<pre><code>
+cat /opt/LifeKeeper/config/stonith.conf
+</code></pre>
 
 ```console
 # LifeKeeper STONITH configuration
@@ -169,16 +165,12 @@ Update the configuration file to enable STONITH and add the power off command li
 # given system,
 # remove the '#' on that line and insert the STONITH command line to power off
 # that system.
-
-
 # Example1 : Azure CLI Command
 az vm stop -n azsuers1 -g SIOS-SUSE --no-wait
 #EOF
 ```
 
-> The SIOS Protection Suite will protect the ASCS instance and SAP will own the ERS instance.
->
-> The S4D\_ASCS00 instance will have /usr/sap/S4D/ASCS00 data replication and IP Resource with Azure IP Gen App resource as child.
+The SIOS Protection Suite will protect the ASCS instance. The S4D_ASCS00 instance will have /usr/sap/S4D/ASCS00 data replication and IP Resource with Azure IP Gen App resource as child.
 
 ## 5. Azure CLI Installation for Linux
   
@@ -220,8 +212,8 @@ sudo yum install azure-cli
 
 
 Loaded plugins: langpacks, product-id, search-disabled-repos
-azure-cli \| 2.9 kB 00:00:00
-azure-cli/primary\_db \| 39 kB 00:00:00
+azure-cli | 2.9 kB 00:00:00
+azure-cli primary_db | 39 kB 00:00:00
 Resolving Dependencies
 --> Running transaction check
 ---> Package azure-cli.x86\_64 0:2.0.59-1.el7 will be installed
@@ -294,7 +286,7 @@ SELINUXTYPE=targeted
 >
 <pre><code>
 sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config`
->
+
 <pre><code>
  # cat /etc/selinux/config
 
@@ -310,15 +302,13 @@ sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config`
  # mls - Multi Level Security protection.
  SELINUXTYPE=targeted
 </code></pre>
->  
 
 #### 2. Reboot the VM
 \* mandatory restart
->  
 ><pre><code>
 ># reboot
 ></code></pre>
->  
+
 
 #### 3. Error for SELinux 
 
@@ -343,6 +333,19 @@ SELINUX=disabled
 SELINUXTYPE=targeted
 </code></pre>
  
+#### 4. Preparing Installation Media
+download the following media from the ftp link sent by SIOS
+- download the SIOS protection Suite's - sps.img 
+- download the HANA Application Recovery Kit based on your HANA version - HANA2-ARK.run 
+- download the Azure IP Recovery kit - SIOS_enhancedAzure_gen_app-02.02.00.tgz
+- file name might be different based on the version
+
+#### 5. Mount the Installation Media
+<pre><code>
+mkdir -p /DVD
+mount /sapmedia/SIOS931/sps.img /DVD -t iso9660 -o loop
+mount: /dev/loop0 is write-protected, mounting read-only
+</code></pre>
 
 ### 2. Setup SIOS Protection Suite -- Witness Nodes
 --------------------------------------------
@@ -366,15 +369,9 @@ mount /sapmedia/SIOS921/sps.img /DVD -t iso9660 -o loop
 ### 3. Setup SIOS Protection Suite - SAP Recovery Kit 
 
 > Install SAP Recovery kit in ASCS and HANA Nodes
-
-> Mount sps.img
-<pre><code>
-mkdir -p /DVD
-mount /sapmedia/SIOS931/sps.img /DVD -t iso9660 -o loop
+change directory to SIOS installation media which was mounted as /DVD
 </code></pre>
-
->  mount: /dev/loop0 is write-protected, mounting read-only
-<pre><code>
+cd /DVD
 ./setup
 </code></pre>
 > ![Select install License Key](/99_images/image011.png)
