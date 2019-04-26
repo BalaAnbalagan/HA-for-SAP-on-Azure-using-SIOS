@@ -162,7 +162,7 @@ Update the configuration file to enable STONITH and add the power off command li
 
 /opt/LifeKeeper/config/stonith.conf
 
-</code></pre>consol
+```console
 # LifeKeeper STONITH configuration
 #
 # Each system in the cluster is listed below. To enable STONITH for a
@@ -174,7 +174,7 @@ Update the configuration file to enable STONITH and add the power off command li
 # Example1 : Azure CLI Command
 az vm stop -n azsuers1 -g SIOS-SUSE --no-wait
 #EOF
-</code></pre>
+```
 
 > The SIOS Protection Suite will protect the ASCS instance and SAP will own the ERS instance.
 >
@@ -186,14 +186,16 @@ az vm stop -n azsuers1 -g SIOS-SUSE --no-wait
 ### 1. SuSE
        
 #### 1. Install curl:
+<pre><code>
+sudo zypper install -y curl
+</code></pre>
 
-> \#sudo zypper install -y curl
 ![Install Curl](/99_images/image004.png)
 
 #### 2. Import the Microsoft repository key:
-
+<pre><code>
 > \#sudo rpm \--import <https://packages.microsoft.com/keys/microsoft.asc>
->
+</code></pre>
 > \#sudo zypper addrepo \--name \'Azure CLI\' \--check <https://packages.microsoft.com/yumrepos/azure-cli> azure-cli
 >
 >![Import Repostory Key](/99_images/image005.png)
