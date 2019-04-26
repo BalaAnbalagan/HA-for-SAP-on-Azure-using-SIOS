@@ -186,7 +186,7 @@ sudo zypper install -y curl
 
 #### 2. Import the Microsoft repository key:
 <pre><code>
-> \#sudo rpm \--import <https://packages.microsoft.com/keys/microsoft.asc>
+#sudo rpm --import <https://packages.microsoft.com/keys/microsoft.asc>
 </code></pre>
 > \#sudo zypper addrepo \--name \'Azure CLI\' \--check <https://packages.microsoft.com/yumrepos/azure-cli> azure-cli
 >
@@ -199,12 +199,12 @@ sudo zypper install -y curl
 #### 1. Import the Microsoft repository key.
 
 <pre><code>
-#sudo rpm \--import <https://packages.microsoft.com/keys/microsoft.asc>
+#sudo rpm --import <https://packages.microsoft.com/keys/microsoft.asc>
 </code></pre>
 #### 2. Create local azure-cli repository information
-
-> \#sudo sh -c \'echo -e \"\[azure-cli\]\\nname=Azure CLI\\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\\nenabled=1\\ngpgcheck=1\\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\" \> /etc/yum.repos.d/azure-cli.repo\'
-
+<pre><code>
+#sudo sh -c 'echo -e "[azure-cli\]name=Azure CLI baseurl=https://packages.microsoft.com/yumrepos/azure-cli\enabled=1\gpgcheck=1\gpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
+</code></pre>
 #### 3.  Install with the yum install command.
 
 <pre><code>
@@ -285,7 +285,8 @@ SELINUXTYPE=targeted
 >  
 >
 <pre><code>
-sed -i \'s/=enforcing/=disabled/\' /etc/selinux/config`
+sed -i 's/=enforcing/=disabled/' /etc/selinux/config`
+</code></pre>
 
 <pre><code>
  # cat /etc/selinux/config
@@ -536,7 +537,6 @@ hdbnsutil -sr_state
 >
 > *HSR status from Primary node*
 
- 
 
 > ![HSR status from secondary node](/99_images/image031.png)
 >
