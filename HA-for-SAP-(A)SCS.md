@@ -71,9 +71,10 @@
 - [SLES](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-zypper?view=azure-cli-latest)  
 
  Please login to portal.azure.com from the server.
- <pre><code>
+
+ ```bash
  az login --use-device-code
- </code></pre>
+ ```
 
  ```console
  To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code B3D42JUFD to authenticate
@@ -98,18 +99,19 @@
 
 ### 2. Mount the Installation Media
 
- <pre><code>
+ ```bash
  mkdir -p /DVD
  mount /sapmedia/SIOS931/sps.img /DVD -t iso9660 -o loop
  mount: /dev/loop0 is write-protected, mounting read-only
- </code></pre>
+ ```
 
 ### 3. Setup SIOS Protection Suite -- Witness Nodes
 
- <pre><code>
+ ```bash
   cd /DVD
   ./setup
- </code></pre>
+ ```
+
  Please proceed with the installation steps as shown below
  ![ ](/99_images/image008.png)
  ![ ](/99_images/image009.png)
@@ -121,10 +123,10 @@
  Install SAP Recovery kit in ASCS and HANA Nodes
  change directory to SIOS installation media which was mounted as /DVD
 
-<pre><code>
+```bash
  cd /DVD
  ./setup
- </code></pre>
+ ```
 
  ![Select install License Key](/99_images/image011.png)*Select install License Key*
 
@@ -223,9 +225,9 @@
 
   In linux the secondary ip address will be added to the eth0 device
 
- <pre><code>
+ ```bash
  ip add show
- </code></pre>
+ ```
 
  ```console
  1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
@@ -287,18 +289,20 @@
  Install SAP NetWeaver ASCS as root on the first node using a virtual hostname that maps to the IP resouce created in privious step i.e.,  s4dascs, 11.1.2.60  
 
  You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst. You can use parameter SAPINST_USE_HOSTNAME to install SAP, using virtual hostname.
- <pre><code>
+
+ ```bash
  sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=S4DASCS
- </code></pre>
+ ```
 
 ### 4. [A] Install SAP NetWeaver ERS
 
  Install SAP NetWeaver ERS as root on the second node using a virtual hostname that maps to the IP address of the load balancer frontend configuration for the ERS, for example  s4ders, 11.1.2.70 and the instance number is 10.
 
  You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst. You can use parameter SAPINST_USE_HOSTNAME to install SAP, using  virtual hostname.
- <pre><code>
+
+ ```bash
  sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=S4DERS
- </code></pre>
+ ```
 
 ### 5. Create Data Replication Resource for ASCS mount
 
@@ -413,9 +417,10 @@ Click finish and Done in the next screen
   Install the SAP NetWeaver database instance as root using a virtual hostname that maps to the IP address of the floating hostname of the database for example s4ddb and 11.1.2.50.
 
   You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst.
-  <pre><code>
+
+  ```bash
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
-  </code></pre>
+  ```
 
 ## 7. SAP NetWeaver application server installation
 
@@ -431,18 +436,20 @@ Click finish and Done in the next screen
 
   You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst.
 
-  <pre><code>
+  ```bash
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
-  </code></pre>
+  ```
 
 ## 8. Update SAP HANA secure store
 
   Update the SAP HANA secure store to point to the virtual name of the SAP HANA System Replication setup.
 
-  Run the following command to list the entries as <sapsid>adm
-  <pre><code>
+  Run the following command to list the entries as \<sid>adm
+
+  ```bash
   hdbuserstore List
-  </code></pre>
+  ```
+
   This should list all entries and should look similar to
 
   ```console
