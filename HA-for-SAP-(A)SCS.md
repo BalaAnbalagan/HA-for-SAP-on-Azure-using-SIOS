@@ -164,10 +164,12 @@
 ### 1. Create floating IP for ASCS & ERS in SIOS Protection Suite
 
   ![Machine generated alternative text: Eile Edit Yiew Help ](/99_images/image074.png)
-  Click + icon to create resource hierarchy
-  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image075.png)*a*
 
-  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image076.png)*b*
+  Click + icon to create resource hierarchy
+
+  ![Select Generic Application](/99_images/image075.png "Select Generic Application")
+
+  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image076.png "Select Intelligent, can be changed later")
 
   ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back NeKt\> Cancel ](/99_images/image077.png)*c*
 
