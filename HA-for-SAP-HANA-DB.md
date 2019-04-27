@@ -59,8 +59,91 @@ The following list shows the configuration of the (A)SCS and ERS IP addresses & 
   |SAP DB Pool    | azsuhana1    | 11.1.2.51  |  11.1.2.50 |  s4ddb     |
   |               | azsuhana2    | 11.1.2.52  |            |            |
   |SIOS Witness   | azsusapwit2  | 11.1.2.66  |            |            |
+
+## Install SAP HANA
+The steps in this section use the following prefixes:
+
+- [A]: The step applies to all nodes.
+- [1]: The step applies to node 1 only.
+### 1. [A] Run post processing script ps-db.bash
+
+### 2. [A] Run the hdblcm program from the HANA DVD. Enter the following values at the prompt:
+- Choose installation: Enter 1.
+- Select additional components for installation: Enter 1.
+- Enter Installation Path [/hana/shared]: Select Enter.
+- Enter Local Host Name [..]: Select Enter.
+- Do you want to add additional hosts to the system? (y/n) [n]: Select Enter.
+- Enter SAP HANA System ID: Enter the SID of HANA, for example: HN1.
+- Enter Instance Number [00]: Enter the HANA Instance number. Enter 03 if you used the Azure template or followed the manual deployment section of this article.
+- Select Database Mode / Enter Index [1]: Select Enter.
+- Select System Usage / Enter Index [4]: Select the system usage value.
+- Enter Location of Data Volumes [/hana/data/S4D]: Select Enter.
+- Enter Location of Log Volumes [/hana/log/S4D]: Select Enter.
+- Restrict maximum memory allocation? [n]: Select Enter.
+- Enter Certificate Host Name For Host '...' [...]: Select Enter.
+- Enter SAP Host Agent User (sapadm) Password: Enter the host agent user password.
+- Confirm SAP Host Agent User (sapadm) Password: Enter the host agent user password again to confirm.
+- Enter System Administrator (hdbadm) Password: Enter the system administrator password.
+- Confirm System Administrator (hdbadm) Password: Enter the system administrator password again to confirm.
+- Enter System Administrator Home Directory [/usr/sap/S4D/home]: Select Enter.
+- Enter System Administrator Login Shell [/bin/sh]: Select Enter.
+- Enter System Administrator User ID [1001]: Select Enter.
+- Enter ID of User Group (sapsys) [79]: Select Enter.
+- Enter Database User (SYSTEM) Password: Enter the database user password.
+- Confirm Database User (SYSTEM) Password: Enter the database user password again to confirm.
+- Restart system after machine reboot? [n]: Select Enter.
+- Do you want to continue? (y/n): Validate the summary. Enter y to continue.
+
+### 3. [A] Upgrade the SAP Host Agent.
+Download the latest SAP Host Agent archive from the SAP Software Center and run the following command to upgrade the agent. Replace the path to the archive to point to the file that you downloaded:
+<pre><code>
+sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive <path to SAP Host Agent SAR>
+</code></pre>
+
+## Configure SAP HANA 2.0 System Replication
+- [A]: The step applies to all nodes.
+- [1]: The step applies to node 1 only.
  
-### 1. Setup SIOS Protection Suite - SAP HANA V2 Recovery Kit
+### 1. [1] Configure System Replication on the first node:
+Back up the databases as <hanasid>adm:
+<pre><code>
+hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 00 "BACKUP DATA USING FILE ('initialbackupSYS')"
+hdbsql -d S4D -u SYSTEM -p "passwd" -i 00 "BACKUP DATA USING FILE ('initialbackupS4D')"
+</code></pre>
+Copy the system PKI files to the secondary site:
+<pre><code>
+scp /usr/sap/S4D/SYS/global/security/rsecssfs/data/SSFS_S4D.DAT   azsuhana2:/usr/sap/S4D/SYS/global/security/rsecssfs/data/
+scp /usr/sap/S4D/SYS/global/security/rsecssfs/key/SSFS_S4D.KEY  azsuhana2:/usr/sap/S4D/SYS/global/security/rsecssfs/key/
+</code></pre>
+Create the primary site:
+<pre><code>
+hdbnsutil -sr_enable --name=left
+</code></pre>
+![Primary HANA System Replication Enabled](/99_images/image025.png)*Primary HANA System Replication Enabled*
+
+### 2. [2] Configure System Replication on the second node:
+Register the second node to start the system replication. Run the following command as <hanasid>adm :
+<pre><code>
+sapcontrol -nr 00 -function StopWait 600 10
+hdbnsutil -sr_register --remoteName=right --remoteHost=azsuhana2 --remoteInstance=00 --replicationMode=syncmem --operationMode=logreplay --name=left
+</code></pre>
+
+> ![HSR status from Primary node](/99_images/image030.png)
+>
+> *HSR status from Primary node*
+
+
+> ![HSR status from secondary node](/99_images/image031.png)
+>
+> *HSR status from secondary node*
+
+> ![Secondary System Starts after initial Sync](/99_images/image028.png)*Secondary System Starts after initial Sync*
+
+> ![Replication Status in HANA Studio](/99_images/image029.png)*Replication Status in HANA Studio*
+
+## Create SAP HANA cluster resources
+### 1. [A] Setup SIOS Protection Suite - SAP HANA V2 Recovery Kit
+
 <pre><code>
 ls -ltr \|grep HANA2\*
 </code></pre>
@@ -110,79 +193,6 @@ start lkGUIapp
 >
 > Please uncheck the comm path redendency warning in the view menu to see all nodes in green
 
- 
-
- 
-
-## 2. SAP HANA System Replication Configuration
-
-### 1. Take Backup of both SYSTEMDB and Tenant DB
-       
-
-### 2. Copy keys from primary to secondary HANA nodes
-
-> SSFS\_S4D.KEY & SSFS\_S4D.DAT from the following paths respectively
->
-> /hana/shared/S4D/global/security/rsecssfs/key
->
-> /hana/shared/S4D/global/security/rsecssfs/data
-
-### 3. Enable HANA System Replication in Primary
------------------------------------------
-<pre><code>
-hdbnsutil -sr_state
-</code></pre>
->
-> ![Current HSR state](/99_images/image023.png)
->
-> *Check Current HSR state*
-
- 
-<pre><code>
-hdbnsutil -sr_enable --name=left
-</code></pre>
-> ![Enable system replication on primary node](/99_images/image024.png)
->
-> *Enable system replication on primary node*
-
-
-> ![Primary HANA System Replication Enabled](/99_images/image025.png)*Primary HANA System Replication Enabled*
-
- 
-
-### 4. Stop HANA in secondary node before registering
-<pre><code>
-HDB stop
-
-hdbnsutil -sr_register --remoteName=left --remoteHost=azsuhana1 --remoteInstance=00 --replicationMode=syncmem --operationMode=logreplay --name=right
-</code></pre>
-> ![Register Secondary node to primary node](/99_images/image026.png)
-> *Register Secondary node to primary node*
->
-> *Note: make sure the ini file gets updated*
-
-### 5. Check HANA System Replication Status
-
-<pre><code>
-hdbnsutil -sr_state
-</code></pre>
->![Check the HSR state](/99_images/image027.png)
-> *Check the HSR state*
-
-> ![Secondary System Starts after initial Sync](/99_images/image028.png)*Secondary System Starts after initial Sync*
-
-> ![Replication Status in HANA Studio](/99_images/image029.png)*Replication Status in HANA Studio*
-
- 
-
-> ![HSR status from Primary node](/99_images/image030.png)
->
-> *HSR status from Primary node*
-
-
-> ![HSR status from secondary node](/99_images/image031.png)
->
-> *HSR status from secondary node*
 
 ## 3. SAP HANA Database Protection Configuration
 
