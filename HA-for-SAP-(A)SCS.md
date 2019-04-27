@@ -42,6 +42,8 @@ Now it is possible to achieve SAP Netweaver HA by using storage replication usin
 
 ![ASCS](/99_images/Architecture_Diragram_ASCS.jpg)
 
+![HANA-DB](/99_images/ASCS1.png)
+
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address. Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.
 
 The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
@@ -60,12 +62,14 @@ Use an terraform script from [github](https://github.com/BalaAnbalagan/SAP-on-Az
 SAP (A)SCS/ERS cluster configuration
 
 
-### Create
+### Install Azure CLI
+[RHEL](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-yum?view=azure-cli-latest)
+[SLES](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-zypper?view=azure-cli-latest)
 
-### 1. Create floating IP for ASCS
+### Create floating IP for ASCS
      
 
-> In this step we are creating Enhanced Azure GenApp resource which will create the secondary ip address on the node using azure cli which was installed as mentioned in this [article](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
+
 >
 > The cli command used will be as follows
 >

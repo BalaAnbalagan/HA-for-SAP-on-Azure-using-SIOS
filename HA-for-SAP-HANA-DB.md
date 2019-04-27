@@ -64,7 +64,7 @@ The following list shows the configuration of the (A)SCS and ERS IP addresses & 
 <pre><code>
 ls -ltr \|grep HANA2\*
 </code></pre>
->
+
 > -rwxr\--r\-- 1 root root 24236 Feb 15 08:54 HANA2-ARK.run
 
 #### 1. Run HANA2-ARK.run
@@ -72,7 +72,8 @@ ls -ltr \|grep HANA2\*
 <pre><code>
 ./HANA2-ARK.run
 </code></pre>
-<pre><code>
+
+```console
 Creating directory HANA2-ARK
 Verifying archive integrity\... 100% All good.
 Uncompressing SFX archive for SAP HANA v2 Application Recovery Kit Installation \[date: 09-22-2017\] 100%
@@ -88,22 +89,7 @@ Moving HANA.pm to /opt/LifeKeeper/lkadm/subsys/gen/app/bin
  -rwxr-xr-x 1 root root 16907 Sep 22 2017 /opt/LifeKeeper/lkadm/subsys/gen/app/bin/HANA.pm
 
  Installation of SAP HANA v2 Application Recovery Kit was successful
-</code></pre>
-#### 2. verify
-------
-
-> verify the HANA.pm file copied to /opt/LifeKeeper/lkadm/subsys/gen/app/bin
-><pre><code>
-> # cd HANA2-ARK
-
-
--rwxr-xr-x 1 root root 9084 Aug 10 2017 remove.pl
--rwxr-xr-x 1 root root 9502 Aug 10 2017 quickCheck.pl
--rwxr-xr-x 1 root root 12178 Aug 10 2017 recover.pl
--rwxr-xr-x 1 root root 13151 Sep 1 2017 restore.pl
-</code></pre>
-> ![Check for the .pl files](/99_images/image020.png)*Check for the .pl files*
-
+```
 
 #### 3. Create communication path
 Login to azsuascs1 as root
