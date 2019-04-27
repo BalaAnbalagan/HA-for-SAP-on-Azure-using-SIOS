@@ -65,15 +65,27 @@ Use an terraform script from [github](https://github.com/BalaAnbalagan/SAP-on-Az
 ## SAP (A)SCS/ERS cluster configuration
 
 
-### Install Azure CLI
+### Install Azure CLI 
 Install Azure CLI on the (A)SCS cluster nodes which is a pre-requisites for SIOS Enhanced Azure IP GenApp. Please refer the installation procedure respective to OS
 - [RHEL](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-yum?view=azure-cli-latest)
 - [SLES](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-zypper?view=azure-cli-latest)
 
+Please login to portal.azure.com from the server.  
+<pre><code>
+az login --use-device-code
+</code><pre>
+
+```console
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code B3D42JUFD to authenticate
+```
 Azure IP GenApp run the following Azure CLI command to Switch the Secondary IP from one node to the other in a cluster. 
+
 ```bash
 az network nic ip-config create \--resource-group SIOS-SUSE \--nic-name NIC\_APP-azsuascs1 \--private-ip-address 11.1.2.60 \--name S4DASCS
 ```
+
+
+
 ### Install SIOS Protection Suite
 
 #### 1. Preparing Installation Media
@@ -111,7 +123,9 @@ cd /DVD
 
 > Install SAP Recovery kit in ASCS and HANA Nodes
 change directory to SIOS installation media which was mounted as /DVD
+
 </code></pre>
+
 cd /DVD
 
 ./setup
@@ -130,7 +144,6 @@ cd /DVD
 
 > ![Select Application Suite](/99_images/image014.png)*Select Application Suite*
 
-\* *
 
 
 > ![Select Lifekeeper SAP Recovery kit](/99_images/image015.png)*Select Lifekeeper SAP Recovery kit*
@@ -147,8 +160,16 @@ cd /DVD
 
 > Please repeat the steps on all cluster Nodes
 
+#### 5. Install SIOS Enhanced Azure IP Gen Application
+You will receive the FTP link to download the tgz file.
+- Use gunzip to unzip the tar file.
+- Use command “tar -xvf” to untar the file
+- Run the setup program
+- NOTE: Make sure you put the files on a folder that is safe to execute. On some installations, programs need to be authorized to execute from certain folders. You can make sure that the setup program has execute permission (chmod +x setup.)
+- Repeat these steps on the other node.
+- Note the folder where the files are stored (e.g. /root/folder
 
-### [A] Create floating IP for ASCS & ERS in SIOS Protection Suite
+### [1] Create floating IP for ASCS & ERS in SIOS Protection Suite
 
  ![Machine generated alternative text: Eile Edit Yiew Help ](/99_images/image074.png)
 

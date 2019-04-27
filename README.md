@@ -1,5 +1,5 @@
 
-# High Availability Solution for SAP NetWeaver (RHEL, OEL & SuSE*) & SAP HANA (RHEL & SuSE) on Azure using SIOS Protection Suite
+# High Availability Solution for SAP NetWeaver (RHEL, OEL & SuSE) & SAP HANA (RHEL & SuSE) on Azure using SIOS Protection Suite
 
 
 ## 1. Introduction
