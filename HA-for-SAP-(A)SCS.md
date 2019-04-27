@@ -6,6 +6,8 @@ This article explains how to achieve high availability for SAP NetWeaver applica
 
 Read the following SAP Notes and papers first
 
+SAP Note [1662610](https://launchpad.support.sap.com/#/notes/1662610) Support details for SIOS Protection Suite for Linux
+
 SAP Note [1928533](https://launchpad.support.sap.com/#/notes/1928533), which has:
 
 - List of Azure VM sizes that are supported for the deployment of SAP software
@@ -68,7 +70,7 @@ Install Azure CLI on the (A)SCS cluster nodes which is a pre-requisites for SIOS
 - [RHEL](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-yum?view=azure-cli-latest)
 - [SLES](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-zypper?view=azure-cli-latest)
 
-Azure IP GenApp run the following Azure CLI command to Switch the Secondary IP from one node to the other in a cluster.
+Azure IP GenApp run the following Azure CLI command to Switch the Secondary IP from one node to the other in a cluster. 
 ```bash
 az network nic ip-config create \--resource-group SIOS-SUSE \--nic-name NIC\_APP-azsuascs1 \--private-ip-address 11.1.2.60 \--name S4DASCS
 ```
@@ -111,6 +113,7 @@ cd /DVD
 change directory to SIOS installation media which was mounted as /DVD
 </code></pre>
 cd /DVD
+
 ./setup
 </code></pre>
 > ![Select install License Key](/99_images/image011.png)
@@ -145,7 +148,7 @@ cd /DVD
 > Please repeat the steps on all cluster Nodes
 
 
-### Create floating IP for ASCS & ERS in SIOS Protection Suite
+### [A] Create floating IP for ASCS & ERS in SIOS Protection Suite
 
  ![Machine generated alternative text: Eile Edit Yiew Help ](/99_images/image074.png)
 
@@ -157,7 +160,7 @@ cd /DVD
 
  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back NeKt\> Cancel ](/99_images/image077.png)*c*
 
- ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Restore Script opt/LifeKeeper/ip\_genapp/restore Enter the pathname for the shell script or object program which starts the application. The restore script is responsible for bringing a protected application resource in-service. The restore script should not impact an active resource application when invoked. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that NeKt\> Cancel ](/99_images/image078.png)*d*
+ ![](/99_images/image078.png)*d*
 
  ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Remove Script opt/LifeKeeper/ip\_genapp/remove Enter the pathname for the shell script or object program which stops the application. The remove script is responsible for stopping a protected application resource and putting it in the out-of-service state. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that \<Back Cancel ](/99_images/image079.png)*e*
 >
@@ -185,36 +188,37 @@ cd /DVD
 >
 > SIOS-SUSE NIC\_APP-azsuascs1 11.1.2.61 NIC\_APP-azsuers1 11.1.2.62 11.1.2.60 eth0 S4DASCS
 >
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 SIOS-SUSE NIC APP-azsuascsl 11.1.2.61 NIC Application Info \[optional\] Enter any optional data for the application resource instance that may be needed by the restore and remove scripts. The valid characters allowed for the data field are letters, digits, and the following special characters: \_ . = \[space\] \<Back NeKt\> Cancel ](/99_images/image082.png)*h*
+> ![](/99_images/image082.png)*h*
 >
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Bring Resource In Service This field allows the user to specify if the resource should be brought in-service following a successful create. • A user may want to select No if the dependent resources have not been created and the restore command would fail. If No is selected, the resource will be created but will not be brought in-service. The resource cannot be extended until the hierarchy has been placed in-service. • Selecting Yes will cause the resource has been created. \<Back Cancel NeKt\> user provided restore script to be invoked after the ](/99_images/image083.png)*i*
+> ![ ](/99_images/image083.png)*i*
 >
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Resource Tag Enter a unique name for the resource instance on azsuascsl. The valid characters allowed for the tag are \<Back Create letters, digits, and the following special characters: Cancel Instance ](/99_images/image084.png)*j*
+> ![](/99_images/image084.png)*j*
 >
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Creatin resource -11.1.2.60 on azsuascsl op e eeper Ip\_genapp recover es BEGIN create of \'lip-11.1.2.60\" creating resource \"ip-11.1.2.60\" resource \"ip-11.1.2.60\" successfully created restoring resource \"ip-11.1.2.60\" BEGIN restore of \'lip-11.1.2.60\" INFORMATION: BEGIN restore of ip-11.1.2.60 on azsuascsl Note: This process could take up to 2 minutes RTNETLINK answers: File exists INFORMATION: END successful restore of ip-11.1.2.60 on azsuascsl END successful restore of \"ip-11.1.2.60\" resource \"ip-11.1.2.60\" restored END successful create of \"ip-11.1.2.60\" Messages produced while creating ip-11.1.2.60 will be displayed in this dialog and the output panel (if open), and logged on azsuascsl. NeKt\> ](/99_images/image085.png)*k*
+> ![](/99_images/image085.png)*k*
 >
-> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Target Server You have successfully created the resource hierarchy ip-11.1.2.60 on azsuascsl. Select a target server to which the hierarchy will be extended. If you cancel before extending ip-11.1.2.60 to at least one provide no protection for the applications in the hierarchy. Accept Defaults Cancel NeKt\> other server, LifeKeeper will ](/99_images/image086.png)*l*
+> ![](/99_images/image086.png)*l*
 >
-> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Switchback Type Accept Defaults intelligent Cancel ](/99_images/image087.png)*m*
+> ![](/99_images/image087.png)*m*
 >
-> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Template Priority Accept Defaults Cancel ](/99_images/image088.png)*m*
+> ![](/99_images/image088.png)*m*
 >
-> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Target Priority Accept Defaults Cancel ](/99_images/image089.png)*n*
+> ![](/99_images/image089.png)*n*
 >
-> ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Executin the re-extend scri t.. Building independent resource list Checking existence of extend and canextend scripts Checking extendability for ip-11.1.2.60 Pre Extend checks were successful NeKt\> Accept Defaults Cancel ](/99_images/image090.png)*o*
+> ![](/99_images/image090.png)*o*
 >
-> Don\'t extend now Click close
+> Don not extend the resource now, please Click close
 >
 > In Azure the ip will look as shown below
 >
-> ![A screenshot of a social media post Description automatically generated](/99_images/image091.png)*p*
+> ![](/99_images/image091.png)*p*
 >
 > In linux the secondary ip address will be added to the eth0 device
 >
 <pre><code>
 ip add show
 </code></pre>
-<pre><code>
+
+```console
 1: lo: \<LOOPBACK,UP,LOWER\_UP\> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
 link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 inet 127.0.0.1/8 scope host lo
@@ -229,7 +233,7 @@ inet 11.1.2.60/24 scope global secondary eth0
 valid\_lft forever preferred\_lft forever
 inet6 fe80::20d:3aff:fe06:2729/64 scope link
 valid\_lft forever preferred\_lft forever
-</code></pre>
+```
 
 ### 2. Create IP Resource Kit
 

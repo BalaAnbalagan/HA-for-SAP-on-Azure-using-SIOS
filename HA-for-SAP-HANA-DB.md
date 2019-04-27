@@ -5,6 +5,7 @@ On Azure virtual machines (VMs), HANA System Replication is the only supported h
 This article describes how to deploy and configure the virtual machines, install the cluster framework, and install and configure SAP HANA System Replication. In the example configurations, installation commands, instance number 00, and HANA System ID S4D are used.
 
 Read the following SAP Notes and papers first:
+SAP Note [1662610](https://launchpad.support.sap.com/#/notes/1662610) Support details for SIOS Protection Suite for Linux
 
 SAP Note [1928533](https://launchpad.support.sap.com/#/notes/1928533), which has:
 - The list of Azure VM sizes that are supported for the deployment of SAP software.
