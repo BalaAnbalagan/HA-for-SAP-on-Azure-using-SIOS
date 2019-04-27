@@ -1,5 +1,9 @@
 # High Availability Solution for SAP HANA (RHEL & SuSE) on Azure using SIOS Protection Suite
 
+### 2. SAP HANA DB Clustering
+![HANA-DB](/99_images/DB1.png)
+
+
 ### 1. Setup SIOS Protection Suite - SAP HANA V2 Recovery Kit
 <pre><code>
 ls -ltr \|grep HANA2\*

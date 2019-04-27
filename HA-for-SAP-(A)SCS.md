@@ -1,3 +1,7 @@
+# High Availability Solution for SAP NetWeaver (RHEL & SuSE) on Azure using SIOS Protection Suite
+
+### 1. SAP ASCS Clustering
+![ASCS](/99_images/ASCS1.png)
 
 ## 10. SAP ASCS/ERS cluster configuration
 
