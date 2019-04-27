@@ -6,7 +6,7 @@ This article explains how to achieve high availability for SAP NetWeaver applica
 
 Read the following SAP Notes and papers first
 
-SAP Note 1928533, which has:
+SAP Note [1928533](https://launchpad.support.sap.com/#/notes/1928533), which has:
 
 - List of Azure VM sizes that are supported for the deployment of SAP software
 - Important capacity information for Azure VM sizes
@@ -55,13 +55,17 @@ The following list shows the configuration of the (A)SCS and ERS IP addresses & 
   |SIOS Witness   | azsusapwit1  | 11.1.2.65  |            |            |
 
 
-## SAP ASCS/ERS cluster configuration
+## Setting up (A)SCS
+Use an terraform script from [github](https://github.com/BalaAnbalagan/SAP-on-Azure-using-Terraform) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using load balancer. You can deploy the resources manually.
+SAP (A)SCS/ERS cluster configuration
 
+
+### Create
 
 ### 1. Create floating IP for ASCS
      
 
-> In this step we are creating Enhanced Azure GenApp resource which will create the secondary ip address on the node using azure cli which we installed in earlier step.
+> In this step we are creating Enhanced Azure GenApp resource which will create the secondary ip address on the node using azure cli which was installed as mentioned in this [article](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
 >
 > The cli command used will be as follows
 >

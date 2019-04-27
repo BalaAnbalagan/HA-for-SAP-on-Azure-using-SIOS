@@ -1,9 +1,65 @@
-# 7. High Availability Solution for SAP HANA (RHEL & SuSE) on Azure using SIOS Protection Suite
+# High availability of SAP HANA on Azure VMs on Server using SIOS Protection Suite
 
+On Azure virtual machines (VMs), HANA System Replication is the only supported high availability soltion. SAP HANA Replication consists of one primary node and at least one secondary node. Changes to the data on the primary node are replicated to the secondary node synchronously or asynchronously.
+
+This article describes how to deploy and configure the virtual machines, install the cluster framework, and install and configure SAP HANA System Replication. In the example configurations, installation commands, instance number 00, and HANA System ID S4D are used.
+
+Read the following SAP Notes and papers first:
+
+SAP Note [1928533](https://launchpad.support.sap.com/#/notes/1928533), which has:
+- The list of Azure VM sizes that are supported for the deployment of SAP software.
+- Important capacity information for Azure VM sizes.
+- The supported SAP software, and operating system (OS) and database combinations.
+- The required SAP kernel version for Windows and Linux on Microsoft Azure.
+
+SAP Note [2015553](https://launchpad.support.sap.com/#/notes/2015553) lists the prerequisites for SAP-supported SAP software deployments in Azure.
+
+SAP Note [2205917](https://launchpad.support.sap.com/#/notes/2205917) has recommended OS settings for SUSE Linux Enterprise Server for SAP Applications.
+
+SAP Note [2009879](https://launchpad.support.sap.com/#/notes/2009879) has SAP HANA Guidelines for Red Hat Enterprise Linux
+
+SAP Note [1944799](https://launchpad.support.sap.com/#/notes/1944799) has SAP HANA Guidelines for SUSE Linux Enterprise Server for SAP Applications.
+
+SAP Note [2178632](https://launchpad.support.sap.com/#/notes/2178632) has detailed information about all of the monitoring metrics that are reported for SAP in Azure.
+
+SAP Note [2191498](https://launchpad.support.sap.com/#/notes/2191498) has the required SAP Host Agent version for Linux in Azure.
+
+SAP Note [2243692](https://launchpad.support.sap.com/#/notes/2243692) has information about SAP licensing on Linux in Azure.
+
+SAP Note [1984787](https://launchpad.support.sap.com/#/notes/1984787) has general information about SUSE Linux Enterprise Server 12.
+
+SAP Note [1999351](https://launchpad.support.sap.com/#/notes/1999351) has additional troubleshooting information for the Azure Enhanced Monitoring Extension for SAP.
+
+SAP Note [401162](https://launchpad.support.sap.com/#/notes/401162) has information on how to avoid "address already in use" when setting up HANA System Replication.
+
+[SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) has all of the required SAP Notes for Linux.
+
+[SAP HANA Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
+
+[Azure Virtual Machines planning and implementation for SAP on Linux guide](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/planning-guide).
+
+[Azure Virtual Machines deployment for SAP on Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/deployment-guide) (this article).
+
+[Azure Virtual Machines DBMS deployment for SAP on Linux guide](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/dbms-guide).
+
+[SUSE Linux Enterprise Server for SAP Applications 12 SP3 best practices guides](https://www.suse.com/documentation/sles-for-sap-12/)
+
+- Setting up an SAP HANA SR Performance Optimized Infrastructure (SLES for SAP Applications 12 SP1). The guide contains all of the required information to set up SAP HANA System Replication for on-premises development. Use this guide as a baseline.
+- Setting up an SAP HANA SR Cost Optimized Infrastructure (SLES for SAP Applications 12 SP1)
+ 
+
+## Overview
+To achieve high availability, SAP HANA is installed on two virtual machines. The data is replicated by using HANA System Replication.
 ### 2. SAP HANA DB Clustering
 ![HANA-DB](/99_images/DB1.png)
 
-
+The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
+  |Components     | hostname     | IP address |  VIP       |  VHOSTNAME |
+  | --------------| -------------|------------| -----------|----------- |
+  |SAP DB Pool    | azsuhana1    | 11.1.2.51  |  11.1.2.50 |  s4ddb     |
+  |               | azsuhana2    | 11.1.2.52  |            |            |
+  |SIOS Witness   | azsusapwit2  | 11.1.2.66  |            |            |
+ 
 ### 1. Setup SIOS Protection Suite - SAP HANA V2 Recovery Kit
 <pre><code>
 ls -ltr \|grep HANA2\*
