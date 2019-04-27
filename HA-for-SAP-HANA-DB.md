@@ -1,4 +1,4 @@
-# High Availability Solution for SAP HANA (RHEL & SuSE) on Azure using SIOS Protection Suite
+# 7. High Availability Solution for SAP HANA (RHEL & SuSE) on Azure using SIOS Protection Suite
 
 ### 2. SAP HANA DB Clustering
 ![HANA-DB](/99_images/DB1.png)

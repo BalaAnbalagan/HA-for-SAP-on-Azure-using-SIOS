@@ -1,9 +1,61 @@
-# High Availability Solution for SAP NetWeaver (RHEL & SuSE) on Azure using SIOS Protection Suite
+# Azure Virtual Machines high availability for SAP NetWeaver on Red Hat Enterprise Linux using SIOS Protection Suite
 
-### 1. SAP ASCS Clustering
+This article describes how to deploy the virtual machines, configure the virtual machines, install the cluster framework, and install a highly available SAP NetWeaver 7.50 system, using Azure NetApp Files (in Public Preview). In the example configurations, installation commands etc., the ASCS instance is number 00, the ERS instance number 10, the Primary Application instance (PAS)  and the Application instance (AAS) is 00. SAP System ID S4D is used.
+
+This article explains how to achieve high availability for SAP NetWeaver application with SIOS Protection Suite for RHEL & SLES. The database layer is covered in detail in this [article](HA-for-SAP-HANA-DB.md).
+
+Read the following SAP Notes and papers first
+
+SAP Note 1928533, which has:
+
+- List of Azure VM sizes that are supported for the deployment of SAP software
+- Important capacity information for Azure VM sizes
+- Supported SAP software, and operating system (OS) and database combinations
+- Required SAP kernel version for Windows and Linux on Microsoft Azure
+
+SAP Note [2015553](https://launchpad.support.sap.com/#/notes/2015553) lists prerequisites for SAP-supported SAP software deployments in Azure.
+
+SAP Note [2002167](https://launchpad.support.sap.com/#/notes/2002167) has recommended OS settings for Red Hat Enterprise Linux
+
+SAP Note [1984787](https://launchpad.support.sap.com/#/notes/1984787) has general information about SUSE Linux Enterprise Server 12.
+
+SAP Note [2178632](https://launchpad.support.sap.com/#/notes/2178632) has detailed information about all monitoring metrics reported for SAP in Azure.
+
+SAP Note [2191498](https://launchpad.support.sap.com/#/notes/2191498) has the required SAP Host Agent version for Linux in Azure.
+
+SAP Note [2243692](https://launchpad.support.sap.com/#/notes/2243692) has information about SAP licensing on Linux in Azure.
+
+SAP Note [1999351](https://launchpad.support.sap.com/#/notes/1999351) has additional troubleshooting information for the Azure Enhanced Monitoring Extension for SAP.
+
+SAP Community WIKI has all required SAP Notes for Linux.
+
+Azure Virtual Machines planning and implementation for SAP on Linux
+
+Azure Virtual Machines deployment for SAP on Linux
+
+Azure Virtual Machines DBMS deployment for SAP on Linux
+
+## Overview
+High availability(HA) for SAP Netweaver central services requires shared storage. To achieve that on Linux virtual machine so far it was necessary to build separate highly available NFS cluster.
+
+Now it is possible to achieve SAP Netweaver HA by using storage replication using SIOS Datakeeper of SIOS Protection Suite. Using SIOS Datakeeper's Block level Replication   NetApp Files for the shared storage eliminates the need for additional NFS cluster. SIOS Protection Suite takes care of the SAP Netweaver central services(ASCS/SCS) failover.
+
 ![ASCS](/99_images/ASCS1.png)
 
-## 10. SAP ASCS/ERS cluster configuration
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address. Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.
+
+The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
+
+  |Components     | hostname     | IP address |  VIP       |  VHOSTNAME |
+  | --------------| -------------|------------| -----------|----------- |
+  |SAP ASCS Pool  | azsuascs1    | 11.1.2.61  |  11.1.2.60 |  s4dascs   |
+  |               | azsuascs2    | 11.1.2.62  |  11.1.2.70 |  s4ders    |  
+  |SAP App Pool   | azsusap1     | 11.1.2.53  |            |            |
+  |               | azsusap2     | 11.1.2.54  |            |            |
+  |SIOS Witness   | azsusapwit1  | 11.1.2.65  |            |            |
+
+
+## SAP ASCS/ERS cluster configuration
 
 
 ### 1. Create floating IP for ASCS
