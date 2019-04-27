@@ -1,4 +1,4 @@
-# Azure Virtual Machines high availability for SAP NetWeaver on Red Hat Enterprise Linux using SIOS Protection Suite
+# Azure Virtual Machines high availability for SAP NetWeaver on Linux using SIOS Protection Suite
 
 This article describes how to deploy the virtual machines, configure the virtual machines, install the cluster framework, and install a highly available SAP NetWeaver 7.50 system, using Azure NetApp Files (in Public Preview). In the example configurations, installation commands etc., the ASCS instance is number 00, the ERS instance number 10, the Primary Application instance (PAS)  and the Application instance (AAS) is 00. SAP System ID S4D is used.
 
@@ -40,7 +40,7 @@ High availability(HA) for SAP Netweaver central services requires shared storage
 
 Now it is possible to achieve SAP Netweaver HA by using storage replication using SIOS Datakeeper of SIOS Protection Suite. Using SIOS Datakeeper's Block level Replication   NetApp Files for the shared storage eliminates the need for additional NFS cluster. SIOS Protection Suite takes care of the SAP Netweaver central services(ASCS/SCS) failover.
 
-![ASCS](/99_images/ASCS1.png)
+![ASCS](/99_images/Architecture_Diragram_ASCS.jpg)
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address. Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.
 
