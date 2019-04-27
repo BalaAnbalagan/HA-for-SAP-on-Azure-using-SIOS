@@ -257,7 +257,9 @@ Complete!
 </code></pre>
 > To sign in, use a web browser to open the page <https://microsoft.com/devicelogin> and enter the code B7TYYXDDV to authenticate.
 
-
+## 6. Install SIOS Protection Suite 9.3.1
+Steps to Install SIOS 9.3.1
+ https://github.com/BalaAnbalagan/HA-for-SAP-on-Azure-using-SIOS/Install_SIOS.md
 
  
  
