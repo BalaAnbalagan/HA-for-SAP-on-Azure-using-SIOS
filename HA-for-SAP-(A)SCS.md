@@ -308,7 +308,8 @@
 
 ### 5. Create Data Replication Resource for ASCS mount
 
-  Click create resoure
+   Click create resoure from the lkGUIapp
+
   ![ ](/99_images/image107.png "select Data Replication and click next")
 
   ![ ](/99_images/image108.png "select intelligent and click next")
@@ -345,61 +346,65 @@
 
 ### 6. Create SAP Resource SAP-S4D\_ASCS00
 
-  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image123.png)*11*
+  Click create resource from lkGUIapp
 
-  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image124.png)*11*
+  ![ ](/99_images/image123.png "select SAP")
 
-  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back NeKt\> Cancel ](/99_images/image125.png)*11*
+  ![ ](/99_images/image124.png "select intelligent and click next")
 
-  ![Machine generated alternative text: Create SAP Resource\@azsuascs2 SAP SID S4D Select the SAP SID to be protected by LifeKeeper. NeKt\> Cancel ](/99_images/image126.png)*11*
+  ![ ](/99_images/image125.png "select the primary node and click next")
 
-  ![Machine generated alternative text: Create SAP Resource\@azsuascs2 SAP Instance for S4D ASCSOO Select the SAP Instance to be protected by LifeKeeper for the selected SID, S4D. \<Back Cancel ](/99_images/image127.png)*11*
+  ![ ](/99_images/image126.png "select the SID and click next")
 
-  ![Machine generated alternative text: Create SAP Resource\@azsuascs2 IP child resource Select the IP Address for this instance, this is typically the virtual IP address used during installation as specified by the SAPINST LJSE HOSTNAME parameter. \<Back Cancel NeKt\> ](/99_images/image128.png)*11*
+  ![ ](/99_images/image127.png "select the instance and click next")
 
-  ![Machine generated alternative text: Create SAP Resource\@azsuascs2 SAP Tag SAP-S4D ASCSOO Enter the Tag name for this instance. I ate I \<Back Cancel ](/99_images/image129.png)*11*
+  ![ ](/99_images/image128.png "select the ip-resoruce and click next")
 
-  ![Machine generated alternative text: Create SAP Resource\@azsuascs2 Creatin a suite/sa resource.. 26.02.2019 StartWait The \"sapcontrol -format script -prot NI HI-rp -host s4dascs -nr 00 -function StartWait 22B 5\" command returned \"SUCCESS\" on \"azsuascsl Additional information is available in the LifeKeeper and system logs Preparing to run the command: \"sapcontrol -format script -prot NI HI-rp -host s4dascs -nr 00 -function GetProcessList\" on \"azsuascsl Please wait.. The \"sapcontrol -format script -prot NI HI-rp -host s4dascs -nr 00 -function GetProcessList\" command returned \"3\" on \"azsuascsl Additional information is available in the LifeKeeper and system logs All processes for SAP SID \"S4D\" and Instance \"ASCSOO\" are \"running\" on \"azsuascsl Additional information is available in the LifeKeeper and system logs The the and END END SAP Instance \"ASCSOO\" and all required processes were started successfully during \"restore\" on server \"azsuascsl Additional information is available in the LifeKeeper system logs. successful restore of \"SAP-S4D ASCSOO\" on server \"azsuascsl \" successful create of \"SAP-S4D ASCSOO\" on server \"azsuascsl \" NeKt\> ](/99_images/image130.png)*11*
+  ![ ](/99_images/image129.png "provide a SAP resource tag and click next")
 
-  ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Target Server You have successfully created the resource hierarchy SAP-S4D ASCSOO on azsuascsl. Select a target server to which the hierarchy will be extended. If you cancel before extending SAP-S4D ASCSOO to at least provide no protection for the applications in the hierarchy. Accept Defaults Cancel NeKt\> one other server, LifeKeeper will ](/99_images/image131.png)*11*
+  ![ ](/99_images/image130.png "click next")
 
-  ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Switchback Type Accept Defaults intelligent Cancel ](/99_images/image132.png)*11*
+  ![ ](/99_images/image131.png "select the secondary node and click next")
 
-  ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Template Priority Accept Defaults Cancel ](/99_images/image133.png)*11*
+  ![ ](/99_images/image132.png "select intelligent and click next")
 
-  ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Target Priority Accept Defaults Cancel ](/99_images/image134.png)*11*
+  ![ ](/99_images/image133.png "select priority 1 and click next")
+
+  ![ ](/99_images/image134.png "select priority 10 and click next")
 
   Click close here and don't go further
 
-  ![Machine generated alternative text: Hierarchies unprotected SAP-S4D ASCSOO /usr/sap/S4D/Ascsoo datarep-Ascsoo vip-11.1.2.60 azsusapwitl azsusapwit2 azsuascsl azsuascs2 ](/99_images/image135.png)*11*
+  ![ ](/99_images/image135.png "Un extended SAP resource hierarchies")
 
 ### 7. Create SAP Resource SAP-S4D\_ERS10
 
-![ ](/99_images/image136.png)*11*
+Click create resource from lkGUIapp
 
-![ ](/99_images/image137.png)*11*
+![ ](/99_images/image136.png "select SAP")
 
-![ ](/99_images/image138.png)*11*
+![ ](/99_images/image137.png "select intelligent and click next")
 
-![ ](/99_images/image139.png)*11*
+![ ](/99_images/image138.png "select the SID and click next")
 
-![ ](/99_images/image140.png)*11*
+![ ](/99_images/image139.png "select the ERS instance and click next")
 
-![ ](/99_images/image141.png)*11*
+![ ](/99_images/image140.png "select the (A)SCS instance and click next")
 
-![ ](/99_images/image142.png)*11*
+![ ](/99_images/image141.png "provide a SAP resource tag and click next")
 
-![ ](/99_images/image143.png)*11*
+![ ](/99_images/image142.png "click next")
 
-![ ](/99_images/image144.png)*11*
+![ ](/99_images/image143.png "")
 
-![ ](/99_images/image145.png)*11*
+![ ](/99_images/image144.png "select the secondary node and click next")
 
-![ ](/99_images/image146.png)*11*
+![ ](/99_images/image145.png "select intelligent and click next")
 
-![ ](/99_images/image147.png)*11*
+![ ](/99_images/image146.png "select priority 1 and click next")
 
-![ ](/99_images/image148.png)*11*
+![ ](/99_images/image147.png "select priority 10 and click next")
+
+![ ](/99_images/image148.png "select ")
 
 ![ ](/99_images/image149.png)*11*
 
