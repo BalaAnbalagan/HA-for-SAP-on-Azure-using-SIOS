@@ -1,6 +1,6 @@
 # High availability of SAP HANA on Azure VMs on Server using SIOS Protection Suite
 
-On Azure virtual machines (VMs), HANA System Replication is the only supported high availability soltion. SAP HANA Replication consists of one primary node and at least one secondary node. Changes to the data on the primary node are replicated to the secondary node synchronously or asynchronously.
+On Azure virtual machines (VMs), HANA System Replication is the only supported high availability solution. SAP HANA Replication consists of one primary node and at least one secondary node. Changes to the data on the primary node are replicated to the secondary node synchronously or asynchronously.
 
 This article describes how to deploy and configure the virtual machines, install the cluster framework, and install and configure SAP HANA System Replication. In the example configurations, installation commands, instance number 00, and HANA System ID S4D are used.
 
@@ -66,7 +66,7 @@ The steps in this section use the following prefixes:
 
 - [A]: The step applies to all nodes.
 - [1]: The step applies to node 1 only.
-### 1. [A] Run post processing script ps-db.bash
+### 1. [A] Run post-processing script ps-db.bash
 
 ### 2. [A] Run the hdblcm program from the HANA DVD. Enter the following values at the prompt:
 - Choose installation: Enter 1.
@@ -74,7 +74,7 @@ The steps in this section use the following prefixes:
 - Enter Installation Path [/hana/shared]: Select Enter.
 - Enter Local Host Name [..]: Select Enter.
 - Do you want to add additional hosts to the system? (y/n) [n]: Select Enter.
-- Enter SAP HANA System ID: Enter the SID of HANA, for example: HN1.
+- Enter SAP HANA System ID: Enter the SID of HANA, for example HN1.
 - Enter Instance Number [00]: Enter the HANA Instance number. Enter 03 if you used the Azure template or followed the manual deployment section of this article.
 - Select Database Mode / Enter Index [1]: Select Enter.
 - Select System Usage / Enter Index [4]: Select the system usage value.
@@ -136,7 +136,7 @@ hdbnsutil -sr_register --remoteName=right --remoteHost=azsuhana2 --remoteInstanc
 
 > ![HSR status from secondary node](/99_images/image031.png)
 >
-> *HSR status from secondary node*
+> *HSR status from a secondary node*
 
 > ![Secondary System Starts after initial Sync](/99_images/image028.png)*Secondary System Starts after initial Sync*
 
@@ -175,7 +175,7 @@ Moving HANA.pm to /opt/LifeKeeper/lkadm/subsys/gen/app/bin
  Installation of SAP HANA v2 Application Recovery Kit was successful
 ```
 
-#### 3. Create communication path
+#### 3. Create a communication path
 Login to azsuascs1 as root
 start lkGUIapp
 <pre><code>
@@ -186,7 +186,7 @@ start lkGUIapp
 
  
 
-> click comm path icon to create communication path between all the systems in both directions. The output will look like the below screenshot
+> click comm path icon to create a communication path between all the systems in both directions. The output will look like the below screenshot
 >
 > ![Create communication path](/99_images/image022.png)
 >
@@ -219,7 +219,7 @@ start lkGUIapp
  
 
  
->- *provide the path for qucikCheck script, example : /opt/LifeKeeper/ip\_genapp/quickCheck*
+>- *provide the path for quickCheck script, example : /opt/LifeKeeper/ip\_genapp/quickCheck*
 >
 > ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 opt/LifeKeeper/ip\_genapp/quickCheck QuickCheck Script \[optional\] Enter the pathname for the shell script or object program which monitors the application. The quickCheck script is called periodically, and is responsible for performing a health check of the protected application. The quickCheck script is optional. If one is not provided it will always be assumed that the application is in an OK state. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that \<Back Cancel ](/99_images/image036.png)
 
