@@ -171,17 +171,17 @@
 
   ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image076.png "Select Intelligent, can be changed later")
 
-  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back NeKt\> Cancel ](/99_images/image077.png)*c*
+  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back NeKt\> Cancel ](/99_images/image077.png "Select the node 1")
 
-  ![ ](/99_images/image078.png)*d*
+  ![ ](/99_images/image078.png "provide the path where ip gen app is installed")
 
-  ![ ](/99_images/image079.png)*e*
+  ![ ](/99_images/image079.png "Will be picked the right file automatically")
 
-  ![ ](/99_images/image080.png)*f*
+  ![ ](/99_images/image080.png "Will be picked the right file automatically")
 
-  ![ ](/99_images/image081.png)*g*
+  ![ ](/99_images/image081.png "Will be picked the right file automatically")
 
-  The application tag provided here is very important and the values are as follows
+  The application tag provided to be provided in the next screen is very important and the values are as follows
 
   1. Resource Group name in Azure
 
@@ -201,29 +201,29 @@
 
   SIOS-SUSE NIC_APP-azsuascs1 11.1.2.61 NIC_APP-azsuers1 11.1.2.62 11.1.2.60 eth0 S4DASCS
 
-  ![ ](/99_images/image082.png)*h*
+  ![ ](/99_images/image082.png "Enter the Application Tag as above")
   
-  ![ ](/99_images/image083.png)*i*
+  ![ ](/99_images/image083.png "Select Yes")
 
-  ![ ](/99_images/image084.png)*j*
+  ![ ](/99_images/image084.png "Enter the Floating IP for SAP (A)SCS1")
 
-  ![ ](/99_images/image085.png)*k*
+  ![ ](/99_images/image085.png "Click Next")
 
-  ![ ](/99_images/image086.png)*l*
+  ![ ](/99_images/image086.png "Enter the Secondary (A)SCS hostname")
 
-  ![ ](/99_images/image087.png)*m*
+  ![ ](/99_images/image087.png "Select Intelligent & click next")
 
-  ![ ](/99_images/image088.png)*m*
+  ![ ](/99_images/image088.png "click next with priority as 1")
 
-  ![ ](/99_images/image089.png)*n*
+  ![ ](/99_images/image089.png "click next with priority as 10")
 
-  ![ ](/99_images/image090.png)*o*
+  ![ ](/99_images/image090.png "Click close")
 
   Don not extend the resource now, please Click close
 
   In Azure the ip will look as shown below
 
-  ![ ](/99_images/image091.png)*p*
+  ![ ](/99_images/image091.png "Secondary IP in portal.azure.com")
 
   In linux the secondary ip address will be added to the eth0 device
 
@@ -250,41 +250,41 @@
 
 ### 2. Create IP Resource Kit
 
- ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image092.png)*q*
+ ![ ](/99_images/image092.png "select IP from the drill down menu and click next")
 
- ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image093.png)*r*
+ ![ ](/99_images/image093.png "Select intelligent and click next")
 
- ![Machine generated alternative text: Create comm/ip Resource\@azsuascs2 IP Resource 11.1.2.60 Enter the IP address or symbolic name to be switched by LifeKeeper. This is used by client applications to login into the parent application over a specific network interface. If a symbolic name is used, it must exist in the local /etc/hosts file or be accessible via a Domain Name Server (DNS). Any valid hosts file entry, including aliases, is acceptable. If the address cannot be determined or if it is found to be already in use, it will be rejected. If a symbolic name is given, it is used for translation to an IP address and is not retained by LifeKeeper. Both IPv4 and IPv6 style addresses are supported. Cancel NeKt\> ](/99_images/image094.png)*s*
+ ![ ](/99_images/image094.png "Enter the floating ip for SAP (A)SCS ")
 
- ![Machine generated alternative text: Create comm/ip Resource\@azsuascs2 Netmask 255.255.255.0 Enter or select a network mask for the IP resource. Any standard network mask for the class of the specified IP resource address is valid (IPv4 or IPv6 style addresses). Note: The choice of netmask, combined with the address, determines the subnet to be used by the IP resource and should be consistent with the network configuration. \<Back Cancel ](/99_images/image095.png)*t*
+ ![ ](/99_images/image095.png "click next with promted netmask")
 
- ![Machine generated alternative text: Create comm/ip Resource\@azsuascs2 Network Interface etho Enter or select the network interface that will be used for the IP resource being placed under LifeKeeper protection. The network interface must support the class of the IP address being protected (IPv4 or IPv6 style addresses). The default value is the first valid network interface that LifeKeeper finds on the target server that supports the class of the address being protected. Valid choices will depend on the existing network configuration and the values chosen for the IP resource address and netmask. \<Back Cancel ](/99_images/image096.png)*u*
+ ![ ](/99_images/image096.png "select the eth which needs to be protected and click next")
 
- ![Machine generated alternative text: Create comm/ip Resource\@azsuascs2 IP Resource Tag Enter a unique name that will be used to identify this IP resource instance on azsuascsl. The default tag includes the protected IP address. The valid characters allowed for the tag are letters, digits, and the following special characters: \<Back Cancel Create ](/99_images/image097.png)*v*
+ ![ ](/99_images/image097.png "give a name for the resoure and click next")
 
- ![Machine generated alternative text: Create comm/ip Resource\@azsuascs2 Creatin cornm/i resource\... BEGIN create of \"vip-11.1.2.60\" LifeKeeper application---comm on azsuascsl. LifeKeeper communications resource type= ip on azsuascsl. Creating resource instance with id IR-11.1.2.60 on machine azsuascsl Resource successfully created on azsuascsl BEGIN restore of \"vip-11.1.2.60\" END successful restore of \"vip-11.1.2.60\" END successful create of \"vip-11.1.2.60\". NeKt\> ](/99_images/image098.png)*w*
+ ![ ](/99_images/image098.png "click next")
 
- ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Target Server You have successfully created the resource hierarchy vip-11.1.2.60 on azsuascsl. Select a target server to which the hierarchy will be extended. If you cancel before extending vip-11.1.2.60 to at least one other server, LifeKeeper will provide no protection for the applications in the hierarchy. Accept Defaults Cancel NeKt\> ](/99_images/image099.png)*x*
+ ![ ](/99_images/image099.png "Enter the secondary hostname and click next")
 
- ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Switchback Type Accept Defaults intelligent Cancel ](/99_images/image100.png)*y*
+ ![ ](/99_images/image100.png "select intelligent and click next")
 
- ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Template Priority Accept Defaults Cancel ](/99_images/image101.png)*z*
+ ![ ](/99_images/image101.png "select priority 1 and click next")
 
- ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Target Priority Accept Defaults Cancel ](/99_images/image102.png)*1*
+ ![ ](/99_images/image102.png "select priority 10 and click next")
 
- ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Executin the re-extend scri t.. Building independent resource list Checking existence of extend and canextend scripts Checking extendability for vip-11.1.2.60 Pre Extend checks were successful NeKt\> Accept Defaults Cancel ](/99_images/image103.png)*2*
+ ![ ](/99_images/image103.png "click next")
 
- Don\'t extend now, click close
+ Do not extend now, click close
 
  Create dependency
 
  Add ip-11.1.2.60 as dependency to vip-11.1.2.60
 
- ![Machine generated alternative text: e HAN Out of Service\... e Extend Resource Hierarchy.. unextend Resource Hierarchy\... Create Dependency\... Delete Dependency\... Delete Resource Hierarchy\... properties\... ](/99_images/image104.png)*3*
+ ![ ](/99_images/image104.png "right click vip-11.1.2.60 and click create dependency")
 
- ![Machine generated alternative text: Create Dependency\@azsuascs2 NeKt\> Child Resource Tag Cancel ](/99_images/image105.png)*4*
+ ![ ](/99_images/image105.png "select the ip-11.1.2.60 and click next")
 
- ![Machine generated alternative text: Create Dependency\@azsuascs2 Create De endenc arent vi -11.1.2.60 of child i -11.1.2.60 Creating the dependency on the server azsuascsl The dependency creation was successful Done ](/99_images/image106.png)*5*
+ ![ ](/99_images/image106.png "click done")
 
 ### 3. [A] Install SAP NetWeaver ASCS
 
@@ -307,40 +307,40 @@
  ```
 
 ### 5. Create Data Replication Resource for ASCS mount
+  Click create resoure
+  ![ ](/99_images/image107.png "select Data Replication and click next")
 
-  ![ ](/99_images/image107.png)*6*
+  ![ ](/99_images/image108.png "select intelligent and click next")
 
-  ![ ](/99_images/image108.png)*7*
+  ![ ](/99_images/image109.png "select the primary node from which the (A)SCS mount to be replicated to secodary node")
 
-  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back NeKt\> Cancel ](/99_images/image109.png)*8*
+  ![ ](/99_images/image110.png "select Replicate Existing Filesystem")
 
-  ![Machine generated alternative text: Create Data Replication Resource Hierarchy\@azsuascs2 Hierarchy Type Choose the type of data replication hierarchy you wish to create: Replicate New Filesystem creates a new replicated filesystem and makes it accessible on a given mount point. Replicate Existing Filesystem converts an already mounted filesystem into a replicated filesystem. Data Replication Resource creates just a data replication device, with no associated filesystem. The filesystem (or raw disk access) must be configured manually. Cancel NeKt\> ](/99_images/image110.png)*9*
+  ![ ](/99_images/image111.png "click continue")
 
-  ![Machine generated alternative text: Create Data Replication Resource Hierarchy\@azsuascs2 ATTENTION! /mnt/resource is not shareable with any other server. using this choice will result in a data replication hierarchy that cannot be extended to other servers to form a shared-storage configuration. To confirm the selection of this entry press Continue. Press Back to select a different entry from the list. \<Back Cancel ](/99_images/image111.png)*10*
+  ![ ](/99_images/image112.png "select the existing mount point")
 
-  ![Machine generated alternative text: Create Data Replication Resource Hierarchy\@azsuascs2 Existing Mount Point Select the desired mount point to be replicated. The mount point must already be mounted. \<Back Cancel NeKt\> ](/99_images/image112.png)*10*
+  ![ ](/99_images/image113.png "click next with replication resource tag")
 
-  ![Machine generated alternative text: Create Data Replication Resource Hierarchy\@azsuascs2 datarep-Ascsoo Data Replication Resource Tag Enter or select a unique tag name for  the data replication resource instance. \<Back Cancel ](/99_images/image113.png)*10*
+  ![ ](/99_images/image114.png "click next for the filesystem resource tag")
 
-  ![Machine generated alternative text: Create Data Replication Resource Hierarchy\@azsuascs2 File System Resource Tag usr/sap/S4D/Ascsoo Enter or select a unique tag name for the filesystem resource instance. \<Back Cancel ](/99_images/image114.png)*10*
+  ![ ](/99_images/image115.png "select the bitmap file and click next")
 
-  ![Machine generated alternative text: Create Data Replication Resource Hierarchy\@azsuascs2 Bitmap File /LifeKeeper/bitmap usr sap\_S4D ASCSOO The bitmap file keeps a log of all changed sectors on the disk that have not yet been committed to the target(s). It is useful in the event of a network outage or system downtime because only the changed sectors need to be sent. By default, the bitmap file will contain one bit per 256KB of data on the disk (this can be changed with the LKDR CHUNK SIZE variable). Without a bitmap file, any interruption of the replication process will require a full resynchronization of all mirror targets. \<Back Cancel ](/99_images/image115.png)*10*
+  ![ ](/99_images/image116.png "select no for Asynchronous Replication")
 
-  ![Machine generated alternative text: Create Data Replication Resource Hierarchy\@azsuascs2 Enable Asynchronous Replication ? no Select whether you want to enable asynchronous replication for this mirror. This is a global option for the entire mirror. Individual targets may be either synchronous or asynchronous. You must select yes if you plan to have any asynchronous targets in this mirror. You should select no if you plan to have on/y synchronous targets. Asynchronous means that writes are signalled as committed when they are safely on the source, but may still be in flight to one or more targets. Asynchronous replication requires a bitmap file. Asynchronous replication is mainly employed in WAN environments. Synchronous means that writes are only signalled as committed when they are safely on the source and all targets. With a synchronous mirror, committed transactions will not be lost even in the event of a server failure. Synchronous mirrors are mainly employed in LAN environments, where the network is fast enough to keep up with the normal write load on the protected filesystem. \<Back Cancel ](/99_images/image116.png)*10*
+  ![ ](/99_images/image117.png "click next")
 
-  ![Machine generated alternative text: Create Data Replication Resource Hierarchy\@azsuascs2 Creatin Data Re lication Resource\... mount -t Hfs -o /dev/md0 /usr/sap/S4D/Ascsoo devicehier: using /opt/LifeKeeper/lkadm/subsys/scsi/netraid/bin/devicehier to construct the hierarchy WARNING. WARNING: WARNING: WARNING: WARNING. WARNING: WARNING: WARNING: The following mount point(s): /usr/sap/S4D Are above /usr/sap/S4D/ASCS00 but NOT LifeKeeper protected. The following mount point(s): /usr/sap/S4D Are above /usr/sap/S4D/ASCS00 but NOT LifeKeeper protected. NeKt\> ](/99_images/image117.png)*10*
+  ![ ](/99_images/image118.png "select the secondary node and click next")
 
-  ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Target Server suasc You have successfully created the resource hierarchy datarep-ASCS00 on azsuascsl. Select a target server to which the hierarchy will be extended. If you cancel before extending datarep-ASCS00 to at least provide no protection for the applications in the hierarchy. Accept Defaults Cancel NeKt\> one other server, LifeKeeper will ](/99_images/image118.png)*10*
+  ![ ](/99_images/image119.png "select intelligent and click next")
 
-  ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Switchback Type Accept Defaults intelligent Cancel ](/99_images/image119.png)*10*
+  ![ ](/99_images/image120.png "select priority 1 and click next")
 
-  ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Template Priority Accept Defaults Cancel ](/99_images/image120.png)*10*
+  ![ ](/99_images/image121.png "select priority 10 and click next")
 
-  ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Target Priority Accept Defaults Cancel ](/99_images/image121.png)*10*
+  ![ ](/99_images/image122.png "click next")
 
-  ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Executin the re-extend scri t\... Building independent resource list Checking existence of extend and canextend scripts Checking extendability for datarep-ASCS00 Checking extendability for /usr/sap/S4D/ASCS00 Pre Extend checks were successful NeKt\> Accept Defaults Cancel ](/99_images/image122.png)*10*
-
-  Click close and don\'t click next to extent the resource to the target side yet. The screen will be as shown below.
+  Click close and do not click next to extent the resource to the target side yet.
 
 ### 6. Create SAP Resource SAP-S4D\_ASCS00
 
