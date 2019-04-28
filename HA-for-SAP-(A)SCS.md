@@ -307,6 +307,7 @@
  ```
 
 ### 5. Create Data Replication Resource for ASCS mount
+
   Click create resoure
   ![ ](/99_images/image107.png "select Data Replication and click next")
 
