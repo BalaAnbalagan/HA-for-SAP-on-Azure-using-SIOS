@@ -61,7 +61,7 @@
 
 ## 2. Install SAP (A)SCS/ERS
 
- Use an terraform script from [github](https://github.com/BalaAnbalagan/SAP-on-Azure-using-Terraform) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using load balancer. You can also deploy the resources manually.
+ Use an terraform script from [github](https://github.com/BalaAnbalagan/SAP-on-Azure-using-Terraform) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using Load Balancer. You can also deploy the resources manually.
 
 ## 3. Install Azure CLI  
 
@@ -90,7 +90,7 @@
 
 ### 1. Preparing Installation Media
 
- download the following media from the ftp link sent by SIOS
+ download the following media from the FTP link sent by SIOS
 
 - download the SIOS protection Suite's - sps.img
 - download the HANA Application Recovery Kit based on your HANA version - HANA2-ARK.run
@@ -394,11 +394,11 @@
 
   Follow these steps to install an SAP application server.
 
-  Prepare application server
+  Prepare application server.
 
   Follow the steps in the chapter SAP NetWeaver application server preparation above to prepare the application server.
 
-  Install SAP NetWeaver application server
+  Install SAP NetWeaver application server.
 
   Install a primary or additional SAP NetWeaver applications server.
 

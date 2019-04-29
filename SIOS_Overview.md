@@ -37,7 +37,7 @@ Specific help topics related to the Generic Application Recovery Kit include Cre
 
 - IP Addresses - The IP Recovery Kit provides a mechanism to recover a "switchable" IP address from a failed primary server to one or more backup servers in a LifeKeeper environment.  A switchable IP address is a virtual IP address that can switch between servers and is separate from the IP address associated with the network interface card of each server.  Applications under LifeKeeper protection are associated with the switchable IP address, so if there is a failure on the primary server, the switchable IP address becomes associated with the backup server.  The resource under LifeKeeper protection is the switchable IP address. 
 
-Refer to the IP Recovery Kit Technical Documentation included with the Recovery Kit for specific product, configuration and administration information.
+Refer to the IP Recovery Kit Technical Documentation included with the Recovery Kit for a specific product, configuration and administration information.
 
 - RAW I/O - The RAW I/O Recovery Kit provides support for raw I/O devices for applications that prefer to bypass kernel buffering.  The RAW I/O Recovery Kit allows for the definition and failover of raw devices bound to shared storage devices.  The raw device must be configured on the primary node prior to resource creation.  Once the raw resource hierarchy is created, it can be extended to additional servers.
 
@@ -112,7 +112,7 @@ SIOS DataKeeper includes the following features:
 Understanding the differences between synchronous and asynchronous mirroring will help you choose the appropriate mirroring method for your application environment.
 
 ##### Synchronous Mirroring
-SIOS DataKeeper provides real-time mirroring by employing a synchronous mirroring technique in which data is written simultaneously on the primary and backup servers. For each write operation, DataKeeper forwards the write to the target device(s) and awaits remote confirmation before signaling I/O completion.  The advantage of synchronous mirroring is a high level of data protection because it ensures that all copies of the data are always identical. However, the performance may suffer due to the wait for remote confirmation, particularly in a WAN environment.
+SIOS DataKeeper provides real-time mirroring by employing a synchronous mirroring technique in which data is written simultaneously on the primary and backup servers. For each "Write operation", DataKeeper forwards the write program to the target device(s) and awaits remote confirmation before signaling I/O completion.  The advantage of synchronous mirroring is a high level of data protection because it ensures that all copies of the data are always identical. However, the performance may suffer due to the wait for remote confirmation, particularly in a WAN environment.
 
 ##### Asynchronous Mirroring
 With asynchronous mirroring, each write is made to the source device and then a copy is queued to be transmitted to the target device(s). This means that at any given time, there may be numerous committed write transactions that are waiting to be sent from the source to the target device.  The advantage of asynchronous mirroring is better performance because writes are acknowledged when they reach the primary disk, but it can be less reliable because if the primary system fails, any writes that are in the asynchronous write queue will not be transmitted to the target. To mitigate this issue, SIOS DataKeeper makes an entry to an intent log file for every write made to the primary device.If a large amount of data is written, the I/O performance may decrease temporarily because that data takes priority in the queue for transmission to the other nodes.
@@ -121,7 +121,7 @@ The intent log is a bitmap file indicating which data blocks are out of sync bet
 
 
 ### 4. STONITH (Testing in-progress)
-STONITH (Shoot The Other Node in the Head) is a fencing technique for remotely powering down a node in a cluster. LifeKeeper can provide STONITH capabilities by using external power switch controls, IPMI-enabled motherboard controls and hypervisor-provided power capabilities to power off the other nodes in a cluster.
+STONITH (Shoot The Other Node In The Head) is a fencing technique for remotely powering down a node in a cluster. LifeKeeper can provide STONITH capabilities by using external power switch controls, IPMI-enabled motherboard controls and hypervisor-provided power capabilities to power off the other nodes in a cluster.
 
 #### 1. Installation and Configuration
 After installing LifeKeeper and configuring communication paths for each node in the cluster, install and configure STONITH.
@@ -131,7 +131,7 @@ Install the LifeKeeper STONITH script by running the following command:
 /opt/LifeKeeper/samples/STONITH/stonith-install
 
 #### 2. Edit the configuration file
-Update the configuration file to enable STONITH and add the power off command line. Note: Power off is recommended over reboot to avoid fence loops (i.e. two machines have lost communication but can still STONITH each other, taking turns powering each other off and rebooting).
+Update the configuration file to enable STONITH and add the power off the command line. Note: Power off is recommended over reboot to avoid fence loops (i.e. two machines have lost communication but can still STONITH each other, taking turns powering each other off and rebooting).
 <pre><code>
 cat /opt/LifeKeeper/config/stonith.conf
 </code></pre>
@@ -148,7 +148,7 @@ az vm stop -n azsuers1 -g SIOS-SUSE --no-wait
 #EOF
 ```
 
-The SIOS Protection Suite will protect the ASCS instance. The S4D_ASCS00 instance will have /usr/sap/S4D/ASCS00 data replication and IP Resource with Azure IP Gen App resource as child.
+The SIOS Protection Suite will protect the ASCS instance. The S4D_ASCS00 instance will have /usr/sap/S4D/ASCS00 data replication and IP Resource with Azure IP Gen App resource as a child.
 
 ### SIOS PORTS
 
