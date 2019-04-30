@@ -104,6 +104,8 @@ cd /DVD
 
 ### 3. Setup SIOS Protection Suite - SAP Recovery Kit 
 
+[![SPS](https://www.youtube.com/watch?v=PMScbDAaEN8/0.jpg)](https://www.youtube.com/watch?v=arqv2YVp_3E)
+
 > Install SAP Recovery kit in ASCS and HANA Nodes
 change directory to SIOS installation media which was mounted as /DVD
 </code></pre>
