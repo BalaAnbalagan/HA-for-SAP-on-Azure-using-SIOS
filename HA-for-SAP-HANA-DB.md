@@ -385,16 +385,20 @@ Click Done
 
 Add IP-11.1.2.50 as dependent to HANA-S4D
 
- *Screen clipping taken: 2/21/2019 2:49 PM*
+select ip resource to be added as dependent
 
 ![Machine generated alternative text: Create Dependency\@azsuascs2 NeKt\> Child Resource Tag Cancel ](/99_images/image070.png)
-*Click Create Dependency*
+
+Click Create Dependency
+
 ![Machine generated alternative text: Create Dependency\@azsuascs2 The following dependency will be created: Parent: HANA-S40 child: ip-11.1.2.50 \<Back Cancel ](/99_images/image071.png)
 
-*HANA-S4D dependency Tree view - move to correction location*
+HANA-S4D dependency Tree view - move to correction location
 
 ![Machine generated alternative text: HANA-S e ip-ll.l. In Service\... Out of Service\... Extend Resource Hierarchy\... unextend Resource Hierarchy\... Create Dependency.. Delete Dependency\... Delete Resource Hierarchy\... properties\... ](/99_images/image052.png)
-*Click Done*
+
+Click Done
 ![Machine generated alternative text: Create Dependency\@azsuascs2 Create De endenc arent HANA-S40 of childi -11.1.2.50 Creating the dependency on the server azsuhanal Creating the dependency on the server azsuhana2 The dependency creation was successful Done ](/99_images/image072.png)
-*Done*
+
+Done
 ![A screenshot of a cell phone Description automatically generated](/99_images/image073.png)
