@@ -114,7 +114,7 @@ sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive <path to SAP Host Agent
 - [A]: The step applies to all nodes.
 - [1]: The step applies to node 1 only.
 
-### 1. [1] Configure System Replication on the first node:
+### 1. [1] Configure System Replication on the first node
 
 Back up the databases as <hanasid>adm:
 
@@ -122,45 +122,47 @@ Back up the databases as <hanasid>adm:
 hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 00 "BACKUP DATA USING FILE ('initialbackupSYS')"
 hdbsql -d S4D -u SYSTEM -p "passwd" -i 00 "BACKUP DATA USING FILE ('initialbackupS4D')"
 ```
+
 Copy the system PKI files to the secondary site:
+
 ```code
 scp /usr/sap/S4D/SYS/global/security/rsecssfs/data/SSFS_S4D.DAT   azsuhana2:/usr/sap/S4D/SYS/global/security/rsecssfs/data/
 scp /usr/sap/S4D/SYS/global/security/rsecssfs/key/SSFS_S4D.KEY  azsuhana2:/usr/sap/S4D/SYS/global/security/rsecssfs/key/
 ```
+
 Create the primary site:
+
 ```code
 hdbnsutil -sr_enable --name=left
 ```
+
 ![Primary HANA System Replication Enabled](/99_images/image025.png)*Primary HANA System Replication Enabled*
 
-### 2. [2] Configure System Replication on the second node:
+### 2. [2] Configure System Replication on the second node
+
 Register the second node to start the system replication. Run the following command as <hanasid>adm :
+
 ```code
 sapcontrol -nr 00 -function StopWait 600 10
 hdbnsutil -sr_register --remoteName=right --remoteHost=azsuhana2 --remoteInstance=00 --replicationMode=syncmem --operationMode=logreplay --name=left
 ```
 
-> ![HSR status from Primary node](/99_images/image030.png)
->
-> *HSR status from Primary node*
-
-
-> ![HSR status from secondary node](/99_images/image031.png)
->
-> *HSR status from a secondary node*
-
-> ![Secondary System Starts after initial Sync](/99_images/image028.png)*Secondary System Starts after initial Sync*
-
-> ![Replication Status in HANA Studio](/99_images/image029.png)*Replication Status in HANA Studio*
+![HSR status from Primary node](/99_images/image030.png)*HSR status from Primary node*
+![HSR status from secondary node](/99_images/image031.png)*HSR status from a secondary node*
+![Secondary System Starts after initial Sync](/99_images/image028.png)*Secondary System Starts after initial Sync*
+![Replication Status in HANA Studio](/99_images/image029.png)*Replication Status in HANA Studio*
 
 ## Create SAP HANA cluster resources
+
 ### 1. [A] Setup SIOS Protection Suite - SAP HANA V2 Recovery Kit
 
 ```code
-ls -ltr \|grep HANA2\*
+ls -ltr |grep HANA2*
 ```
 
-> -rwxr\--r\-- 1 root root 24236 Feb 15 08:54 HANA2-ARK.run
+```console
+-rwxr--r-- 1 root root 24236 Feb 15 08:54 HANA2-ARK.run
+```
 
 #### 1. Run HANA2-ARK.run
 
@@ -195,7 +197,6 @@ start lkGUIapp
 /opt/LifeKeeper/bin/lkGUIapp
 ```
 
-
 ![Create communication path](/99_images/image021.png)
 
 click comm path icon to create a communication path between all the systems in both directions. The output will look like the below screenshot
@@ -209,22 +210,18 @@ Please uncheck the comm path redendency warning in the view menu to see all node
 
 ### 1. Create Virtual IP for HANA DB
 
->- *Select Generic Application*
->
->  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image032.png)
->
->
->
->- *Select Intelligent, can be changed later*
->
->  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image033.png)
->- *provide the path of restore script example: /opt/LifeKeeper/ip\_genapp/restore*
->
->  ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Restore Script opt/LifeKeeper/ip\_genapp/restore Enter the pathname for the shell script or object program which starts the application. The restore script is responsible for bringing a protected application resource in-service. The restore script should not impact an active resource application when invoked. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that NeKt\> Cancel ](/99_images/image034.png)
+*Select Generic Application*
+![Machine generated alternative text: Create Resource Wizard\@azsuascs2 Please Select Recovery Kit NeKt\> Cancel ](/99_images/image032.png)
 
->- *provide the path for remove script, example: /opt/LifeKeeper/ip\_genapp/remove*
->
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Remove Script opt/LifeKeeper/ip\_genapp/remove Enter the pathname for the shell script or object program which stops the application. The remove script is responsible for stopping a protected application resource and putting it in the out-of-service state. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that \<Back Cancel ](/99_images/image035.png)
+*Select Intelligent, can be changed later*
+
+![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image033.png)
+*provide the path of restore script example: /opt/LifeKeeper/ip\_genapp/restore*
+
+![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Restore Script opt/LifeKeeper/ip\_genapp/restore Enter the pathname for the shell script or object program which starts the application. The restore script is responsible for bringing a protected application resource in-service. The restore script should not impact an active resource application when invoked. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that NeKt\> Cancel ](/99_images/image034.png)
+
+*provide the path for remove script, example: /opt/LifeKeeper/ip\_genapp/remove*
+![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Remove Script opt/LifeKeeper/ip\_genapp/remove Enter the pathname for the shell script or object program which stops the application. The remove script is responsible for stopping a protected application resource and putting it in the out-of-service state. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that \<Back Cancel ](/99_images/image035.png)
 
 *provide the path for quickCheck script, example : /opt/LifeKeeper/ip\_genapp/quickCheck*
 
@@ -306,53 +303,57 @@ SIOS-SUSE NIC_APP-azsuhana1 11.1.2.51 NIC_APP-azsuhana2 11.1.2.52 11.1.2.50 eth0
 >- *Select intelligent*
 >
 > ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image054.png)
+
 ```code
 /opt/LifeKeeper/HANA2-ARK/restore.pl
 /opt/LifeKeeper/HANA2-ARK/remove.pl
 /opt/LifeKeeper/HANA2-ARK/quickCheck.pl
 /opt/LifeKeeper/HANA2-ARK/recover.pl
 ```
->
->- *for the next 4 screens please provide the following path for the scripts*
-> ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 opt/LifeKeeper/HANA2-ARKJrecover.pl Local Recovery Script \[optional\] Enter the pathname for the shell script or object program which will attempt to recover a failed application on the local server. This may require stopping and restarting the application. The local recovery script is optional - if you do not want to provide one, simply clear the entry field. If no local recovery script is provided, the protected application will always fail over to the target when a quickCheck error occurs. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that Cancel NeKt\> ](/99_images/image055.png)
->
-> /opt/LifeKeeper/HANA2-ARK/restore.pl
->
-> /opt/LifeKeeper/HANA2-ARK/remove.pl
+
+for the next 4 screens please provide the following path for the scripts
+
+ ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 opt/LifeKeeper/HANA2-ARKJrecover.pl Local Recovery Script \[optional\] Enter the pathname for the shell script or object program which will attempt to recover a failed application on the local server. This may require stopping and restarting the application. The local recovery script is optional - if you do not want to provide one, simply clear the entry field. If no local recovery script is provided, the protected application will always fail over to the target when a quickCheck error occurs. Valid characters allowed in the script pathname are letters, digits, and the following special characters: A copy of this script or program will be saved under: lopt/LifeKeeper/subsys/gen/resources/app/actions Whenever this resource is extended to a new server, the copy will be passed to that Cancel NeKt\> ](/99_images/image055.png)
+
+/opt/LifeKeeper/HANA2-ARK/restore.pl
+
+/opt/LifeKeeper/HANA2-ARK/remove.pl
 
 /opt/LifeKeeper/HANA2-ARK/quickCheck.pl
 
- /opt/LifeKeeper/HANA2-ARK/recover.pl
- *Enter Application info as S4D 00 syncmem left logreplay*
+/opt/LifeKeeper/HANA2-ARK/recover.pl
 
- ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Application Info \[optional\] S4D 00 syncrnem left loqreplay Enter any optional data for the application resource instance that may be needed by the restore and remove scripts. The valid characters allowed for the data field are letters, digits, and the following special characters: \_ . = \[space\] \<Back Cancel ](/99_images/image056.png)
+Enter Application info as S4D 00 syncmem left logreplay
+
+![Enter Application info as S4D 00 syncmem left logreplay ](/99_images/image056.png)
+
  Which is \<SID\> \<Instance\#\> \<replicationMode\> \<name\> \<operantionMode\>
 
-*Select Yes to bring up the service right away*
+Select Yes to bring up the service right away
 
- ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Bring Resource In Service This field allows the user to specify if the resource should be brought in-service following a successful create. • A user may want to select No if the dependent resources have not been created and the restore command would fail. If No is selected, the resource will be created but will not be brought in-service. The resource cannot be extended until the hierarchy has been placed in-service. • Selecting Yes will cause the resource has been created. \<Back Cancel NeKt\> user provided restore script to be invoked after the ](/99_images/image057.png)
+![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Bring Resource In Service This field allows the user to specify if the resource should be brought in-service following a successful create. • A user may want to select No if the dependent resources have not been created and the restore command would fail. If No is selected, the resource will be created but will not be brought in-service. The resource cannot be extended until the hierarchy has been placed in-service. • Selecting Yes will cause the resource has been created. \<Back Cancel NeKt\> user provided restore script to be invoked after the ](/99_images/image057.png)
 
- ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 HANA-S40 Resource Tag Enter a unique name for the resource instance on azsuhanal. The valid characters allowed for the tag are \<Back Create letters, digits, and the following special characters: Cancel Instance ](/99_images/image058.png)*Provide a Resource tag name*
+![Machine generated alternative text: Create gen/app Resource\@azsuascs2 HANA-S40 Resource Tag Enter a unique name for the resource instance on azsuhanal. The valid characters allowed for the tag are \<Back Create letters, digits, and the following special characters: Cancel Instance ](/99_images/image058.png)*Provide a Resource tag name*
 
- ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Creatin resource HANA-S4D on azsuhanal /opt/LifeKeeper/lkadm/subsys/gen/app/bin/creapphier azsuhanal /opt/LifeKeeper/HANA2-ARKJrestore.pl /opt/LifeKeeper/HANA2-ARKJremove.pl HANA-S4D S4D 00 syncrnem left logreplay intelligent /opt/LifeKeeper/HANA2-ARKJquickCheck.pl /opt/LifeKeeper/HANA2-ARKJrecover.pl Yes BEGIN create of \"HANA-S40\" creating resource \"HANA-S4D\" resource \"HANA-S4D\" successfully created restoring resource \"HANA-S4D\" BEGIN restore of \"HANA-S40\" restore for HANA-S4D started SAP host agent is running on node azsuhanal sapstartsrv for instance S4D 00 is running on node azsuhanal Messages produced while creating HANA-SO will be displayed in this dialog and the output panel (if open), and logged on azsuhanal. ](/99_images/image059.png)*Hierarchy creation in progress*
+![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Creatin resource HANA-S4D on azsuhanal /opt/LifeKeeper/lkadm/subsys/gen/app/bin/creapphier azsuhanal /opt/LifeKeeper/HANA2-ARKJrestore.pl /opt/LifeKeeper/HANA2-ARKJremove.pl HANA-S4D S4D 00 syncrnem left logreplay intelligent /opt/LifeKeeper/HANA2-ARKJquickCheck.pl /opt/LifeKeeper/HANA2-ARKJrecover.pl Yes BEGIN create of \"HANA-S40\" creating resource \"HANA-S4D\" resource \"HANA-S4D\" successfully created restoring resource \"HANA-S4D\" BEGIN restore of \"HANA-S40\" restore for HANA-S4D started SAP host agent is running on node azsuhanal sapstartsrv for instance S4D 00 is running on node azsuhanal Messages produced while creating HANA-SO will be displayed in this dialog and the output panel (if open), and logged on azsuhanal. ](/99_images/image059.png)*Hierarchy creation in progress*
 
- ![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Creatin resource HANA-S4D on azsuhanal crea eo creating resource \"HANA-S4D\" resource \"HANA-S4D\" successfully created restoring resource \"HANA-S4D\" BEGIN restore of \"HANA-S40\" restore for HANA-S4D started SAP host agent is running on node azsuhanal sapstartsrv for instance S4D 00 is running on node azsuhanal The node azsuhanal is already PRIMARY Master HANA-DB S4D 00 is already running on node azsuhanal Create LifeKeeper flag \"!volatile!noHANAremove HANA-S4D\" on node azsuhanal Restore for resorce HANA-S4D finished END successful restore of \"HANA-S4D\" resource \"HANA-S4D\" restored END successful create of \"HANA-S4D\" Messages produced while creating HANA-SO will be displayed in this dialog and the output panel (if open), and logged on azsuhanal. NeKt\> ](/99_images/image060.png)*Hierarchy created*
+![Machine generated alternative text: Create gen/app Resource\@azsuascs2 Creatin resource HANA-S4D on azsuhanal crea eo creating resource \"HANA-S4D\" resource \"HANA-S4D\" successfully created restoring resource \"HANA-S4D\" BEGIN restore of \"HANA-S40\" restore for HANA-S4D started SAP host agent is running on node azsuhanal sapstartsrv for instance S4D 00 is running on node azsuhanal The node azsuhanal is already PRIMARY Master HANA-DB S4D 00 is already running on node azsuhanal Create LifeKeeper flag \"!volatile!noHANAremove HANA-S4D\" on node azsuhanal Restore for resorce HANA-S4D finished END successful restore of \"HANA-S4D\" resource \"HANA-S4D\" restored END successful create of \"HANA-S4D\" Messages produced while creating HANA-SO will be displayed in this dialog and the output panel (if open), and logged on azsuhanal. NeKt\> ](/99_images/image060.png)*Hierarchy created*
 
- ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Target Server You have successfully created the resource hierarchy HANA-S4D on azsuhanal. Select a target server to which the hierarchy will be extended. If you cancel before extending HANA-S4D to at least one other server, LifeKeeper will provide no protection for the applications in the hierarchy. Accept Defaults Cancel NeKt\> ](/99_images/image061.png)*Click next to pre extend check to extend the resource hierarchy to secondary node*
+![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Target Server You have successfully created the resource hierarchy HANA-S4D on azsuhanal. Select a target server to which the hierarchy will be extended. If you cancel before extending HANA-S4D to at least one other server, LifeKeeper will provide no protection for the applications in the hierarchy. Accept Defaults Cancel NeKt\> ](/99_images/image061.png)*Click next to pre extend check to extend the resource hierarchy to secondary node*
 
- ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Switchback Type Accept Defaults intelligent Cancel ](/99_images/image062.png)*Click next*
+![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Switchback Type Accept Defaults intelligent Cancel ](/99_images/image062.png)*Click next*
 
- ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Template Priority Accept Defaults Cancel ](/99_images/image063.png)*Click next*
+![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Template Priority Accept Defaults Cancel ](/99_images/image063.png)*Click next*
 
- ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Target Priority Accept Defaults Cancel ](/99_images/image064.png)*Click next*
+![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 \<Back Target Priority Accept Defaults Cancel ](/99_images/image064.png)*Click next*
 
- ![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Executin the re-extend scri t\... Building independent resource list Checking existence of extend and canextend scripts Checking extendability for HANA-S4D Pre Extend checks were successful NeKt\> Accept Defaults Cancel ](/99_images/image065.png)*Pre extend check completed successfully*
+![Machine generated alternative text: Pre- Extend Wizard\@azsuascs2 Executin the re-extend scri t\... Building independent resource list Checking existence of extend and canextend scripts Checking extendability for HANA-S4D Pre Extend checks were successful NeKt\> Accept Defaults Cancel ](/99_images/image065.png)*Pre extend check completed successfully*
 
- ![Machine generated alternative text: Extend gen/app Resource Hierarchy\@azsuascs2 Template Server: azsuhanal Tag to Extend: HANA-S40 Target Server: azsuhana2 Resource Tag HANA-S40 Enter a unique name for the resource instance on azsuhana2. The valid characters allowed for the tag are letters, digits, and the following special characters: NeKt\> Accept Defaults Cancel ](/99_images/image066.png)*Provide resource tag name*
+![Machine generated alternative text: Extend gen/app Resource Hierarchy\@azsuascs2 Template Server: azsuhanal Tag to Extend: HANA-S40 Target Server: azsuhana2 Resource Tag HANA-S40 Enter a unique name for the resource instance on azsuhana2. The valid characters allowed for the tag are letters, digits, and the following special characters: NeKt\> Accept Defaults Cancel ](/99_images/image066.png)*Provide resource tag name*
 
- ![Machine generated alternative text: Extend gen/app Resource Hierarchy\@azsuascs2 Template Server: azsuhanal Tag to Extend: HANA-S40 Target Server: azsuhana2 Application Info \[optional\] S4D 00 syncrnem right loqreplay Enter any optional data for HANA-SO that may be needed by the restore and remove scripts on azsuhana2. The valid characters allowed for the data field are letters, digits, and the following special characters: \_ . = \[space\] \<Back NeKt\> Accept Defaults Cancel ](/99_images/image067.png)*Provide the Application info as explained in the previous screens*
+![Machine generated alternative text: Extend gen/app Resource Hierarchy\@azsuascs2 Template Server: azsuhanal Tag to Extend: HANA-S40 Target Server: azsuhana2 Application Info \[optional\] S4D 00 syncrnem right loqreplay Enter any optional data for HANA-SO that may be needed by the restore and remove scripts on azsuhana2. The valid characters allowed for the data field are letters, digits, and the following special characters: \_ . = \[space\] \<Back NeKt\> Accept Defaults Cancel ](/99_images/image067.png)*Provide the Application info as explained in the previous screens*
 
- ![Machine generated alternative text: Extend Wizard\@azsuascs2 Extendin resource hierarch HANA-S4D to server azsuhana2 Extending resource instances for HANA-S4D BEGIN extend of \"HANA-S40\" END successful extend of \"HANA-S4D\" Creating dependencies Setting switchback type for hierarchy Creating equivalencies LifeKeeper Admin Lock (HANA-S4D) Released Hierarchy successfully extended \<Back Accept Defaults ](/99_images/image068.png)*Click finish*
+![Machine generated alternative text: Extend Wizard\@azsuascs2 Extendin resource hierarch HANA-S4D to server azsuhana2 Extending resource instances for HANA-S4D BEGIN extend of \"HANA-S40\" END successful extend of \"HANA-S4D\" Creating dependencies Setting switchback type for hierarchy Creating equivalencies LifeKeeper Admin Lock (HANA-S4D) Released Hierarchy successfully extended \<Back Accept Defaults ](/99_images/image068.png)*Click finish*
 
 ![Machine generated alternative text: Hierarchy Integrity Verfication\@azsuascs2 Veri in Inte rit of Extended Hierarch Examining hierarchy on azsuhana2 Hierarchy Verification Finished \<Back ne Accept Defaults ](/99_images/image069.png)
 
