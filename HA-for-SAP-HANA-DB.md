@@ -68,12 +68,12 @@ The following list shows the configuration of the (A)SCS and ERS IP addresses & 
 
 The steps in this section use the following prefixes:
 
-- [A]: The step applies to all nodes.
-- [1]: The step applies to node 1 only.
+- [A] The step applies to all nodes.
+- [1] The step applies to node 1 only.
 
 ### 1. [A] Run post-processing script ps-db.bash
 
-### 2. [A] Run the hdblcm program from the HANA DVD. Enter the following values at the prompt:
+### 2. [A] Run the hdblcm program from the HANA DVD. Enter the following values at the prompt
 
 - Choose installation: Enter 1.
 - Select additional components for installation: Enter 1.
@@ -101,7 +101,7 @@ The steps in this section use the following prefixes:
 - Restart system after machine reboot? [n]: Select Enter.
 - Do you want to continue? (y/n): Validate the summary. Enter y to continue.
 
-### 3. [A] Upgrade the SAP Host Agent.
+### 3. [A] Upgrade the SAP Host Agent
 
 Download the latest SAP Host Agent archive from the SAP Software Center and run the following command to upgrade the agent. Replace the path to the archive to point to the file that you downloaded:
 
@@ -111,8 +111,8 @@ sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive <path to SAP Host Agent
 
 ## Configure SAP HANA 2.0 System Replication
 
-- [A]: The step applies to all nodes.
-- [1]: The step applies to node 1 only.
+- [A] \: The step applies to all nodes.
+- [1] \: The step applies to node 1 only.
 
 ### 1. [1] Configure System Replication on the first node
 
@@ -147,10 +147,21 @@ sapcontrol -nr 00 -function StopWait 600 10
 hdbnsutil -sr_register --remoteName=right --remoteHost=azsuhana2 --remoteInstance=00 --replicationMode=syncmem --operationMode=logreplay --name=left
 ```
 
-![HSR status from Primary node](/99_images/image030.png)*HSR status from Primary node*
-![HSR status from secondary node](/99_images/image031.png)*HSR status from a secondary node*
-![Secondary System Starts after initial Sync](/99_images/image028.png)*Secondary System Starts after initial Sync*
-![Replication Status in HANA Studio](/99_images/image029.png)*Replication Status in HANA Studio*
+HSR status from Primary node
+
+![HSR status from Primary node](/99_images/image030.png)
+
+HSR status from a secondary node
+
+![HSR status from secondary node](/99_images/image031.png)
+
+Secondary System Starts after initial Sync
+
+![Secondary System Starts after initial Sync](/99_images/image028.png)
+
+Replication Status in HANA Studio
+
+![Replication Status in HANA Studio](/99_images/image029.png)
 
 ## Create SAP HANA cluster resources
 
