@@ -102,7 +102,12 @@ cd /DVD
 
 > Please repeat the steps on the second witness node too.
 
-### 3. Setup SIOS Protection Suite - SAP Recovery Kit 
+### 3. Setup SIOS Protection Suite - SAP Recovery Kit
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=PMScbDAaEN8
+" target="_blank"><img src="http://img.youtube.com/vi/PMScbDAaEN8/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
 
 [![SPS](https://www.youtube.com/watch?v=PMScbDAaEN8/0.jpg)](https://www.youtube.com/watch?v=arqv2YVp_3E)
 
