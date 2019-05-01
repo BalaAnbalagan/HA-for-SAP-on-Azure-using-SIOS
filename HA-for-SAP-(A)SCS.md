@@ -98,11 +98,11 @@
 
 ### [4. Create Dependency between IP Resource & Azure IP Gen App for ASCS](Create-dep-ip-az-ascs.md)
 
-### [2. Create SIOS Enhanced Azure IP Gen App Resource for ERS](Create-Azure-IP-GenApp-ers.md)
+### [5. Create SIOS Enhanced Azure IP Gen App Resource for ERS](Create-Azure-IP-GenApp-ers.md)
 
-### [3. Create IP Resource for ERS](Create-IP-Resource-ers.md)
+### [6. Create IP Resource for ERS](Create-IP-Resource-ers.md)
 
-### [4. Create Dependency between IP Resource & Azure IP Gen App for ERS](Create-dep-ip-az-ers.md)
+### [7. Create Dependency between IP Resource & Azure IP Gen App for ERS](Create-dep-ip-az-ers.md)
 
 ## 6. [A] Install SAP NetWeaver ASCS
 
