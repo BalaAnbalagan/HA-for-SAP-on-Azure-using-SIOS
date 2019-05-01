@@ -126,7 +126,7 @@
 
 ## [11. Create SAP Resource for (A)SCS](create-sap-ascs00.md)
 
-## [12. Create SAP Resource for (A)SCS](create-sap-ers10.md)
+## [12. Create SAP Resource for ERS](create-sap-ers10.md)
 
 ## 13. Install database Instance
 
