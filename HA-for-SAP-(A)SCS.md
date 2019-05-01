@@ -110,6 +110,8 @@ Please follow the respective document in the Proving Ground Infrastructure Provi
  sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=S4DASCS
  ```
 
+[Please refer the Installation Screenshots](SAPINST-ASCS-NODE1.md)
+
 ## 7. [A] Install SAP NetWeaver ERS
 
  Install SAP NetWeaver ERS as root on the second node using a physical hostname and the instance number is 10.
