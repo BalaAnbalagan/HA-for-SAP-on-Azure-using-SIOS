@@ -137,8 +137,20 @@ gwrd, Gateway, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104632
  sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
  ```
 
-
 [Please refer the SAP Installation Screenshots](SAPINST-ERS-NODE1.md)
+
+```bash
+/usr/sap/S4D/ERS10/exe/sapcontrol -prot NI_HTTP -nr 10 -function GetProcessList
+```
+
+```console
+1.05.2019 15:00:08
+GetProcessList
+OK
+name, description, dispstatus, textstatus, starttime, elapsedtime, pid
+enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18981
+```
+
 ## [8. Create Data Replication Resource for (A)SCS Mount Point](create-data-rep-ascs00.md)
 
 ## [9. Create SAP Resource for (A)SCS](Create-sap-ascs00.md)
