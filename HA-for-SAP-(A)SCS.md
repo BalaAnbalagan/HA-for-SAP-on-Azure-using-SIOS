@@ -1,3 +1,5 @@
+------------------DRAFT---------------------------------------
+
 # Azure Virtual Machines high availability for SAP NetWeaver on Linux using SIOS Protection Suite
 
  This article describes how to deploy the virtual machines, configure the virtual machines, install the cluster framework, and install a highly available SAP NetWeaver 7.50 system, using SIOS Protection Suite. In the example configurations, installation commands etc., the ASCS instance is number 00, the ERS instance number 10, the Primary Application instance (PAS)  and the Application instance (AAS) is 00. SAP System ID S4D is used.
@@ -54,7 +56,7 @@
    |Components     | hostname     | IP address |  VIP       |  VHOSTNAME |
    | --------------| -------------|------------| -----------|----------- |
    |SAP ASCS Pool  | azsuascs1    | 11.1.2.61  |  11.1.2.60 |  s4dascs   |
-   |               | azsuascs2    | 11.1.2.62  |  11.1.2.70 |  s4ders    |  
+   |               | azsuascs2    | 11.1.2.62  |            |            |  
    |SAP App Pool   | azsusap1     | 11.1.2.53  |            |            |
    |               | azsusap2     | 11.1.2.54  |            |            |
    |SIOS Witness   | azsusapwit1  | 11.1.2.65  |            |            |
@@ -88,21 +90,13 @@
 
 ## [4. Install SIOS Protection Suite & Recovery Kits](Install-SPS-Components.md)
 
-## 5. Create Floating IP for A(SCS) & ERS cluster
+## 5. Create Floating IP for (A)SCS & ERS cluster
 
 ### [1. Create Communication Path between Cluster Nodes and Witness](Create-Comm-path-SCS.md)
 
 ### [2. Create SIOS Enhanced Azure IP Gen App Resource for (A)SCS](Create-Azure-IP-GenApp-scs.md)
 
 ### [3. Create IP Resource for (A)SCS](Create-IP-Resource-scs.md)
-
-### [4. Create Dependency between IP Resource & Azure IP Gen App for ASCS](Create-dep-ip-az-ascs.md)
-
-### [5. Create SIOS Enhanced Azure IP Gen App Resource for ERS](Create-Azure-IP-GenApp-ers.md)
-
-### [6. Create IP Resource for ERS](Create-IP-Resource-ers.md)
-
-### [7. Create Dependency between IP Resource & Azure IP Gen App for ERS](Create-dep-ip-az-ers.md)
 
 ## 6. [A] Install SAP NetWeaver ASCS
 
@@ -116,7 +110,7 @@
 
 ## 7. [A] Install SAP NetWeaver ERS
 
- Install SAP NetWeaver ERS as root on the second node using a virtual hostname that maps to the IP address of the load balancer frontend configuration for the ERS, for example  s4ders, 11.1.2.70 and the instance number is 10.
+ Install SAP NetWeaver ERS as root on the second node using a physical hostname and the instance number is 10.
 
  You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst. You can use parameter SAPINST_USE_HOSTNAME to install SAP, using  virtual hostname.
 
@@ -126,8 +120,13 @@
 
 ## [8. Create Data Replication Resource for (A)SCS Mount Point](create-data-rep-ascs00.md)
 
+## [9. Create SAP for (A)SCS Mount Point](create-sap-ascs00.md)
 
-## 9. Install database Instance
+## [10. Create Data Replication Resource for (A)SCS Mount Point](create-data-rep-ers10.md)
+
+## [11. Create SAP for (A)SCS Mount Point](create-sap-ers10.md)
+
+## 12. Install database Instance
 
   In this example, SAP NetWeaver is installed on SAP HANA. You can use every supported database for this installation. For more information on how to install SAP HANA in Azure, see High availability of SAP HANA on Azure VMs on Red Hat Enterprise Linux. For a list of supported databases, see SAP Note 1928533.
 
@@ -141,7 +140,7 @@
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
   ```
 
-## 10. SAP NetWeaver application server installation
+## 13. SAP NetWeaver application server installation
 
   Follow these steps to install an SAP application server.
 
@@ -159,7 +158,7 @@
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
   ```
 
-## 11. Update SAP HANA secure store
+## 14. Update SAP HANA secure store
 
   Update the SAP HANA secure store to point to the virtual name of the SAP HANA System Replication setup.
 
