@@ -24,4 +24,4 @@ please refer SAP Note [1662610](https://launchpad.support.sap.com/#/notes/166261
 
 ## 2. [SIOS Protection Suite for Linux Overview](SIOS_Overview.md)
 ## 3. [SAP HANA Database Cluster Configuration](HA-for-SAP-HANA-DB.md)
-## 4. [SAP A(SCS) Cluster Configuration](HA-for-SAP-(A)SCS.md)
+## 4. [SAP (A)SCS Cluster Configuration](HA-for-SAP-(A)SCS.md)

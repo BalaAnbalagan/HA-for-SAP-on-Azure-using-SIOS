@@ -124,9 +124,11 @@
 
 ## [10. Create Data Replication Resource for (A)SCS Mount Point](create-data-rep-ers10.md)
 
-## [11. Create SAP for (A)SCS Mount Point](create-sap-ers10.md)
+## [11. Create SAP Resource for (A)SCS](create-sap-ascs00.md)
 
-## 12. Install database Instance
+## [12. Create SAP Resource for (A)SCS](create-sap-ers10.md)
+
+## 13. Install database Instance
 
   In this example, SAP NetWeaver is installed on SAP HANA. You can use every supported database for this installation. For more information on how to install SAP HANA in Azure, see High availability of SAP HANA on Azure VMs on Red Hat Enterprise Linux. For a list of supported databases, see SAP Note 1928533.
 
@@ -140,7 +142,7 @@
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
   ```
 
-## 13. SAP NetWeaver application server installation
+## 14. SAP NetWeaver application server installation
 
   Follow these steps to install an SAP application server.
 
@@ -158,7 +160,7 @@
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
   ```
 
-## 14. Update SAP HANA secure store
+## 15. Update SAP HANA secure store
 
   Update the SAP HANA secure store to point to the virtual name of the SAP HANA System Replication setup.
 
