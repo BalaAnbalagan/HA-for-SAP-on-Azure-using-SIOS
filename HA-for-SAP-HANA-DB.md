@@ -58,6 +58,7 @@ To achieve high availability, SAP HANA is installed on two virtual machines. The
 ![HANA-DB](/99_images/DB1.png)
 
 The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
+
   |Components     | hostname     | IP address |  VIP       |  VHOSTNAME |
   | --------------| -------------|------------| -----------|----------- |
   |SAP DB Pool    | azsuhana1    | 11.1.2.51  |  11.1.2.50 |  s4ddb     |
