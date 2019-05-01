@@ -61,9 +61,11 @@
    |               | azsusap2     | 11.1.2.54  |            |            |
    |SIOS Witness   | azsusapwit1  | 11.1.2.65  |            |            |
 
-## 2. Install SAP (A)SCS/ERS
+## 2. Provission SAP (A)SCS, ERS and Witness Infrastructure
 
- Use an terraform script from [github](https://github.com/BalaAnbalagan/SAP-on-Azure-using-Terraform) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using Load Balancer. You can also deploy the resources manually.
+ Use an terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using Load Balancer. You can also deploy the resources manually.
+
+Please follow the respective document in the Proving Ground Infrastructure Provisioning Git
 
 ## 3. Install Azure CLI  
 
