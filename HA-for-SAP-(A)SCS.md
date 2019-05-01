@@ -110,7 +110,7 @@ Please follow the respective document in the Proving Ground Infrastructure Provi
  sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=S4DASCS
  ```
 
-[Please refer the Installation Screenshots](SAPINST-ASCS-NODE1.md)
+[Please refer the SAP Installation Screenshots](SAPINST-ASCS-NODE1.md)
 
 ```bash
 /usr/sap/S4D/ASCS00/exe/sapcontrol -prot NI_HTTP -nr 00 -function GetProcessList
@@ -137,6 +137,8 @@ gwrd, Gateway, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104632
  sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
  ```
 
+
+[Please refer the SAP Installation Screenshots](SAPINST-ERS-NODE1.md)
 ## [8. Create Data Replication Resource for (A)SCS Mount Point](create-data-rep-ascs00.md)
 
 ## [9. Create SAP Resource for (A)SCS](Create-sap-ascs00.md)
