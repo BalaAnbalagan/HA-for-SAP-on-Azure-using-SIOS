@@ -148,69 +148,7 @@
 
  Please repeat the steps on all cluster Nodes
 
-### 5. Create Communication Path between Cluster Nodes and Witness
-
-Run LifeKeeper GUI
-
-```bash
-/opt/Lifekeeper/bin/lkGUIapp
-```
-
-![ ](/99_images/ASCS-communication-Path-1.png)
-
-login using root
-
-![ ](/99_images/ASCS-communication-Path-2.png)
-
-![ ](/99_images/ASCS-communication-Path-3.png)
-
-![ ](/99_images/ASCS-communication-Path-4.png)
-
-![ ](/99_images/ASCS-communication-Path-5.png)
-
-![ ](/99_images/ASCS-communication-Path-6.png)
-
-![ ](/99_images/ASCS-communication-Path-7.png)
-
-![ ](/99_images/ASCS-communication-Path-8.png)
-
-![ ](/99_images/ASCS-communication-Path-9.png)
-
-![ ](/99_images/ASCS-communication-Path-10.png)
-
-![ ](/99_images/ASCS-communication-Path-11.png)
-
-![ ](/99_images/ASCS-communication-Path-12.png)
-
-![ ](/99_images/ASCS-communication-Path-13.png)
-
-![ ](/99_images/ASCS-communication-Path-14.png)
-
-![ ](/99_images/ASCS-communication-Path-15.png)
-
-![ ](/99_images/ASCS-communication-Path-16.png)
-
-![ ](/99_images/ASCS-communication-Path-17.png)
-
-![ ](/99_images/ASCS-communication-Path-18.png)
-
-![ ](/99_images/ASCS-communication-Path-19.png)
-
-![ ](/99_images/ASCS-communication-Path-20.png)
-
-![ ](/99_images/ASCS-communication-Path-21.png)
-
-![ ](/99_images/ASCS-communication-Path-22.png)
-
-![ ](/99_images/ASCS-communication-Path-23.png)
-
-![ ](/99_images/ASCS-communication-Path-24.png)
-
-![ ](/99_images/ASCS-communication-Path-25.png)
-
-![ ](/99_images/ASCS-communication-Path.png)
-
-### 6. Setup SIOS Enhanced Azure IP Gen Application
+### 5. Setup SIOS Enhanced Azure IP Gen Application
 
  You will receive the FTP link to download the tgz file.
 
@@ -221,97 +159,12 @@ login using root
 - Repeat these steps on the other node.
 - Note the folder where the files are stored (e.g. /root/folder
 
-### 7. Create SIOS Enhanced Azure IP Gen App Resource
+### [6. Create Communication Path between Cluster Nodes and Witness](Create-Comm-path-SCS.md)
 
-![ ](/99_images/azure-ip-genapp-1.png)
+### [7. Create SIOS Enhanced Azure IP Gen App Resource](Create-Azure-IP-GenApp.md)
 
-![ ](/99_images/azure-ip-genapp-2.png)
+### [8. Create IP Resource](Create-IP-Resource-scs.md)
 
-![ ](/99_images/azure-ip-genapp-3.png)
-
-![ ](/99_images/azure-ip-genapp-4.png)
-
-![ ](/99_images/azure-ip-genapp-5.png)
-
-![ ](/99_images/azure-ip-genapp-6.png)
-
-![ ](/99_images/azure-ip-genapp-7.png)
-
-![ ](/99_images/azure-ip-genapp-8.png)
-
-![ ](/99_images/azure-ip-genapp-9.png)
-
-![ ](/99_images/azure-ip-genapp-10.png)
-
-![ ](/99_images/azure-ip-genapp-11.png)
-
-![ ](/99_images/azure-ip-genapp-12.png)
-
-![ ](/99_images/azure-ip-genapp-13.png)
-
-![ ](/99_images/azure-ip-genapp-14.png)
-
-![ ](/99_images/azure-ip-genapp-15.png)
-
-![ ](/99_images/azure-ip-genapp-16.png)
-
-![ ](/99_images/azure-ip-genapp-17.png)
-
-![ ](/99_images/azure-ip-genapp-18.png)
-
-![ ](/99_images/azure-ip-genapp-19.png)
-
-![ ](/99_images/azure-ip-genapp-20.png)
-
-![ ](/99_images/azure-ip-genapp-21.png)
-
-![ ](/99_images/azure-ip-genapp-22.png)
-
-### 8. Create IP Resource
-
-![ ](/99_images/ip-resource-1.png)
-
-![ ](/99_images/ip-resource-2.png)
-
-![ ](/99_images/ip-resource-3.png)
-
-![ ](/99_images/ip-resource-4.png)
-
-![ ](/99_images/ip-resource-5.png)
-
-![ ](/99_images/ip-resource-6.png)
-
-![ ](/99_images/ip-resource-7.png)
-
-![ ](/99_images/ip-resource-8.png)
-
-![ ](/99_images/ip-resource-9.png)
-
-![ ](/99_images/ip-resource-10.png)
-
-![ ](/99_images/ip-resource-11.png)
-
-![ ](/99_images/ip-resource-12.png)
-
-![ ](/99_images/ip-resource-13.png)
-
-![ ](/99_images/ip-resource-14.png)
-
-![ ](/99_images/ip-resource-15.png)
-
-![ ](/99_images/ip-resource-16.png)
-
-![ ](/99_images/ip-resource-17.png)
-
-![ ](/99_images/ip-resource-18.png)
-
-![ ](/99_images/ip-resource-19.png)
-
-![ ](/99_images/ip-resource-20.png)
-
-![ ](/99_images/ip-resource-21.png)
-
-![ ](/99_images/ip-resource-22.png)
 
 ### 9. Create Dependency between IP Resource & Azure IP Gen App
 
