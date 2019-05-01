@@ -112,6 +112,21 @@ Please follow the respective document in the Proving Ground Infrastructure Provi
 
 [Please refer the Installation Screenshots](SAPINST-ASCS-NODE1.md)
 
+```bash
+/usr/sap/S4D/ASCS00/exe/sapcontrol -prot NI_HTTP -nr 00 -function GetProcessList
+```
+
+```console
+01.05.2019 12:42:17
+GetProcessList
+OK
+name, description, dispstatus, textstatus, starttime, elapsedtime, pid
+msg_server, MessageServer, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104629
+enserver, EnqueueServer, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104630
+sapwebdisp, Web Dispatcher, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104631
+gwrd, Gateway, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104632
+```
+
 ## 7. [A] Install SAP NetWeaver ERS
 
  Install SAP NetWeaver ERS as root on the second node using a physical hostname and the instance number is 10.
@@ -119,7 +134,7 @@ Please follow the respective document in the Proving Ground Infrastructure Provi
  You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst. You can use parameter SAPINST_USE_HOSTNAME to install SAP, using  virtual hostname.
 
  ```bash
- sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=S4DERS
+ sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
  ```
 
 ## [8. Create Data Replication Resource for (A)SCS Mount Point](create-data-rep-ascs00.md)
