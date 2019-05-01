@@ -88,141 +88,17 @@
 
 ## [4. Install SIOS Protection Suite](Install-SPS-Components.md)
 
-### [6. Create Communication Path between Cluster Nodes and Witness](Create-Comm-path-SCS.md)
-
-### [7. Create SIOS Enhanced Azure IP Gen App Resource](Create-Azure-IP-GenApp.md)
-
-### [8. Create IP Resource](Create-IP-Resource-scs.md)
-
-### [9. Create Dependency between IP Resource & Azure IP Gen App](Create-dep-ip-az-ascs.md)
-
-
 ## 5. Configure A(SCS) cluster
 
-### 1. Create floating IP for ASCS & ERS in SIOS Protection Suite
+### [1. Create Communication Path between Cluster Nodes and Witness](Create-Comm-path-SCS.md)
 
-  ![Machine generated alternative text: Eile Edit Yiew Help ](/99_images/image074.png)
+### [2. Create SIOS Enhanced Azure IP Gen App Resource](Create-Azure-IP-GenApp.md)
 
-  Click + icon to create resource hierarchy
+### [3. Create IP Resource](Create-IP-Resource-scs.md)
 
-  ![Select Generic Application](/99_images/image075.png "Select Generic Application")
+### [4. Create Dependency between IP Resource & Azure IP Gen App](Create-dep-ip-az-ascs.md)
 
-  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back Switchback Type intelligent Cancel ](/99_images/image076.png "Select Intelligent, can be changed later")
 
-  ![Machine generated alternative text: Create Resource Wizard\@azsuascs2 \<Back NeKt\> Cancel ](/99_images/image077.png "Select the node 1")
-
-  ![ ](/99_images/image078.png "provide the path where ip gen app is installed")
-
-  ![ ](/99_images/image079.png "Will be picked the right file automatically")
-
-  ![ ](/99_images/image080.png "Will be picked the right file automatically")
-
-  ![ ](/99_images/image081.png "Will be picked the right file automatically")
-
-  The application tag provided to be provided in the next screen is very important and the values are as follows
-
-  1. Resource Group name in Azure
-
-  2. The NIC name in Azure for the first node
-
-  3. The IP address for the first node
-
-  4. The NIC name in Azure for the second node
-
-  5. The IP address for the second node
-
-  6. The Virtual IP address to float between the 2 nodes.
-
-  7. The adapter used, typically eth0.
-
-  8. Name of the IP in Azure
-
-  SIOS-SUSE NIC_APP-azsuascs1 11.1.2.61 NIC_APP-azsuers1 11.1.2.62 11.1.2.60 eth0 S4DASCS
-
-  ![ ](/99_images/image082.png "Enter the Application Tag as above")
-  
-  ![ ](/99_images/image083.png "Select Yes")
-
-  ![ ](/99_images/image084.png "Enter the Floating IP for SAP (A)SCS1")
-
-  ![ ](/99_images/image085.png "Click Next")
-
-  ![ ](/99_images/image086.png "Enter the Secondary (A)SCS hostname")
-
-  ![ ](/99_images/image087.png "Select Intelligent & click next")
-
-  ![ ](/99_images/image088.png "click next with priority as 1")
-
-  ![ ](/99_images/image089.png "click next with priority as 10")
-
-  ![ ](/99_images/image090.png "Click close")
-
-  Don not extend the resource now, please Click close
-
-  In Azure the ip will look as shown below
-
-  ![ ](/99_images/image091.png "Secondary IP in portal.azure.com")
-
-  In linux the secondary ip address will be added to the eth0 device
-
- ```bash
- ip add show
- ```
-
- ```console
- 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
- link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
- inet 127.0.0.1/8 scope host lo
- valid_lft forever preferred_lft forever
- inet6 ::1/128 scope host
- valid_lft forever preferred_lft forever
- 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
- link/ether 00:0d:3a:06:27:29 brd ff:ff:ff:ff:ff:ff
- inet 11.1.2.61/24 brd 11.1.2.255 scope global eth0
- valid_lft forever preferred_lft forever
- inet 11.1.2.60/24 scope global secondary eth0
- valid_lft forever preferred_lft forever
- inet6 fe80::20d:3aff:fe06:2729/64 scope link
- valid_lft forever preferred_lft forever
- ```
-
-### 2. Create IP Resource Kit
-
- ![ ](/99_images/image092.png "select IP from the drill down menu and click next")
-
- ![ ](/99_images/image093.png "Select intelligent and click next")
-
- ![ ](/99_images/image094.png "Enter the floating ip for SAP (A)SCS ")
-
- ![ ](/99_images/image095.png "click next with promted netmask")
-
- ![ ](/99_images/image096.png "select the eth which needs to be protected and click next")
-
- ![ ](/99_images/image097.png "give a name for the resoure and click next")
-
- ![ ](/99_images/image098.png "click next")
-
- ![ ](/99_images/image099.png "Enter the secondary hostname and click next")
-
- ![ ](/99_images/image100.png "select intelligent and click next")
-
- ![ ](/99_images/image101.png "select priority 1 and click next")
-
- ![ ](/99_images/image102.png "select priority 10 and click next")
-
- ![ ](/99_images/image103.png "click next")
-
- Do not extend now, click close
-
- Create dependency
-
- Add ip-11.1.2.60 as dependency to vip-11.1.2.60
-
- ![ ](/99_images/image104.png "right click vip-11.1.2.60 and click create dependency")
-
- ![ ](/99_images/image105.png "select the ip-11.1.2.60 and click next")
-
- ![ ](/99_images/image106.png "click done")
 
 ### 3. [A] Install SAP NetWeaver ASCS
 
