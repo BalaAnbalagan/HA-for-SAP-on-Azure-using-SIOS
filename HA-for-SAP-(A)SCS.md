@@ -88,15 +88,21 @@
 
 ## [4. Install SIOS Protection Suite & Recovery Kits](Install-SPS-Components.md)
 
-## 5. Configure A(SCS) cluster
+## 5. Create Floating IP for A(SCS) & ERS cluster
 
 ### [1. Create Communication Path between Cluster Nodes and Witness](Create-Comm-path-SCS.md)
 
-### [2. Create SIOS Enhanced Azure IP Gen App Resource](Create-Azure-IP-GenApp.md)
+### [2. Create SIOS Enhanced Azure IP Gen App Resource for (A)SCS](Create-Azure-IP-GenApp-scs.md)
 
-### [3. Create IP Resource](Create-IP-Resource-scs.md)
+### [3. Create IP Resource for (A)SCS](Create-IP-Resource-scs.md)
 
-### [4. Create Dependency between IP Resource & Azure IP Gen App](Create-dep-ip-az-ascs.md)
+### [4. Create Dependency between IP Resource & Azure IP Gen App for ASCS](Create-dep-ip-az-ascs.md)
+
+### [2. Create SIOS Enhanced Azure IP Gen App Resource for ERS](Create-Azure-IP-GenApp-ers.md)
+
+### [3. Create IP Resource for ERS](Create-IP-Resource-ers.md)
+
+### [4. Create Dependency between IP Resource & Azure IP Gen App for ERS](Create-dep-ip-az-ers.md)
 
 ## 6. [A] Install SAP NetWeaver ASCS
 
@@ -166,8 +172,8 @@
   This should list all entries and should look similar to
 
   ```console
-  DATA FILE : /home/s4dadm/.hdb/azsusap1/SSFS\_HDB.DAT
-  KEY FILE : /home/s4dadm/.hdb/azsusap1/SSFS\_HDB.KEY
+  DATA FILE : /home/s4dadm/.hdb/azsusap1/SSFS_HDB.DAT
+  KEY FILE : /home/s4dadm/.hdb/azsusap1/SSFS_HDB.KEY
   KEY DEFAULT
   ENV : s4ddb.provingground.net:30013
   USER: S4HABAP
