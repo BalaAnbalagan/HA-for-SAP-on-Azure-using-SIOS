@@ -140,7 +140,7 @@
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
   ```
 
-## 14. SAP NetWeaver application server installation
+## 13. SAP NetWeaver application server installation
 
   Follow these steps to install an SAP application server.
 
@@ -158,7 +158,7 @@
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
   ```
 
-## 15. Update SAP HANA secure store
+## 14. Update SAP HANA secure store
 
   Update the SAP HANA secure store to point to the virtual name of the SAP HANA System Replication setup.
 
