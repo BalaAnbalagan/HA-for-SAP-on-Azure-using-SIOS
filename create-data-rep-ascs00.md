@@ -35,35 +35,3 @@
   ![ ](/99_images/image122.png "click next")
 
   Click close and do not click next to extent the resource to the target side yet.
-
-### 6. Create SAP Resource SAP-S4D\_ASCS00
-
-  Click create resource from lkGUIapp
-
-  ![ ](/99_images/image123.png "select SAP")
-
-  ![ ](/99_images/image124.png "select intelligent and click next")
-
-  ![ ](/99_images/image125.png "select the primary node and click next")
-
-  ![ ](/99_images/image126.png "select the SID and click next")
-
-  ![ ](/99_images/image127.png "select the instance and click next")
-
-  ![ ](/99_images/image128.png "select the ip-resoruce and click next")
-
-  ![ ](/99_images/image129.png "provide a SAP resource tag and click next")
-
-  ![ ](/99_images/image130.png "click next")
-
-  ![ ](/99_images/image131.png "select the secondary node and click next")
-
-  ![ ](/99_images/image132.png "select intelligent and click next")
-
-  ![ ](/99_images/image133.png "select priority 1 and click next")
-
-  ![ ](/99_images/image134.png "select priority 10 and click next")
-
-  Click close here and don't go further
-
-  ![ ](/99_images/image135.png "Un extended SAP resource hierarchies")

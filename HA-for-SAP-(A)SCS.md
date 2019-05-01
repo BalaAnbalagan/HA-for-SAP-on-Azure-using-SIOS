@@ -120,7 +120,7 @@
 
 ## [8. Create Data Replication Resource for (A)SCS Mount Point](create-data-rep-ascs00.md)
 
-## [9. Create SAP Resource for (A)SCS](create-sap-ascs00.md)
+## [9. Create SAP Resource for (A)SCS](Create-sap-ascs00.md)
 
 ## [10. Create SAP Resource for ERS](create-sap-ers10.md)
 
