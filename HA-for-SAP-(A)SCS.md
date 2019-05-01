@@ -86,7 +86,7 @@
  az network nic ip-config create --resource-group SIOS-SUSE --nic-name NIC_APP-azsuascs1 --private-ip-address 11.1.2.60 --name S4DASCS
  ```
 
-## [4. Install SIOS Protection Suite](Install-SPS-Components.md)
+## [4. Install SIOS Protection Suite & Recovery Kits](Install-SPS-Components.md)
 
 ## 5. Configure A(SCS) cluster
 
@@ -98,9 +98,7 @@
 
 ### [4. Create Dependency between IP Resource & Azure IP Gen App](Create-dep-ip-az-ascs.md)
 
-
-
-### 3. [A] Install SAP NetWeaver ASCS
+## 6. [A] Install SAP NetWeaver ASCS
 
  Install SAP NetWeaver ASCS as root on the first node using a virtual hostname that maps to the IP resouce created in privious step i.e.,  s4dascs, 11.1.2.60  
 
@@ -110,7 +108,7 @@
  sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=S4DASCS
  ```
 
-### 4. [A] Install SAP NetWeaver ERS
+## 7. [A] Install SAP NetWeaver ERS
 
  Install SAP NetWeaver ERS as root on the second node using a virtual hostname that maps to the IP address of the load balancer frontend configuration for the ERS, for example  s4ders, 11.1.2.70 and the instance number is 10.
 
@@ -120,77 +118,10 @@
  sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=S4DERS
  ```
 
-### 5. Create Data Replication Resource for (A)SCS mount
+## [8. Create Data Replication Resource for (A)SCS Mount Point](create-data-rep-ascs00.md)
 
-   Click create resoure from the lkGUIapp
 
-  ![ ](/99_images/image107.png "select Data Replication and click next")
-
-  ![ ](/99_images/image108.png "select intelligent and click next")
-
-  ![ ](/99_images/image109.png "select the primary node from which the (A)SCS mount to be replicated to secodary node")
-
-  ![ ](/99_images/image110.png "select Replicate Existing Filesystem")
-
-  ![ ](/99_images/image111.png "click continue")
-
-  ![ ](/99_images/image112.png "select the existing mount point")
-
-  ![ ](/99_images/image113.png "click next with replication resource tag")
-
-  ![ ](/99_images/image114.png "click next for the filesystem resource tag")
-
-  ![ ](/99_images/image115.png "select the bitmap file and click next")
-
-  ![ ](/99_images/image116.png "select no for Asynchronous Replication")
-
-  ![ ](/99_images/image117.png "click next")
-
-  ![ ](/99_images/image118.png "select the secondary node and click next")
-
-  ![ ](/99_images/image119.png "select intelligent and click next")
-
-  ![ ](/99_images/image120.png "select priority 1 and click next")
-
-  ![ ](/99_images/image121.png "select priority 10 and click next")
-
-  ![ ](/99_images/image122.png "click next")
-
-  Click close and do not click next to extent the resource to the target side yet.
-
-### 6. Create SAP Resource SAP-S4D\_ASCS00
-
-  Click create resource from lkGUIapp
-
-  ![ ](/99_images/image123.png "select SAP")
-
-  ![ ](/99_images/image124.png "select intelligent and click next")
-
-  ![ ](/99_images/image125.png "select the primary node and click next")
-
-  ![ ](/99_images/image126.png "select the SID and click next")
-
-  ![ ](/99_images/image127.png "select the instance and click next")
-
-  ![ ](/99_images/image128.png "select the ip-resoruce and click next")
-
-  ![ ](/99_images/image129.png "provide a SAP resource tag and click next")
-
-  ![ ](/99_images/image130.png "click next")
-
-  ![ ](/99_images/image131.png "select the secondary node and click next")
-
-  ![ ](/99_images/image132.png "select intelligent and click next")
-
-  ![ ](/99_images/image133.png "select priority 1 and click next")
-
-  ![ ](/99_images/image134.png "select priority 10 and click next")
-
-  Click close here and don't go further
-
-  ![ ](/99_images/image135.png "Un extended SAP resource hierarchies")
-
-## 6. Install database Instance
+## 9. Install database Instance
 
   In this example, SAP NetWeaver is installed on SAP HANA. You can use every supported database for this installation. For more information on how to install SAP HANA in Azure, see High availability of SAP HANA on Azure VMs on Red Hat Enterprise Linux. For a list of supported databases, see SAP Note 1928533.
 
@@ -204,7 +135,7 @@
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
   ```
 
-## 7. SAP NetWeaver application server installation
+## 10. SAP NetWeaver application server installation
 
   Follow these steps to install an SAP application server.
 
@@ -222,7 +153,7 @@
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
   ```
 
-## 8. Update SAP HANA secure store
+## 11. Update SAP HANA secure store
 
   Update the SAP HANA secure store to point to the virtual name of the SAP HANA System Replication setup.
 
