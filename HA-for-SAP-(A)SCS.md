@@ -43,11 +43,11 @@
 
   High availability(HA) for SAP Netweaver central services requires shared storage. To achieve that on Linux virtual machine so far it was necessary to build separate highly available NFS cluster.
 
-  Now it is possible to achieve SAP Netweaver HA by using storage replication using SIOS Datakeeper of SIOS Protection Suite. Using SIOS Datakeeper's Block level Replication  helps to sync the ASCS\<nr> mount point required for failover. SIOS Protection Suite takes care of the SAP Netweaver central services(ASCS/SCS) failover.  
+  Now it is possible to achieve SAP Netweaver HA by using storage replication using SIOS Datakeeper of SIOS Protection Suite. Using SIOS Datakeeper's Block level Replication  helps to sync the ASCS\<nr> mount point required for failover. SIOS Protection Suite takes care of the SAP Netweaver central services(ASCS/SCS) failover.
 
   ![ASCS](/99_images/Architecture_Diragram_ASCS.jpg)  
 
-  Each paif of servers are in respctive Avialbility Sets as per the above Architecture Diagram. And the solution can be used in Availability Zone Scenario too as long as Synchronous Data Replication is possilbe. Asynchronous Data Replication is supported only for Disaster Recovery Scenarios
+  Each pair of servers are in respctive Avialbility Sets as per the above Architecture Diagram. And the solution can be used in Availability Zone Scenario too as long as Synchronous Data Replication is possilbe. Asynchronous Data Replication is supported only for Disaster Recovery Scenarios
 
   ![HANA-DB](/99_images/ASCS1.png)  
 
