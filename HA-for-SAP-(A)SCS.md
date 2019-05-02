@@ -127,7 +127,7 @@ sapwebdisp, Web Dispatcher, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104631
 gwrd, Gateway, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104632
 ```
 
-## 7. [A] Install SAP NetWeaver ERS on Node-1
+## 7. Install SAP NetWeaver ERS on Node-1
 
  Install SAP NetWeaver ERS as root on the First node using a physical hostname and the instance number is 10.
 
@@ -226,11 +226,13 @@ name, description, dispstatus, textstatus, starttime, elapsedtime, pid
 enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18981
 ```
 
-## [12. Create SAP Resource for (A)SCS](Create-sap-ascs00.md)
+## [12. Switch Back VIP to Node-1](Switch-VIP-Node-1.md)
 
-## [13. Create SAP Resource for ERS](Create-sap-ers10.md)
+## [13. Create SAP Resource for (A)SCS](Create-sap-ascs00.md)
 
-## 14. Install database Instance
+## [14. Create SAP Resource for ERS](Create-sap-ers10.md)
+
+## 15. Install database Instance
 
   In this example, SAP NetWeaver is installed on SAP HANA. You can use every supported database for this installation. For more information on how to install SAP HANA in Azure, see High availability of SAP HANA on Azure VMs on Red Hat Enterprise Linux. For a list of supported databases, see SAP Note 1928533.
 
@@ -244,7 +246,7 @@ enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
   ```
 
-## 15. SAP NetWeaver application server installation
+## 16. SAP NetWeaver application server installation
 
   Follow these steps to install an SAP application server.
 
@@ -262,7 +264,7 @@ enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
   ```
 
-## 16. Update SAP HANA secure store
+## 17. Update SAP HANA secure store
 
   Update the SAP HANA secure store to point to the virtual name of the SAP HANA System Replication setup.
 
