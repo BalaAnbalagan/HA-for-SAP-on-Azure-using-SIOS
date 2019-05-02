@@ -1,39 +1,49 @@
-# 7. Create SAP Resource SAP-S4D\_ERS10
+# Create SAP Resource SAP-S4D_ERS10
 
 Click create resource from lkGUIapp
 
-![ ](/99_images/image136.png "select SAP")
+![ ](/99_images/create-sap-res-s4d-ers10-1.png)
 
-![ ](/99_images/image137.png "select intelligent and click next")
+![ ](/99_images/create-sap-res-s4d-ers10-2.png)
 
-![ ](/99_images/image138.png "select the SID and click next")
+![ ](/99_images/create-sap-res-s4d-ers10-3.png)
 
-![ ](/99_images/image139.png "select the ERS instance and click next")
+![ ](/99_images/create-sap-res-s4d-ers10-4.png)
 
-![ ](/99_images/image140.png "select the (A)SCS instance and click next")
+![ ](/99_images/create-sap-res-s4d-ers10-5.png)
 
-![ ](/99_images/image141.png "provide a SAP resource tag and click next")
+![ ](/99_images/create-sap-res-s4d-ers10-6.png)
 
-![ ](/99_images/image142.png "click next")
+![ ](/99_images/create-sap-res-s4d-ers10-7.png)
 
-![ ](/99_images/image143.png "")
+![ ](/99_images/create-sap-res-s4d-ers10-8.png)
 
-![ ](/99_images/image144.png "select the secondary node and click next")
+![ ](/99_images/create-sap-res-s4d-ers10-9.png)
 
-![ ](/99_images/image145.png "select intelligent and click next")
+![ ](/99_images/create-sap-res-s4d-ers10-10.png)
 
-![ ](/99_images/image146.png "select priority 1 and click next")
+![ ](/99_images/create-sap-res-s4d-ers10-11.png)
 
-![ ](/99_images/image147.png "select priority 10 and click next")
+![ ](/99_images/create-sap-res-s4d-ers10-12.png)
 
-![ ](/99_images/image148.png "select ")
+![ ](/99_images/create-sap-res-s4d-ers10-13.png)
 
-![ ](/99_images/image149.png)*11*
+![ ](/99_images/create-sap-res-s4d-ers10-14.png)
 
-Click accept defaults
+![ ](/99_images/create-sap-res-s4d-ers10-15.png)
 
-![ ](/99_images/image150.png)*11*
+![ ](/99_images/create-sap-res-s4d-ers10-16.png)
 
-![ ](/99_images/image151.png)*11*
+![ ](/99_images/create-sap-res-s4d-ers10-17.png)
 
-Click finish and Done in the next screen
+![ ](/99_images/create-sap-res-s4d-ers10-18.png)
+
+![ ](/99_images/create-sap-res-s4d-ers10-19.png)
+
+![ ](/99_images/create-sap-res-s4d-ers10-20.png)
+
+![ ](/99_images/create-sap-res-s4d-ers10-21.png)
+
+![ ](/99_images/create-sap-res-s4d-ers10-22.png)
+
+![ ](/99_images/create-sap-res-s4d-ers10-23.png)
