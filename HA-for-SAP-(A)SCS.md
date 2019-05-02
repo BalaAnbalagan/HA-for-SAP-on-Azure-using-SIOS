@@ -100,7 +100,7 @@ Please follow the respective document in the Proving Ground Infrastructure Provi
 
 ### [3. Create IP Resource for (A)SCS](Create-IP-Resource-scs.md)
 
-## 6. [A] Install SAP NetWeaver ASCS
+## 6. Install SAP NetWeaver ASCS in Node-1
 
  Install SAP NetWeaver ASCS as root on the first node using a virtual hostname that maps to the IP resouce created in privious step i.e.,  s4dascs, 11.1.2.60  
 
@@ -127,7 +127,7 @@ sapwebdisp, Web Dispatcher, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104631
 gwrd, Gateway, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104632
 ```
 
-## 7. [A] Install SAP NetWeaver ERS
+## 7. [A] Install SAP NetWeaver ERS on Node-1
 
  Install SAP NetWeaver ERS as root on the second node using a physical hostname and the instance number is 10.
 
@@ -153,11 +153,17 @@ enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18
 
 ## [8. Create Data Replication Resource for (A)SCS Mount Point](create-data-rep-ascs00.md)
 
-## [9. Create SAP Resource for (A)SCS](Create-sap-ascs00.md)
+## [9. Switch VIP to Node-2](Switch-VIP-Node-2.md)
 
-## [10. Create SAP Resource for ERS](Create-sap-ers10.md)
+## 10. Install SAP NetWeaver ASCS in Node-2
 
-## 11. Install database Instance
+## 11. Install SAP NetWeaver ERS on Node-1
+
+## [12. Create SAP Resource for (A)SCS](Create-sap-ascs00.md)
+
+## [13. Create SAP Resource for ERS](Create-sap-ers10.md)
+
+## 14. Install database Instance
 
   In this example, SAP NetWeaver is installed on SAP HANA. You can use every supported database for this installation. For more information on how to install SAP HANA in Azure, see High availability of SAP HANA on Azure VMs on Red Hat Enterprise Linux. For a list of supported databases, see SAP Note 1928533.
 
@@ -171,7 +177,7 @@ enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
   ```
 
-## 12. SAP NetWeaver application server installation
+## 15. SAP NetWeaver application server installation
 
   Follow these steps to install an SAP application server.
 
@@ -189,7 +195,7 @@ enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18
   sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
   ```
 
-## 13. Update SAP HANA secure store
+## 16. Update SAP HANA secure store
 
   Update the SAP HANA secure store to point to the virtual name of the SAP HANA System Replication setup.
 
