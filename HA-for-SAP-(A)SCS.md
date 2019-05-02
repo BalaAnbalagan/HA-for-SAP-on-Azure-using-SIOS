@@ -1,4 +1,4 @@
-------------------DRAFT---------------------------------------
+> ------------------DRAFT---------------------------------------
 
 # Azure Virtual Machines high availability for SAP NetWeaver on Linux using SIOS Protection Suite
 
@@ -129,7 +129,7 @@ gwrd, Gateway, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104632
 
 ## 7. [A] Install SAP NetWeaver ERS on Node-1
 
- Install SAP NetWeaver ERS as root on the second node using a physical hostname and the instance number is 10.
+ Install SAP NetWeaver ERS as root on the First node using a physical hostname and the instance number is 10.
 
  You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst. You can use parameter SAPINST_USE_HOSTNAME to install SAP, using  virtual hostname.
 
@@ -157,7 +157,74 @@ enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18
 
 ## 10. Install SAP NetWeaver ASCS in Node-2
 
-## 11. Install SAP NetWeaver ERS on Node-1
+ Install SAP NetWeaver ASCS as root on the first node using a virtual hostname that maps to the IP resouce created in privious step i.e.,  s4dascs, 11.1.2.60  
+
+ You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst. You can use parameter SAPINST_USE_HOSTNAME to install SAP, using virtual hostname.
+
+ ```bash
+ sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=S4DASCS
+ ```
+
+```bash
+ df -h |grep sap
+```
+
+```console
+Filesystem                                         Size  Used Avail Use% Mounted on
+/dev/sdc1                                           64G  240M   64G   1% /usr/sap
+/dev/sdf1                                           64G  362M   64G   1% /usr/sap/S4D
+/dev/sde1                                           64G  259M   64G   1% /usr/sap/S4D/ERS10
+pg-nfs01.provingground.net:/export/media           4.0T  149G  3.9T   4% /sapmedia
+pg-nfs01.provingground.net:/export/media/sapmnt    4.0T  149G  3.9T   4% /sapmnt
+pg-nfs01.provingground.net:/export/media/saptrans  4.0T  149G  3.9T   4% /usr/sap/trans
+```
+
+Make sure the disk being replicated is NOT mounted here
+
+During this SAP (A)SCSinstallation installer, we will be using /usr/sap/S4D mount for ASCS and this installation is required to get the Installation directories, User Environment created for (A)SCS.
+
+[Please refer the Node-1 SAP Installation Screenshots](SAPINST-ASCS-NODE1.md)
+
+```bash
+/usr/sap/S4D/ASCS00/exe/sapcontrol -prot NI_HTTP -nr 00 -function GetProcessList
+```
+
+```console
+01.05.2019 12:42:17
+GetProcessList
+OK
+name, description, dispstatus, textstatus, starttime, elapsedtime, pid
+msg_server, MessageServer, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104629
+enserver, EnqueueServer, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104630
+sapwebdisp, Web Dispatcher, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104631
+gwrd, Gateway, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104632
+```
+
+## 11. Install SAP NetWeaver ERS on Node-2
+
+ Install SAP NetWeaver ERS as root on the Second node using a physical hostname and the instance number is 10.
+
+ You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst. You can use parameter SAPINST_USE_HOSTNAME to install SAP, using  virtual hostname.
+
+ ```bash
+ sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
+ ```
+
+During this SAP (A)SCSinstallation installer, we will be using /usr/sap/S4D mount for ASCS and this installation is required to get the Installation directories, User Environment created for ERS.
+
+[Please refer the Node-1 SAP Installation Screenshots](SAPINST-ERS-NODE1.md)
+
+```bash
+/usr/sap/S4D/ERS10/exe/sapcontrol -prot NI_HTTP -nr 10 -function GetProcessList
+```
+
+```console
+1.05.2019 15:00:08
+GetProcessList
+OK
+name, description, dispstatus, textstatus, starttime, elapsedtime, pid
+enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18981
+```
 
 ## [12. Create SAP Resource for (A)SCS](Create-sap-ascs00.md)
 
