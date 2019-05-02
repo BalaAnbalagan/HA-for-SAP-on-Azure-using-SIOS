@@ -51,7 +51,6 @@
 
   ![HANA-DB](/99_images/ASCS1.png)  
 
-![ ](/99_images/SIOS-Components-Functions-1.png)
 
   SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address. Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
 
@@ -94,7 +93,30 @@ Please follow the respective document in the Proving Ground Infrastructure Provi
  az network nic ip-config create --resource-group SIOS-SUSE --nic-name NIC_APP-azsuascs1 --private-ip-address 11.1.2.60 --name S4DASCS
  ```
 
-## [4. Install SIOS Protection Suite & Recovery Kits](Install-SPS-Components.md)
+## 4. Install SIOS Protection Suite & Recovery Kits
+
+The following SIOS components installed in respective nodes.
+
+LifeKeeper Core
+
+- azsuascs1
+- azsuascs2
+- azsusapwit1
+
+Witness/Quorum
+
+- azsusapwit1
+
+DataKeeper, SAP Application Reovery Kit & IP Recovery Kit
+
+- azsuascs1
+- azsuascs2
+
+Pictorial representation
+
+![ ](/99_images/SIOS-Components-Functions-1.png)
+
+[Please follow the installation screenshots here](Install-SPS-Components.md)
 
 ## [5. Create Communication Path between Cluster Nodes and Witness](Create-Comm-path-SCS.md)
 
