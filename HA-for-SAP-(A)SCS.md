@@ -61,7 +61,6 @@
 
 - While using Azure ILB, [step 6](## 6. Create Floating IP for (A)SCS & ERS cluster)
 
-
   The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
 
    |Components     | hostname     | IP address |  VIP       |  VHOSTNAME |
@@ -173,15 +172,10 @@ sapwebdisp, Web Dispatcher, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104631
 gwrd, Gateway, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104632
 ```
 
-Autostart = 1
+Please update & change the following (A)SCS Instance Profile Parameter
 
-Restart_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID)
-
-to
-
-Autostart = 0
-
-Start_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID)
+- Autostart = 1 --> 0
+- Restart_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID) --> Start_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID)
 
 ## 8. Install SAP NetWeaver ERS on Node-1
 
@@ -213,7 +207,23 @@ In this section we are using SIOS DataKeeper to replicate the mount point /usr/s
 
 SIOS DataKeeper for Linux provides an integrated data mirroring capability for LifeKeeper environments.  This feature enables LifeKeeper resources to operate in shared and non-shared storage environments.
 
+![ ](/99_images/Datakeeper-1.png)
+
+Key Features:
+
+- Host-based data replication leveraging existing LAN/WAN
+- Multi-target Replication
+- Automatic reversal of source/target during failover
+- Block-Level, Volume/LUN replication
+-Change-only replication
+- Very low overhead
+- Modes: Synchronous or Asynchronous
+- Prevents full re-syncs via bitmap file
+
 Please refer to the screenshots on [how to configure data replication](create-data-rep-ascs00.md)
+
+Note:
+Use SIOS DataKeeper only when shared storage solution for (A)SCS mounts are not available.
 
 ## 10. Switch VIP to Node-2
 
