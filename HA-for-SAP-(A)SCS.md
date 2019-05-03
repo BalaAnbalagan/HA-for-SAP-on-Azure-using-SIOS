@@ -177,6 +177,10 @@ Please update & change the following (A)SCS Instance Profile Parameter
 - Autostart = 1 --> 0
 - Restart_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID) --> Start_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID)
 
+Note:
+
+Please take backup f the profile before proceeding with installing on the seconday node.
+
 ## 8. Install SAP NetWeaver ERS on Node-1
 
  Install SAP NetWeaver ERS as root on the First node using a physical hostname and the instance number is 10.
@@ -259,7 +263,7 @@ Make sure the disk being replicated is NOT mounted here
 
 During this SAP (A)SCSinstallation installer, we will be using /usr/sap/S4D mount for ASCS and this installation is required to get the Installation directories, User Environment created for (A)SCS.
 
-[Please refer the Node-1 SAP Installation Screenshots](SAPINST-ASCS-NODE1.md)
+[Please refer the screenshots on [how to install SAP (A)SCS Installation](SAPINST-ASCS-NODE1.md)
 
 ```bash
 /usr/sap/S4D/ASCS00/exe/sapcontrol -prot NI_HTTP -nr 00 -function GetProcessList
@@ -302,7 +306,11 @@ name, description, dispstatus, textstatus, starttime, elapsedtime, pid
 enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18981
 ```
 
-## [13. Switch Back VIP to Node-1]
+## 13. Switch Back VIP to Node-1
+
+Switch back the VIP resource back to node to proceed with the SAP resouces creation.
+
+Please find the screenshots on [how to failback VIP to node-1](Switch-VIP-Node-1.md)
 
 ## [14. Create SAP Resource for (A)SCS](Create-sap-ascs00.md)
 
