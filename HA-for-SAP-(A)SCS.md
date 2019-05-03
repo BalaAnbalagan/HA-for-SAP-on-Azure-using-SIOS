@@ -142,9 +142,9 @@ The SIOS IP Recovery Kit to failover the IP between the cluster nodes.
 
 Please refer the following links to create the resources
 
-### [1. Create SIOS Enhanced Azure IP Gen App Resource for (A)SCS](Create-Azure-IP-GenApp-scs.md)
+- ### [1. Create SIOS Enhanced Azure IP Gen App Resource for (A)SCS](Create-Azure-IP-GenApp-scs.md)
 
-### [2. Create IP Resource for (A)SCS](Create-IP-Resource-scs.md)
+- ### [2. Create IP Resource for (A)SCS](Create-IP-Resource-scs.md)
 
 ## 7. Install SAP NetWeaver ASCS in Node-1
 
