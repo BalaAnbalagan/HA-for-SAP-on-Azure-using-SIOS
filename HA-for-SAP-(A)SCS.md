@@ -207,7 +207,13 @@ name, description, dispstatus, textstatus, starttime, elapsedtime, pid
 enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18981
 ```
 
-## [9. Create Data Replication Resource for (A)SCS Mount Point](create-data-rep-ascs00.md)
+## 9. Create Data Replication Resource for (A)SCS Mount Point
+
+In this section we are using SIOS DataKeeper to replicate the mount point /usr/sap/S4D/ASCS00 between the clusters
+
+SIOS DataKeeper for Linux provides an integrated data mirroring capability for LifeKeeper environments.  This feature enables LifeKeeper resources to operate in shared and non-shared storage environments.
+
+Please refer to the screenshots on [how to configure data replication](create-data-rep-ascs00.md)
 
 ## [10. Switch VIP to Node-2](Switch-VIP-Node-2.md)
 
