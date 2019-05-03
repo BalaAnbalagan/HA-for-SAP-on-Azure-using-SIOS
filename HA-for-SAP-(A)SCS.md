@@ -53,14 +53,6 @@
 
   SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address (its not mandatory to use it). Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
   
-  Note:
-
-- SIOS Enhanced IP GenApp adds 2 mins to the failover time
-
-- It can be used in scenaio's where ILB is not avialble
-
-- While using Azure ILB, [step 6](## 6. Create Floating IP for (A)SCS & ERS cluster)
-
   The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
 
    |Components     | hostname     | IP address |  VIP       |  VHOSTNAME |
@@ -137,6 +129,14 @@ In this section we will be using SIOS Enhanced Azure IP Generic Application whic
  az network nic ip-config create --resource-group SIOS-SUSE --nic-name NIC_APP-azsuascs1 --private-ip-address 11.1.2.60 --name S4DASCS
  ```
 
+  Note:
+
+- SIOS Enhanced IP GenApp adds 2 mins to the failover time
+
+- It can be used in scenaio's where ILB is not avialble
+
+- While using Azure ILB, this step is not required
+
 The SIOS IP Recovery Kit to failover the IP between the cluster nodes.
 
 Please refer the following links to create the resources
@@ -179,7 +179,7 @@ Please update & change the following (A)SCS Instance Profile Parameter
 
 Note:
 
-Please take backup f the profile before proceeding with installing on the seconday node.
+Please take backup of the profile before proceeding with installing on the seconday node.
 
 ## 8. Install SAP NetWeaver ERS on Node-1
 
@@ -312,9 +312,15 @@ Switch back the VIP resource back to node to proceed with the SAP resouces creat
 
 Please find the screenshots on [how to failback VIP to node-1](Switch-VIP-Node-1.md)
 
-## [14. Create SAP Resource for (A)SCS](Create-sap-ascs00.md)
+## 14. Create SAP Resource for (A)SCS
 
-## [15. Create SAP Resource for ERS](Create-sap-ers10.md)
+Pleas find the screenshots on [how to create SAP A(SCS) Resource](Create-sap-ascs00.md)
+
+## 15. Create SAP Resource for ERS
+
+Pleas find the screenshots on [how to create SAP A(SCS) Resource](Create-sap-ascs00.md)
+
+![SIOS SAP (A)SCS/ERS Cluster](/99_images/create-sap-res-s4d-ers10-22.png)
 
 ## 16. Install database Instance
 
