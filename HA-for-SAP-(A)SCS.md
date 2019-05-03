@@ -51,8 +51,16 @@
 
   ![HANA-DB](/99_images/ASCS1.png)  
 
+  SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address (its not mandatory to use it). Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
+  
+  Note:
 
-  SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address. Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
+- SIOS Enhanced IP GenApp adds 2 mins to the failover time
+
+- It can be used in scenaio's where ILB is not avialble
+
+- While using Azure ILB, [step 6](## 6. Create Floating IP for (A)SCS & ERS cluster)
+
 
   The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
 
@@ -87,12 +95,6 @@ Please follow the respective document in the Proving Ground Infrastructure Provi
  To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code B3D42JUFD to authenticate
  ```
 
- Azure IP GenApp run the following Azure CLI command to Switch the Secondary IP from one node to the other in a cluster.
-
- ```bash
- az network nic ip-config create --resource-group SIOS-SUSE --nic-name NIC_APP-azsuascs1 --private-ip-address 11.1.2.60 --name S4DASCS
- ```
-
 ## 4. Install SIOS Protection Suite & Recovery Kits
 
 The following SIOS components installed in respective nodes.
@@ -107,6 +109,8 @@ Witness/Quorum
 
 - azsusapwit1
 
+Note:- recommended to use 1 witness/cluster
+
 DataKeeper, SAP Application Reovery Kit & IP Recovery Kit
 
 - azsuascs1
@@ -118,9 +122,25 @@ Pictorial representation
 
 [Please follow the installation screenshots here](Install-SPS-Components.md)
 
-## [5. Create Communication Path between Cluster Nodes and Witness](Create-Comm-path-SCS.md)
+## 5. Create Communication Path between Cluster Nodes and Witness
+
+To create a communication path between a pair of servers, you must define the path individually on both servers. LifeKeeper allows you to create both TCP (TCP/IP) and TTY communication paths between a pair of servers. Only one TTY path can be created between a given pair. However, you can create multiple TCP communication paths between a pair of servers by specifying the local and remote addresses that are to be the end-points of the path. A priority value is used to tell LifeKeeper the order in which TCP paths to a given remote server should be used.
+
+Please refer the screenshots on [how to create communication path](Create-Comm-path-SCS.md)
 
 ## 6. Create Floating IP for (A)SCS & ERS cluster
+
+In this section we will be using SIOS Enhanced Azure IP Generic Application which creates the secondary IP Configuration for the given NIC on the VM
+
+ Azure IP GenApp run the following Azure CLI command to Switch the Secondary IP from one node to the other in a cluster.
+
+ ```bash
+ az network nic ip-config create --resource-group SIOS-SUSE --nic-name NIC_APP-azsuascs1 --private-ip-address 11.1.2.60 --name S4DASCS
+ ```
+
+The SIOS IP Recovery Kit to failover the IP between the cluster nodes.
+
+Please refer the following links to create the resources
 
 ### [1. Create SIOS Enhanced Azure IP Gen App Resource for (A)SCS](Create-Azure-IP-GenApp-scs.md)
 
@@ -152,6 +172,16 @@ enserver, EnqueueServer, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104630
 sapwebdisp, Web Dispatcher, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104631
 gwrd, Gateway, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104632
 ```
+
+Autostart = 1
+
+Restart_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID)
+
+to
+
+Autostart = 0
+
+Start_Program_00 = local $(_ER) pf=$(_PFL) NR=$(SCSID)
 
 ## 8. Install SAP NetWeaver ERS on Node-1
 
