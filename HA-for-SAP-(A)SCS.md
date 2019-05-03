@@ -211,11 +211,11 @@ SIOS DataKeeper for Linux provides an integrated data mirroring capability for L
 
 Key Features:
 
-- Host-based data replication leveraging existing LAN/WAN
+- Host-based data replication leveraging existing LAN/WAN
 - Multi-target Replication
-- Automatic reversal of source/target during failover
+- Automatic reversal of source/target during failover
 - Block-Level, Volume/LUN replication
--Change-only replication
+- Change-only replication
 - Very low overhead
 - Modes: Synchronous or Asynchronous
 - Prevents full re-syncs via bitmap file
