@@ -215,7 +215,11 @@ SIOS DataKeeper for Linux provides an integrated data mirroring capability for L
 
 Please refer to the screenshots on [how to configure data replication](create-data-rep-ascs00.md)
 
-## [10. Switch VIP to Node-2](Switch-VIP-Node-2.md)
+## 10. Switch VIP to Node-2
+
+To perform SAP (A)SCS installation on the secondary node we need the floating ip to point to the seconday nodes. so please fail over the IP resource to the secondary node.
+
+Please refer to the screenshots on [how to failover IP resource to secondary node](Switch-VIP-Node-2.md)
 
 ## 11. Install SAP NetWeaver ASCS in Node-2
 
@@ -288,7 +292,7 @@ name, description, dispstatus, textstatus, starttime, elapsedtime, pid
 enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18981
 ```
 
-## [13. Switch Back VIP to Node-1](Switch-VIP-Node-1.md)
+## [13. Switch Back VIP to Node-1]
 
 ## [14. Create SAP Resource for (A)SCS](Create-sap-ascs00.md)
 
