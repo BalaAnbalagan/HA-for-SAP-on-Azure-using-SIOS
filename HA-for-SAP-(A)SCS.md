@@ -41,7 +41,7 @@
 
 ## 1. Overview
 
-High availability(HA) for SAP Netweaver central services requires shared storage. This document describes on achieve High Availability on Linux virtual machine without using shared storage using SIOS DataKeeper and SIOS LikeKeeper of SIOS Protection Suite.
+High availability(HA) for SAP Netweaver central services requires shared storage. This document describes on achieve High Availability on Linux virtual machine without using shared storage and by using SIOS DataKeeper and SIOS LikeKeeper of SIOS Protection Suite.
 
 ![ASCS](/99_images/Architecture_Diragram_ASCS.jpg)  
 
