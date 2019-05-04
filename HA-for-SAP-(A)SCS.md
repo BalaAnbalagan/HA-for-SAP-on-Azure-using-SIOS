@@ -70,7 +70,7 @@ Upon AZSUASCS1 node-1 Comes back
 
 Upon AZSUASCS2 node-2 Fails
 
-![ASCS-SIOS](/99_images/HA1/Slide4.png) 
+![ASCS-SIOS](/99_images/HA1/Slide4.png)
 
 Note:
 /sapmnt & /usr/sap/trans are not part of this document.
