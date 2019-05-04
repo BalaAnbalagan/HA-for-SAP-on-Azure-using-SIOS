@@ -89,6 +89,8 @@ Please follow the respective document in the Proving Ground Infrastructure Provi
 
 ## 4. Install SIOS Protection Suite & Recovery Kits
 
+![ ](/99_images/SIOS-Components-Functions-2.png)
+
 The following SIOS components installed in respective nodes.
 
 LifeKeeper Core
@@ -103,14 +105,10 @@ Witness/Quorum
 
 Note:- recommended to use 1 witness/cluster
 
-DataKeeper, SAP Application Reovery Kit & IP Recovery Kit
+SAP HANA 2.0 Application Reovery Kit & IP Recovery Kit
 
-- azsuascs1
-- azsuascs2
-
-Pictorial representation
-
-![ ](/99_images/SIOS-Components-Functions-2.png)
+- azsuhana1
+- azsuhana2
 
 [Please follow the installation screenshots here](Install-SPS-Components.md)
 
