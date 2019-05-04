@@ -1,4 +1,4 @@
-------------------DRAFT---------------------------------------
+\------------------DRAFT---------------------------------------
 
 # High Availability Solution for SAP NetWeaver (RHEL, OEL & SuSE) & SAP HANA (RHEL & SuSE) on Azure using SIOS Protection Suite
 
@@ -12,6 +12,17 @@ please refer SAP Note [1662610](https://launchpad.support.sap.com/#/notes/166261
 
 - SUSE Linux Enterprise Server 12 SP3
 
-## 2. [SAP (A)SCS Cluster Configuration](HA-for-SAP-(A)SCS.md)
+Version Table
+-------------
+  | Components                     | Release |  SPS/Patch|
+  | ------------------------------ |:-------:|----------:|
+  |SAP S/4 HANA                    | 1709    | 00        |
+  |SAP HANA DB                     |  2.0    | 03        |
+  |SAP Kernel                      |  753    | 300       |
+  |SIOS Protection Suite for Linux |  9.3.1  |           |
+  |SIOS HANA2.0 ARK                |  2.0    |           |
+  |SIOS Enhanced Azure Gen App     |  2.4    |           | 
 
-## 3. [SAP HANA Database Cluster Configuration](HA-for-SAP-HANA-DB.md)
+## 2. [SAP (A)SCS Cluster Configuration](/SAP-ASCS/HA-for-SAP-(A)SCS.md)
+
+## 3. [SAP HANA Database Cluster Configuration](/SAP-HANA/HA-for-SAP-HANA-DB.md)
