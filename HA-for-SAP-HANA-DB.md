@@ -49,9 +49,91 @@ SAP Note [401162](https://launchpad.support.sap.com/#/notes/401162) has informat
 - Setting up an SAP HANA SR Performance Optimized Infrastructure (SLES for SAP Applications 12 SP1). The guide contains all of the required information to set up SAP HANA System Replication for on-premises development. Use this guide as a baseline.
 - Setting up an SAP HANA SR Cost Optimized Infrastructure (SLES for SAP Applications 12 SP1)
 
-## Overview
+## 1. Overview
 
 To achieve high availability, SAP HANA is installed on two virtual machines. The data is replicated by using HANA System Replication.
+
+## 2. Provission SAP HANA and Witness Infrastructure
+
+Use an terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using Load Balancer. You can also deploy the resources manually.
+
+Please follow the respective document in the Proving Ground Infrastructure Provisioning Git
+
+## 3. Install Azure CLI  
+
+ Install Azure CLI on the (A)SCS cluster nodes which is a pre-requisites for SIOS Enhanced Azure IP GenApp. Please refer the installation procedure respective to OS
+
+- [RHEL](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-yum?view=azure-cli-latest)  
+- [SLES](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-zypper?view=azure-cli-latest)  
+
+ Please login to portal.azure.com from the server.
+
+ ```bash
+ az login --use-device-code
+ ```
+
+ ```console
+ To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code B3D42JUFD to authenticate
+ ```
+## 4. Install SIOS Protection Suite & Recovery Kits
+
+The following SIOS components installed in respective nodes.
+
+LifeKeeper Core
+
+- azsuhana1
+- azsuhana2
+- azsusapwit2
+
+Witness/Quorum
+
+- azsusapwit2
+
+Note:- recommended to use 1 witness/cluster
+
+DataKeeper, SAP Application Reovery Kit & IP Recovery Kit
+
+- azsuascs1
+- azsuascs2
+
+Pictorial representation
+
+![ ](/99_images/SIOS-Components-Functions-2.png)
+
+[Please follow the installation screenshots here](Install-SPS-Components.md)
+
+## 5. Create Communication Path between Cluster Nodes and Witness
+
+To create a communication path between a pair of servers, you must define the path individually on both servers. LifeKeeper allows you to create both TCP (TCP/IP) and TTY communication paths between a pair of servers. Only one TTY path can be created between a given pair. However, you can create multiple TCP communication paths between a pair of servers by specifying the local and remote addresses that are to be the end-points of the path. A priority value is used to tell LifeKeeper the order in which TCP paths to a given remote server should be used.
+
+Please refer the screenshots on [how to create communication path](Create-Comm-path-HANA.md)
+
+## 6. Create Floating IP for (A)SCS & ERS cluster
+
+In this section we will be using SIOS Enhanced Azure IP Generic Application which creates the secondary IP Configuration for the given NIC on the VM
+
+ Azure IP GenApp run the following Azure CLI command to Switch the Secondary IP from one node to the other in a cluster.
+
+ ```bash
+ az network nic ip-config create --resource-group SIOS-SUSE --nic-name NIC_APP-azsuascs1 --private-ip-address 11.1.2.60 --name S4DASCS
+ ```
+
+  Note:
+
+- SIOS Enhanced IP GenApp adds 2 mins to the failover time
+
+- It can be used in scenario's where ILB is not avialble
+
+- While using Azure ILB, this step is not required
+
+The SIOS IP Recovery Kit is used to failover the IP between the cluster nodes.
+
+Please refer the following links to create the resources
+
+- ### [1. Create SIOS Enhanced Azure IP Gen App Resource for HANA](Create-Azure-IP-GenApp-HANA.md)
+
+- ### [2. Create IP Resource for HANA](Create-IP-Resource-HANA.md)
+
 
 ### 2. SAP HANA DB Clustering
 
