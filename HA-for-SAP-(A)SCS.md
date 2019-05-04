@@ -46,10 +46,8 @@ This document describes on how to achieve High Availability for SAP using SIOS P
 Pro's
 
 - No iSCSI decives required
-- 
 
 Con's
-
 
 ![ASCS](/99_images/Architecture_Diragram_ASCS.png)  
 
@@ -87,8 +85,6 @@ The following list shows the configuration of the (A)SCS and ERS IP addresses & 
    |SAP App Pool   | azsusap1     | 11.1.2.53  |            |            |
    |               | azsusap2     | 11.1.2.54  |            |            |
    |SIOS Witness   | azsusapwit1  | 11.1.2.65  |            |            |
-
-
 
 ## 2. Provission SAP (A)SCS, ERS and Witness Infrastructure
 
