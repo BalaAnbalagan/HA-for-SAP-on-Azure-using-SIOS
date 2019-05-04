@@ -41,11 +41,11 @@
 
 ## 1. Overview
 
-High availability(HA) for SAP Netweaver central services requires shared storage. This document describes on achieve High Availability on Linux virtual machine without using shared storage and by using SIOS DataKeeper and SIOS LikeKeeper of SIOS Protection Suite.
+This document describes on how to achieve High Availability for SAP using SIOS Protection Suite for Linux VM. SIOS provides High Availability for SAP (A)SCS **_with or without_**shared storage. When shared storage in not availble SIOS Datakeeper is used to replicate the volumes/disk between cluster nodes. SIOS Protection Suite can also with Azure NetApp Files which eleminates SIOS Datakeeper's need.
 
 ![ASCS](/99_images/Architecture_Diragram_ASCS.png)  
 
-Each pair of servers are grouped into respective Avialbility Sets as per the above Architecture Diagram. And the solution can be used in Availability Zone Scenario too as long as Synchronous Data Replication is possilbe. Asynchronous Data Replication is supported only for Disaster Recovery Scenarios
+Each pair of servers are grouped into respective Avialbility Sets as per the above Architecture Diagram. Availability Zones can also be used.
 
 ![Avilability Sets](/99_images/Availability-Sets.png)
 
@@ -135,11 +135,11 @@ In this section we will be using SIOS Enhanced Azure IP Generic Application whic
 
 - SIOS Enhanced IP GenApp adds 2 mins to the failover time
 
-- It can be used in scenaio's where ILB is not avialble
+- It can be used in scenario's where ILB is not avialble
 
 - While using Azure ILB, this step is not required
 
-The SIOS IP Recovery Kit to failover the IP between the cluster nodes.
+The SIOS IP Recovery Kit is used to failover the IP between the cluster nodes.
 
 Please refer the following links to create the resources
 
@@ -230,6 +230,7 @@ Please refer to the screenshots on [how to configure data replication](create-da
 
 Note:
 Use SIOS DataKeeper only when shared storage solution for (A)SCS mounts are not available.
+Asynchronous Data Replication is supported only for Disaster Recovery Scenarios
 
 ## 10. Switch VIP to Node-2
 
