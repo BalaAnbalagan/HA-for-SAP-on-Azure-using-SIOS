@@ -60,15 +60,15 @@ In the (A)SCS HA configuration shown below, The SAP System S4D's ASCS is running
 
 ![ASCS-SIOS](/99_images/HA1/Slide1.png)
 
-Upon AZSUASCS1 node Fails
+Upon AZSUASCS1 node-1 Fails
 
 ![ASCS-SIOS](/99_images/HA1/Slide2.png)
 
-Node 1 Comes back
+Upon AZSUASCS1 node-1 Comes back
 
 ![ASCS-SIOS](/99_images/HA1/Slide3.png)
 
-Node 2 fails
+Upon AZSUASCS2 node-2 Fails
 
 ![ASCS-SIOS](/99_images/HA1/Slide4.png) 
 
