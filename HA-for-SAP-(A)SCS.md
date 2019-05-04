@@ -41,7 +41,7 @@
 
 ## 1. Overview
 
-This document describes on how to achieve High Availability for SAP using SIOS Protection Suite for Linux VM. SIOS provides High Availability for SAP (A)SCS **with or without** shared storage. When shared storage in not availble SIOS Datakeeper is used to replicate the volumes/disk between cluster nodes. SIOS Protection Suite can also with Azure NetApp Files which eleminates SIOS Datakeeper's need. 
+This document describes on how to achieve High Availability for SAP using SIOS Protection Suite for Linux VM. SIOS provides High Availability for SAP (A)SCS **with or without** shared storage. When shared storage in not availble SIOS Datakeeper is used to replicate the volumes/disk between cluster nodes. SIOS Protection Suite can also with Azure NetApp Files which eleminates SIOS Datakeeper's need.
 
 Pro's
 
