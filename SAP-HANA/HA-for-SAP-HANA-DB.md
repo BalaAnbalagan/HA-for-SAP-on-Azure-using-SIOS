@@ -53,6 +53,17 @@ SAP Note [401162](https://launchpad.support.sap.com/#/notes/401162) has informat
 
 To achieve high availability, SAP HANA is installed on two virtual machines. The data is replicated by using HANA System Replication.
 
+![ASCS](/99_images/Architecture_Diragram_ASCS.png)  
+
+![HANA-DB](/99_images/DB1.png)
+
+The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
+
+  |Components     | hostname     | IP address |  VIP       |  VHOSTNAME |
+  | --------------| -------------|------------| -----------|----------- |
+  |SAP DB Pool    | azsuhana1    | 11.1.2.51  |  11.1.2.50 |  s4ddb     |
+  |               | azsuhana2    | 11.1.2.52  |            |            |
+  |SIOS Witness   | azsusapwit2  | 11.1.2.66  |            |            |
 ## 2. Provission SAP HANA and Witness Infrastructure
 
 Use an terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using Load Balancer. You can also deploy the resources manually.
@@ -135,21 +146,7 @@ Please refer the following links to create the resources
 
 - ### [2. Create IP Resource for HANA](Create-IP-Resource-HANA.md)
 
-### 2. SAP HANA DB Clustering
-
-![HANA-DB](/99_images/DB1.png)
-
-![ ](/99_images/SIOS-Components-Functions-2.png)
-
-The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
-
-  |Components     | hostname     | IP address |  VIP       |  VHOSTNAME |
-  | --------------| -------------|------------| -----------|----------- |
-  |SAP DB Pool    | azsuhana1    | 11.1.2.51  |  11.1.2.50 |  s4ddb     |
-  |               | azsuhana2    | 11.1.2.52  |            |            |
-  |SIOS Witness   | azsusapwit2  | 11.1.2.66  |            |            |
-
-## Install SAP HANA
+## 7. Install SAP HANA
 
 The steps in this section use the following prefixes:
 
@@ -194,7 +191,7 @@ Download the latest SAP Host Agent archive from the SAP Software Center and run 
 sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive <path to SAP Host Agent SAR>
 ```
 
-## Configure SAP HANA 2.0 System Replication
+## 8. Configure SAP HANA 2.0 System Replication
 
 - [A] \: The step applies to all nodes.
 - [1] \: The step applies to node 1 only.
@@ -302,7 +299,7 @@ click comm path icon to create a communication path between all the systems in b
 Note:
 Please uncheck the comm path redendency warning in the view menu to see all nodes in green
 
-## 3. SAP HANA Database Protection Configuration
+## 9. SAP HANA Database Protection Configuration
 
 ### 1. Create Virtual IP for HANA DB
 

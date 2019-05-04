@@ -21,7 +21,7 @@ Version Table
   |SAP Kernel                      |  753    | 300       |
   |SIOS Protection Suite for Linux |  9.3.1  |           |
   |SIOS HANA2.0 ARK                |  2.0    |           |
-  |SIOS Enhanced Azure Gen App     |  2.4    |           | 
+  |SIOS Enhanced Azure Gen App     |  2.4    |           |
 
 ## 2. [SAP (A)SCS Cluster Configuration](/SAP-ASCS/HA-for-SAP-(A)SCS.md)
 
