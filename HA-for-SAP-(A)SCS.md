@@ -47,6 +47,7 @@ Pro's
 
 - No iSCSI decives required
 - 
+
 Con's
 
 
@@ -74,8 +75,6 @@ Upon AZSUASCS2 node-2 Fails
 
 Note:
 /sapmnt & /usr/sap/trans are not part of this document.
-
-
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address (its not mandatory to use it). Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
   
