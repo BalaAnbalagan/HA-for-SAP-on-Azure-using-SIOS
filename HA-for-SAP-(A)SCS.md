@@ -43,13 +43,13 @@
 
 High availability(HA) for SAP Netweaver central services requires shared storage. This document describes on achieve High Availability on Linux virtual machine without using shared storage and by using SIOS DataKeeper and SIOS LikeKeeper of SIOS Protection Suite.
 
-![ASCS](/99_images/Architecture_Diragram_ASCS.jpg)  
+![ASCS](/99_images/Architecture_Diragram_ASCS.png)  
 
-Each pair of servers are greouped into respective Avialbility Sets as per the above Architecture Diagram. And the solution can be used in Availability Zone Scenario too as long as Synchronous Data Replication is possilbe. Asynchronous Data Replication is supported only for Disaster Recovery Scenarios
+Each pair of servers are grouped into respective Avialbility Sets as per the above Architecture Diagram. And the solution can be used in Availability Zone Scenario too as long as Synchronous Data Replication is possilbe. Asynchronous Data Replication is supported only for Disaster Recovery Scenarios
 
 ![Avilability Sets](/99_images/Availability-Sets.png)
 
-![HANA-DB](/99_images/ASCS1.png)
+![ASCS-SIOS](/99_images/ASCS.png)
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address (its not mandatory to use it). Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
   
@@ -62,6 +62,8 @@ The following list shows the configuration of the (A)SCS and ERS IP addresses & 
    |SAP App Pool   | azsusap1     | 11.1.2.53  |            |            |
    |               | azsusap2     | 11.1.2.54  |            |            |
    |SIOS Witness   | azsusapwit1  | 11.1.2.65  |            |            |
+
+
 
 ## 2. Provission SAP (A)SCS, ERS and Witness Infrastructure
 
@@ -376,5 +378,16 @@ Pleas find the screenshots on [how to create SAP A(SCS) Resource](Create-sap-asc
   ```
 
 ## Fail-over Testing
+
+Profile Directory
+
+```console
+-rw-r--r-- 1 s4dadm sapsys  788 May  1 20:50 DEFAULT.PFL
+-rw-r--r-- 1 s4dadm sapsys 4072 May  1 21:15 S4D_ASCS00_S4DASCS
+-rw-r--r-- 1 s4dadm sapsys 2259 May  2 01:06 S4D_ERS10_azsuascs1
+-rw-r--r-- 1 s4dadm sapsys 2259 May  1 21:15 S4D_ERS10_azsuascs2
+-rw-r----- 1 s4dadm sapsys 5186 May  2 01:08 S4D_D00_azsusap1
+-rw-r----- 1 s4dadm sapsys 3333 May  2 01:08 S4D_D00_azsusap2
+```
 
 Please refer the screenshots on [testing (A)SCS fail-over testing](SIOS-ascs-Failover-Testing.md)
