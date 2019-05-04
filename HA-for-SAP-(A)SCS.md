@@ -57,19 +57,19 @@ Each pair of servers are grouped into respective Avialbility Sets as per the abo
 
 In the (A)SCS HA configuration shown below, The SAP System S4D's ASCS is running in Node-1 AZSUASCS1 using instance profile S4D_ASCS00_S4DASCS using virtual hostname and the SAP ERS is running in Node-2 AZSUASCS2 using the instance profile S4D_ERS10_azsuascs2 i.e instance profile using local hostname. The File System required to failover the SAP ASCS /usr/sap/S4D/ASCS00 is being replicated from Node-1 to Node-2.
 
-![ASCS-SIOS](/99_images/HA1/Slide1.png)
+![ASCS-SIOS](/99_images/Slide1.png)
 
 Upon AZSUASCS1 node-1 Fails
 
-![ASCS-SIOS](/99_images/HA1/Slide2.png)
+![ASCS-SIOS](/99_images/Slide2.png)
 
 Upon AZSUASCS1 node-1 Comes back
 
-![ASCS-SIOS](/99_images/HA1/Slide3.png)
+![ASCS-SIOS](/99_images/Slide3.png)
 
 Upon AZSUASCS2 node-2 Fails
 
-![ASCS-SIOS](/99_images/HA1/Slide4.png)
+![ASCS-SIOS](/99_images/Slide4.png)
 
 Note:
 /sapmnt & /usr/sap/trans are not part of this document.
