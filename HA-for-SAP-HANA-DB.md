@@ -75,6 +75,7 @@ Please follow the respective document in the Proving Ground Infrastructure Provi
  ```console
  To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code B3D42JUFD to authenticate
  ```
+
 ## 4. Install SIOS Protection Suite & Recovery Kits
 
 The following SIOS components installed in respective nodes.
@@ -108,14 +109,14 @@ To create a communication path between a pair of servers, you must define the pa
 
 Please refer the screenshots on [how to create communication path](Create-Comm-path-HANA.md)
 
-## 6. Create Floating IP for (A)SCS & ERS cluster
+## 6. Create Floating IP for HANA cluster
 
 In this section we will be using SIOS Enhanced Azure IP Generic Application which creates the secondary IP Configuration for the given NIC on the VM
 
  Azure IP GenApp run the following Azure CLI command to Switch the Secondary IP from one node to the other in a cluster.
 
  ```bash
- az network nic ip-config create --resource-group SIOS-SUSE --nic-name NIC_APP-azsuascs1 --private-ip-address 11.1.2.60 --name S4DASCS
+ az network nic ip-config create --resource-group SIOS-SUSE --nic-name NIC_APP-azsuhana1 --private-ip-address 11.1.2.50 --name S4DDB
  ```
 
   Note:
@@ -133,7 +134,6 @@ Please refer the following links to create the resources
 - ### [1. Create SIOS Enhanced Azure IP Gen App Resource for HANA](Create-Azure-IP-GenApp-HANA.md)
 
 - ### [2. Create IP Resource for HANA](Create-IP-Resource-HANA.md)
-
 
 ### 2. SAP HANA DB Clustering
 
