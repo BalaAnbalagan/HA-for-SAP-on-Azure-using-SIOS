@@ -13,7 +13,6 @@ please refer SAP Note [1662610](https://launchpad.support.sap.com/#/notes/166261
 - SUSE Linux Enterprise Server 12 SP3
 
 Version Table
--------------
   | Components                     | Release |  SPS/Patch|
   | ------------------------------ |:-------:|----------:|
   |SAP S/4 HANA                    | 1709    | 00        |
@@ -26,3 +25,17 @@ Version Table
 ## 2. [SAP (A)SCS Cluster Configuration](/SAP-ASCS/HA-for-SAP-(A)SCS.md)
 
 ## 3. [SAP HANA Database Cluster Configuration](/SAP-HANA/HA-for-SAP-HANA-DB.md)
+
+
+
+**SIOS Contact Info**
+
+Request info: info@us.sios.com
+
+Info Toll Free (US): 866.318.0108
+
+Main: +1.650.645.7000
+
+US: 877.457.5113
+
+International: +1.803.808.4270 *Post Production Customers Only*

@@ -5,3 +5,5 @@
 .terraform/
 lock.jason
 do-not*
+SIOS.code-workspace
+*.git*
