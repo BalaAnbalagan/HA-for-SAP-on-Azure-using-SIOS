@@ -1,13 +1,13 @@
 # SAP ASCS Failover
 
-![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Active Protected azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target azsuhanal azsuhana2 SAP-S4D SAP-S e e HANA-S4 update Protection Level update Recoveru Level Handle Warnings SSCC HA Actions In Service\... Out of Service\... Extend Resource Hierarchy.. unextend Resource Hierarchy\... Create Dependency.. Delete Dependency\... Delete Resource Hierarchy.. properties\... ](/99_images/image158.png)*12*
+![ ](/99_images/image158.png)*12*
 
-![Machine generated alternative text: InService\@azsuascs2 NeKt\> Cancel ](/99_images/image159.png)*12*
+![ ](/99_images/image159.png)*12*
 
-![Machine generated alternative text: n Service\@azsuascs2 Confirm in service action for Server: azsuascs2 Resource: SAP-S4D ERSIO (SAPID-S40-ERSIO) \<Back Cancel ](/99_images/image160.png)*12*
+![ ](/99_images/image160.png)*12*
 
-![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Not Active azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target azsuhanal azsuhana2 SAP-S4D ERSIO SAP-S4D ASCSOO e /usr/sap/S4D/Ascsoo e datarep-Ascsoo vip-11.1.2.60 HANA-S40 InService\@azsuascs2 Brin in SAP-S4D ERSIO in service on azsuascs2 Put resource \"SAP-S4D ERSIO\" in-service Communication failure: destination system \"azsuersl \" is out of service. Lock for azsuersl is ignored because system is OOS Done ](/99_images/image161.png)*12*
+![ ](/99_images/image161.png)*12*
 
-![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Not Active SAP-S4D ERSIO SAP-S4D ASCSOO azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target azsuhanal azsuhana2 e /usr/sap/S4D/Ascsoo e datarep-Ascsoo vip-11.1.2.60 HANA-S40 InService\@azsuascs2 Brin in SAP-S4D ERSIO in service on azsuascs2 Put resource \"SAP-S4D ERSIO\" in-service Communication failure: destination system \"azsuersl \" is out of service. Lock for azsuersl is ignored because system is OOS BEGIN restore of \'lip-11.1.2.60\" INFORMATION: BEGIN restore of ip-11.1.2.60 on azsuascs2 Note: This process could take up to 2 minutes Done ](/99_images/image162.png)*12*
+![ ](/99_images/image162.png)*12*
 
-![Machine generated alternative text: LifeKeeper GUI\@azsuascs2 Eile Edit View Help Hierarchies Not Active SAP-S4D ERSIO SAP-S4D ASCSOO /usr/sap/S4D/Ascsoo azsusapwitl azsusapwit2 azsuascsl azsuascs2 Target \--name S4DASCS \> /dev/null 2\>&1) on azsuascsl azsuhanal azsuhana2 e datarep-Ascsoo vip-11.1.2.60 HANA-S40 InService\@azsuascs2 Brin in SAP-S4D ERSIO in service on azsuascs2 Communication failure: destination system \"azsuersl \" is out of service. Lock for azsuersl is ignored because system is OOS BEGIN restore of \'lip-11.1.2.60\" INFORMATION: BEGIN restore of ip-11.1.2.60 on azsuascs2 Note: This process could take up to 2 minutes Running command (az network nic ip-config create \--resource-group SIOS-SUSE INFORMATION: END successful restore of ip-11.1.2.60 on azsuascs2 END successful restore of \"ip-11.1.2.60\" BEGIN restore of \"vip-11.1.2.60\" END successful restore of \"vip-11.1.2.60\" Done \--nic-name NIC APP-azsuersl \--private-ip-address 11.1.2.60 ](/99_images/image163.png)*Successfully Tested Failover: 2/21/2019 11:51 AM*
+![ ](/99_images/image163.png)*Successfully Tested Failover: 2/21/2019 11:51 AM*

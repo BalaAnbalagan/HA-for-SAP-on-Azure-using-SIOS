@@ -26,8 +26,6 @@ Version Table
 
 ## 3. [SAP HANA Database Cluster Configuration](/SAP-HANA/HA-for-SAP-HANA-DB.md)
 
-
-
 **SIOS Contact Info**
 
 Request info: info@us.sios.com

@@ -64,6 +64,7 @@ The following list shows the configuration of the (A)SCS and ERS IP addresses & 
   |SAP DB Pool    | azsuhana1    | 11.1.2.51  |  11.1.2.50 |  s4ddb     |
   |               | azsuhana2    | 11.1.2.52  |            |            |
   |SIOS Witness   | azsusapwit2  | 11.1.2.66  |            |            |
+
 ## 2. Provission SAP HANA and Witness Infrastructure
 
 Use an terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using Load Balancer. You can also deploy the resources manually.
@@ -153,7 +154,7 @@ The steps in this section use the following prefixes:
 
 ### 1. [A] Run post-processing script ps-db.bash
 
-### 2. [A] Run the hdblcm program from the HANA DVD. Enter the following values at the prompt
+### 2. [A] Run the hdblcm program from the HANA Installation Media. Enter the following values at the prompt
 
 - Choose installation: Enter 1.
 - Select additional components for installation: Enter 1.

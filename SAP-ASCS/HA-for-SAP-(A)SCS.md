@@ -49,6 +49,8 @@ Pro's
 
 Con's
 
+- 
+
 ![ASCS](/99_images/Architecture_Diragram_ASCS.png)  
 
 Each pair of servers are grouped into respective Availability Set as per the above Architecture Diagram. Availability Zones can also be used.
@@ -88,7 +90,7 @@ The following list shows the configuration of the (A)SCS and ERS IP addresses & 
 
 ## 2. Provission SAP (A)SCS, ERS and Witness Infrastructure
 
- Use an terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using Load Balancer. You can also deploy the resources manually.
+ Use an Terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using Load Balancer. You can also deploy the resources manually.
 
 Please follow the respective document in the Proving Ground Infrastructure Provisioning Git
 
@@ -111,7 +113,7 @@ Please follow the respective document in the Proving Ground Infrastructure Provi
 
 ## 4. Install SIOS Protection Suite & Recovery Kits
 
-The following SIOS components installed in respective nodes.
+The following SIOS components are installed in respective nodes.
 
 LifeKeeper Core
 
@@ -306,7 +308,7 @@ gwrd, Gateway, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104632
 
 ## 12. Install SAP NetWeaver ERS on Node-2
 
- Install SAP NetWeaver ERS as root on the Second node using a physical hostname and the instance number is 10.
+ Install SAP NetWeaver ERS as root on the Node-2 using a physical hostname and the instance number is 10.
 
  You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst. You can use parameter SAPINST_USE_HOSTNAME to install SAP, using  virtual hostname.
 
@@ -368,9 +370,9 @@ Pleas find the screenshots on [how to create SAP A(SCS) Resource](Create-sap-asc
 
   Follow the steps in the chapter SAP NetWeaver application server preparation above to prepare the application server.
 
-  Install SAP NetWeaver application server.
+- Install SAP NetWeaver application server.
 
-  Install a primary or additional SAP NetWeaver applications server.
+- Install a primary or additional SAP NetWeaver applications server.
 
   You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst.
 
