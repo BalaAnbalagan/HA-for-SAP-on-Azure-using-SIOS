@@ -110,7 +110,7 @@ SAP HANA 2.0 Application Reovery Kit & IP Recovery Kit
 - azsuhana1
 - azsuhana2
 
-[Please follow the installation screenshots here](Install-SPS-Components.md)
+[Please follow the installation screenshots here](../Install-SPS-Components.md)
 
 ## 5. Create Communication Path between Cluster Nodes and Witness
 
