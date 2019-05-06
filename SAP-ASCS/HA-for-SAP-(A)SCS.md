@@ -31,13 +31,13 @@
 
  SAP Note [1999351](https://launchpad.support.sap.com/#/notes/1999351) has additional troubleshooting information for the Azure Enhanced Monitoring Extension for SAP.
 
- SAP Community WIKI has all required SAP Notes for Linux.
+ [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) has all required SAP Notes for Linux.
 
- Azure Virtual Machines planning and implementation for SAP on Linux
+ [Azure Virtual Machines planning and implementation for SAP on Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/planning-guide)
 
- Azure Virtual Machines deployment for SAP on Linux
+ [Azure Virtual Machines deployment for SAP on Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/deployment-guide)
 
- Azure Virtual Machines DBMS deployment for SAP on Linux
+ [Azure Virtual Machines DBMS deployment for SAP on Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/dbms-guide)
 
 ## 1. Overview
 
@@ -72,9 +72,6 @@ Upon AZSUASCS1 node-1 Comes back
 Upon AZSUASCS2 node-2 Failure
 
 ![ASCS-SIOS](/99_images/Slide4.png)
-
-Note:
-/sapmnt & /usr/sap/trans are not part of this document.
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address (its not mandatory to use it). Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
   
@@ -334,7 +331,7 @@ enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18
 
 ## 13. Switch Back VIP to Node-1
 
-Switch back the VIP resource back to node to proceed with the SAP resouces creation.
+Switch back the VIP resource back to node to proceed with the SAP cluster configuration.
 
 Please find the screenshots on [how to failback VIP to node-1](Switch-VIP-Node-1.md)
 
