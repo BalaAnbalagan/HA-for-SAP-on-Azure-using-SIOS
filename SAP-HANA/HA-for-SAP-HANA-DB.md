@@ -1,6 +1,6 @@
 # High availability of SAP HANA on Azure VMs on Server using SIOS Protection Suite
 
-On Azure virtual machines (VMs), HANA System Replication is the only supported high availability solution. SAP HANA Replication consists of one primary node and at least one secondary node. Changes to the data on the primary node are replicated to the secondary node synchronously or asynchronously.
+On Azure Virtual Machines (VMs), HANA System Replication is the only supported high availability solution. SAP HANA Replication consists of one primary node and at least one secondary node. Changes to the data on the primary node are replicated to the secondary node synchronously or asynchronously.
 
 This article describes how to deploy and configure the virtual machines, install the cluster framework, and install and configure SAP HANA System Replication. In the example configurations, installation commands, instance number 00, and HANA System ID S4D are used.
 
@@ -113,7 +113,7 @@ SAP HANA 2.0 Application Reovery Kit & IP Recovery Kit
 
 [Please follow the installation screenshots here](../Install-SPS-Components.md)
 
-## 5. Create Communication Path between Cluster Nodes and Witness
+## 5. Create a Communication Path between Cluster Nodes and Witness
 
 To create a communication path between a pair of servers, you must define the path individually on both servers. LifeKeeper allows you to create both TCP (TCP/IP) and TTY communication paths between a pair of servers. Only one TTY path can be created between a given pair. However, you can create multiple TCP communication paths between a pair of servers by specifying the local and remote addresses that are to be the end-points of the path. A priority value is used to tell LifeKeeper the order in which TCP paths to a given remote server should be used.
 
@@ -228,7 +228,7 @@ sapcontrol -nr 00 -function StopWait 600 10
 hdbnsutil -sr_register --remoteName=left --remoteHost=azsuhana1 --remoteInstance=00 --replicationMode=syncmem --operationMode=logreplay --name=right
 ```
 
-HSR status from Primary node
+HSR status from a Primary node
 
 ![HSR status from Primary node](/99_images/image030.png)
 
