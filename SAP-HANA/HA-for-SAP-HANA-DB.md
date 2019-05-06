@@ -55,7 +55,7 @@ To achieve high availability, SAP HANA is installed on two virtual machines. The
 
 ![ASCS](/99_images/Architecture_Diragram_ASCS.png)  
 
-![HANA-DB](/99_images/DB1.png)
+![HANA-DB](/SAP-HANA//Images/SIOS-HANA-Cluster.png)
 
 The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
 
