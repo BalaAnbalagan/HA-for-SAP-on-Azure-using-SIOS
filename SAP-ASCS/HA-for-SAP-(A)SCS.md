@@ -155,7 +155,7 @@ Please refer the following links to create the resources
 
 - ### [2. Create IP Resource for (A)SCS](Create-IP-Resource-scs.md)
 
-## 7. Install SAP NetWeaver ASCS in Node-1
+## 7. Install SAP NetWeaver (A)SCS in Node-1
 
  Install SAP NetWeaver ASCS as root on the first node using a virtual hostname that maps to the IP resouce created in privious step i.e.,  s4dascs, 11.1.2.60  
 
@@ -246,7 +246,7 @@ To perform SAP (A)SCS installation on the secondary node we need the floating ip
 
 Please refer to the screenshots on [how to failover IP resource to secondary node](Switch-VIP-Node-2.md)
 
-## 11. Install SAP NetWeaver ASCS in Node-2
+## 11. Install SAP NetWeaver (A)SCS in Node-2
 
  Install SAP NetWeaver ASCS as root on the first node using a virtual hostname that maps to the IP resouce created in privious step i.e.,  s4dascs, 11.1.2.60  
 
