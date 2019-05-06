@@ -246,7 +246,7 @@ Replication Status in HANA Studio
 
 ## 9. Create SAP HANA Resource
 
-Please refer the screenshots on [How to create HANA resouce](Create-sap-hana.md)
+Please refer the screenshots on [How to create HANA resource](Create-sap-hana.md)
 
 Please refer the screenshot on [How to create dependency between HANA & VIP resource](Create-dep-hana-vip.md)
 

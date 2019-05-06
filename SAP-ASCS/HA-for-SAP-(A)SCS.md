@@ -390,7 +390,7 @@ Pleas find the screenshots on [how to create SAP A(SCS) Resource](Create-sap-asc
   DATABASE: S4D
   ```
 
-## Fail-over Testing
+## 19. Failover Testing
 
 Right click on the Resource to be failed over to other node and select "in service".
 
