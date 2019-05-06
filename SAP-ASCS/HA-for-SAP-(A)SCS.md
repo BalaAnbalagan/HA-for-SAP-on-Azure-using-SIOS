@@ -2,7 +2,7 @@
 
  This article describes how to deploy the virtual machines, configure the virtual machines, install the cluster framework, and install a highly available SAP NetWeaver 7.50 system, using SIOS Protection Suite. In the example configurations, installation commands etc., the ASCS instance is number 00, the ERS instance number 10, the Primary Application instance (PAS)  and the Application instance (AAS) is 00. SAP System ID S4D is used.
 
- This article explains how to achieve high availability for SAP NetWeaver application with SIOS Protection Suite for RHEL & SLES. The database layer is covered in detail in this [article](HA-for-SAP-HANA-DB.md).
+ This article explains how to achieve high availability for SAP NetWeaver application with the SIOS Protection Suite for RHEL & SLES. The database layer is covered in detail in this [article](HA-for-SAP-HANA-DB.md).
 
  Read the following SAP Notes and papers first
 
@@ -10,10 +10,10 @@
 
  SAP Note [1928533](https://launchpad.support.sap.com/#/notes/1928533), which has:
 
-- List of Azure VM sizes that are supported for the deployment of SAP software
-- Important capacity information for Azure VM sizes
-- Supported SAP software, and operating system (OS) and database combinations
-- Required SAP kernel version for Windows and Linux on Microsoft Azure
+- The List of Azure VM sizes that are supported for the deployment of SAP software.
+- Important capacity information for Azure VM sizes.
+- Supported SAP software, and operating system (OS) and database combinations.
+- Required SAP kernel version for Windows and Linux on Microsoft Azure.
 
  SAP Note [2015553](https://launchpad.support.sap.com/#/notes/2015553) lists prerequisites for SAP-supported SAP software deployments in Azure.
 
@@ -39,15 +39,15 @@
 
 ## 1. Overview
 
-This document describes how to achieve High Availability for SAP using SIOS Protection Suite for Linux VM. SIOS provides High Availability for SAP (A)SCS **with or without** shared storage. When shared storage is not available SIOS Datakeeper is used to replicate the volumes/disk between cluster nodes. SIOS Protection Suite can also be used with Azure NetApp Files which eliminates SIOS Datakeeper's need.
+This document describes how to achieve High Availability for SAP, using the SIOS Protection Suite for a Linux VM. SIOS provides High Availability for SAP (A)SCS **with or without** shared storage. When shared storage is not availble, SIOS Datakeeper is used to replicate the volumes/disks between cluster nodes. The SIOS Protection Suite can also used with Azure NetApp Files which eleminates the need for SIOS Datakeeper.
 
 ![ASCS](/99_images/Architecture_Diragram_ASCS.png)  
 
-Each pair of servers are grouped into respective Availability Set as per the above Architecture Diagram. Availability Zones can also be used.
+Each pair of servers are grouped into respective Availability Sets as per the above Architecture Diagram. Availability Zones can also be used.
 
 ![Availability Sets](/99_images/Availability-Sets.png)
 
-In the (A)SCS HA configuration shown below, The SAP System S4D's ASCS is running in Node-1 AZSUASCS1 using instance profile S4D_ASCS00_S4DASCS using virtual hostname and the SAP ERS is running in Node-2 AZSUASCS2 using the instance profile S4D_ERS10_azsuascs2 i.e., instance profile using local hostname. The File System required to failover the SAP ASCS /usr/sap/S4D/ASCS00 is being replicated from Node-1 to Node-2.
+In the (A)SCS HA configuration shown below, The SAP System S4D's ASCS is running on the virutal hostname for Node-1 (S4DASCS) using the instance profile (S4D_ASCS00_S4DASCS) and the SAP ERS is running on the local hostname for Node-2 (AZSUASCS2) using the instance profile (S4D_ERS10_AZSUASCS2). The File System required to failover the SAP ASCS /usr/sap/S4D/ASCS00 is being replicated from Node-1 to Node-2.
 
 ![ASCS-SIOS](/99_images/Slide1.png)
 
@@ -63,7 +63,7 @@ Upon AZSUASCS2 node-2 Failure
 
 ![ASCS-SIOS](/99_images/Slide4.png)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address (its not mandatory to use it). Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address (it is not mandatory to use it). Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
   
 The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
 
@@ -77,7 +77,7 @@ The following list shows the configuration of the (A)SCS and ERS IP addresses & 
 
 ## 2. Provission SAP (A)SCS, ERS and Witness Infrastructure
 
- Use an Terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using Load Balancer. You can also deploy the resources manually.
+Use the Terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., in this example we are not using Load Balancer. You can also deploy the resources manually.
 
 Please follow the respective document in the Proving Ground Infrastructure Provisioning Git
 
@@ -125,13 +125,13 @@ DataKeeper, SAP Application Reovery Kit & IP Recovery Kit
 
 ## 5. Create Communication Path between Cluster Nodes and Witness
 
-To create a communication path between a pair of servers, you must define the path individually on both servers. LifeKeeper allows you to create both TCP (TCP/IP) and TTY communication paths between a pair of servers. Only one TTY path can be created between a given pair. However, you can create multiple TCP communication paths between a pair of servers by specifying the local and remote addresses that are to be the end-points of the path. A priority value is used to tell LifeKeeper the order in which TCP paths to a given remote server should be used.
+To create the communication path between a pair of servers, you must define the path individually on both servers. LifeKeeper allows you to create both TCP (TCP/IP) and TTY communication paths between a pair of servers. Only one TTY path can be created between a given pair. However, you can create multiple TCP communication paths between a pair of servers by specifying the local and remote addresses that are to be the end-points of the path. A priority value is used to tell LifeKeeper the order in which TCP paths to a given remote server should be used.
 
 Please refer the screenshots on [how to create communication path](Create-Comm-path-SCS.md)
 
 ## 6. Create Floating IP for (A)SCS & ERS cluster
 
-In this section we will be using SIOS Enhanced Azure IP Generic Application which creates the secondary IP Configuration for the given NIC on the VM
+In this section we will be using the SIOS Enhanced Azure IP Generic Application which creates the secondary IP Configuration for the given NIC on the VM
 
  Azure IP GenApp run the following Azure CLI command to Switch the Secondary IP from one node to the other in a cluster.
 
@@ -143,7 +143,7 @@ In this section we will be using SIOS Enhanced Azure IP Generic Application whic
 
 - SIOS Enhanced IP GenApp adds 2 mins to the failover time
 
-- It can be used in scenario's where ILB is not avialble
+- It can be used in scenario's where ILB is not avaialble
 
 - While using Azure ILB, this step is not required
 
@@ -157,7 +157,7 @@ Please refer the following links to create the resources
 
 ## 7. Install SAP NetWeaver (A)SCS in Node-1
 
- Install SAP NetWeaver ASCS as root on the first node using a virtual hostname that maps to the IP resouce created in privious step i.e.,  s4dascs, 11.1.2.60  
+ Install SAP NetWeaver ASCS as root on the first node using a virtual hostname that maps to the IP resouce created in previous step i.e.,  s4dascs, 11.1.2.60  
 
  You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst. You can use parameter SAPINST_USE_HOSTNAME to install SAP, using virtual hostname.
 
@@ -217,7 +217,7 @@ enrepserver, EnqueueReplicator, GREEN, Running, 2019 05 01 14:58:12, 0:01:56, 18
 
 ## 9. Create Data Replication Resource for (A)SCS Mount Point
 
-In this section we are using SIOS DataKeeper to replicate the mount point /usr/sap/S4D/ASCS00 between the clusters
+In this section we are using SIOS DataKeeper to replicate the mount point /usr/sap/S4D/ASCS00 between the cluster nodes.
 
 SIOS DataKeeper for Linux provides an integrated data mirroring capability for LifeKeeper environments.  This feature enables LifeKeeper resources to operate in shared and non-shared storage environments.
 
@@ -242,7 +242,7 @@ Asynchronous Data Replication is supported only for Disaster Recovery Scenarios
 
 ## 10. Switch VIP to Node-2
 
-To perform SAP (A)SCS installation on the secondary node we need the floating ip to point to the seconday nodes. so please fail over the IP resource to the secondary node.
+To perform SAP (A)SCS installation on the secondary node we need the floating ip to point to the seconday node. so please fail over the IP resource to the secondary node.
 
 Please refer to the screenshots on [how to failover IP resource to secondary node](Switch-VIP-Node-2.md)
 
@@ -270,7 +270,7 @@ pg-nfs01.provingground.net:/export/media/sapmnt    4.0T  149G  3.9T   4% /sapmnt
 pg-nfs01.provingground.net:/export/media/saptrans  4.0T  149G  3.9T   4% /usr/sap/trans
 ```
 
-Make sure the disk being replicated is NOT mounted here
+NOTE: Make sure the disk being replicated is NOT mounted here.
 
 During this SAP (A)SCSinstallation installer, we will be using /usr/sap/S4D mount for ASCS and this installation is required to get the Installation directories, User Environment created for (A)SCS.
 
@@ -293,7 +293,7 @@ gwrd, Gateway, GREEN, Running, 2019 05 01 12:37:23, 0:04:54, 104632
 
 ## 12. Install SAP NetWeaver ERS on Node-2
 
- Install SAP NetWeaver ERS as root on the Node-2 using a physical hostname and the instance number is 10.
+ Install the SAP NetWeaver ERS as root on the Node-2 using a physical hostname and the instance number is 10.
 
  You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst. You can use parameter SAPINST_USE_HOSTNAME to install SAP, using  virtual hostname.
 

@@ -67,7 +67,7 @@ The following list shows the configuration of the HANA & Witness Nodes IP addres
 
 ## 2. Provission SAP HANA and Witness Infrastructure
 
-Use an terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using Load Balancer. You can also deploy the resources manually.
+Use the Terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using a Load Balancer. You can also deploy the resources manually.
 
 Please follow the respective document in the Proving Ground Infrastructure Provisioning Git
 
