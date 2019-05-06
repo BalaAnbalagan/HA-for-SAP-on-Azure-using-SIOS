@@ -123,7 +123,7 @@ Pictorial representation
 
 ![ ](/99_images/SIOS-Components-Functions-1.png)
 
-[Please follow the installation screenshots here](../Install-SPS-Components.md)
+[Please follow the installation screenshots here](/SIOS/Install-SPS-Components.md)
 
 ## 5. Create Communication Path between Cluster Nodes and Witness
 
