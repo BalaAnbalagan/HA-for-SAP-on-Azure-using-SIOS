@@ -43,14 +43,6 @@
 
 This document describes on how to achieve High Availability for SAP using SIOS Protection Suite for Linux VM. SIOS provides High Availability for SAP (A)SCS **with or without** shared storage. When shared storage in not availble SIOS Datakeeper is used to replicate the volumes/disk between cluster nodes. SIOS Protection Suite can also used with Azure NetApp Files which eleminates SIOS Datakeeper's need.
 
-Pro's
-
-- No iSCSI decives required
-
-Con's
-
-- 
-
 ![ASCS](/99_images/Architecture_Diragram_ASCS.png)  
 
 Each pair of servers are grouped into respective Availability Set as per the above Architecture Diagram. Availability Zones can also be used.
@@ -400,15 +392,8 @@ Pleas find the screenshots on [how to create SAP A(SCS) Resource](Create-sap-asc
 
 ## Fail-over Testing
 
-Profile Directory
+Right click on the Resource to be failed over to other node and select "in service".
 
-```console
--rw-r--r-- 1 s4dadm sapsys  788 May  1 20:50 DEFAULT.PFL
--rw-r--r-- 1 s4dadm sapsys 4072 May  1 21:15 S4D_ASCS00_S4DASCS
--rw-r--r-- 1 s4dadm sapsys 2259 May  2 01:06 S4D_ERS10_azsuascs1
--rw-r--r-- 1 s4dadm sapsys 2259 May  1 21:15 S4D_ERS10_azsuascs2
--rw-r----- 1 s4dadm sapsys 5186 May  2 01:08 S4D_D00_azsusap1
--rw-r----- 1 s4dadm sapsys 3333 May  2 01:08 S4D_D00_azsusap2
-```
+The process takes close to 4 minutes and 2 minutes spend on failing over the Azure IP.
 
 Please refer the screenshots on [testing (A)SCS fail-over testing](SIOS-ascs-Failover-Testing.md)
