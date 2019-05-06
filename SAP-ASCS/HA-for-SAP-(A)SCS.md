@@ -1,5 +1,3 @@
-> ------------------DRAFT---------------------------------------
-
 # Azure Virtual Machines high availability for SAP NetWeaver on Linux using SIOS Protection Suite
 
  This article describes how to deploy the virtual machines, configure the virtual machines, install the cluster framework, and install a highly available SAP NetWeaver 7.50 system, using SIOS Protection Suite. In the example configurations, installation commands etc., the ASCS instance is number 00, the ERS instance number 10, the Primary Application instance (PAS)  and the Application instance (AAS) is 00. SAP System ID S4D is used.
