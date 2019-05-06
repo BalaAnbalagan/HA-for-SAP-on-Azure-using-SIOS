@@ -8,8 +8,11 @@
 ![ ](/99_images/HANA/create-resource-hana-4.png)
 
 /opt/LifeKeeper/HANA2-ARK/restore.pl
+
 /opt/LifeKeeper/HANA2-ARK/remove.pl
+
 /opt/LifeKeeper/HANA2-ARK/quickCheck.pl
+
 /opt/LifeKeeper/HANA2-ARK/recover.pl
 
 ![ ](/99_images/HANA/create-resource-hana-5.png)

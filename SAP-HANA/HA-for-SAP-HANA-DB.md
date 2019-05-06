@@ -252,4 +252,4 @@ Please refer the screenshot on [How to create dependency between HANA & VIP reso
 
 ## 10. Failover Testing
 
-Please refere the screensots on [Failover Testing](SIOS-HANA-Failover-Testing.md)
+Please refer the screensots on [Failover Testing](SIOS-HANA-Failover-Testing.md)
