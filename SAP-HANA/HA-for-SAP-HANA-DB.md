@@ -67,7 +67,7 @@ The following list shows the configuration of the (A)SCS and ERS IP addresses & 
 
 ## 2. Provission SAP HANA and Witness Infrastructure
 
-Use an terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using Load Balancer. You can also deploy the resources manually.
+Use a terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example, we are not using Load Balancer. You can also deploy the resources manually.
 
 Please follow the respective document in the Proving Ground Infrastructure Provisioning Git
 
@@ -113,7 +113,7 @@ SAP HANA 2.0 Application Reovery Kit & IP Recovery Kit
 
 [Please follow the installation screenshots here](../Install-SPS-Components.md)
 
-## 5. Create Communication Path between Cluster Nodes and Witness
+## 5. Create a Communication Path between Cluster Nodes and Witness
 
 To create a communication path between a pair of servers, you must define the path individually on both servers. LifeKeeper allows you to create both TCP (TCP/IP) and TTY communication paths between a pair of servers. Only one TTY path can be created between a given pair. However, you can create multiple TCP communication paths between a pair of servers by specifying the local and remote addresses that are to be the end-points of the path. A priority value is used to tell LifeKeeper the order in which TCP paths to a given remote server should be used.
 
