@@ -100,6 +100,8 @@ Please follow the respective document in the Proving Ground Infrastructure Provi
 
 ## 4. Install SIOS Protection Suite & Recovery Kits
 
+![ ](/99_images/SIOS-Components-Functions-1.png)
+
 The following SIOS components are installed in respective nodes.
 
 LifeKeeper Core
@@ -118,10 +120,6 @@ DataKeeper, SAP Application Reovery Kit & IP Recovery Kit
 
 - azsuascs1
 - azsuascs2
-
-Pictorial representation
-
-![ ](/99_images/SIOS-Components-Functions-1.png)
 
 [Please follow the installation screenshots here](/SIOS/Install-SPS-Components.md)
 
