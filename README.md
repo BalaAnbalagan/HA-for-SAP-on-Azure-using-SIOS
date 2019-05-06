@@ -13,6 +13,7 @@ please refer SAP Note [1662610](https://launchpad.support.sap.com/#/notes/166261
 - SUSE Linux Enterprise Server 12 SP3
 
 Version Table
+
   | Components                     | Release |  SPS/Patch|
   | ------------------------------ |:-------:|----------:|
   |SAP S/4 HANA                    | 1709    | 00        |

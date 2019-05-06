@@ -339,7 +339,7 @@ Pleas find the screenshots on [how to create SAP A(SCS) Resource](Create-sap-asc
 
 ## 16. Install database Instance
 
-  In this example, SAP NetWeaver is installed on SAP HANA. You can use every supported database for this installation. For more information on how to install SAP HANA in Azure, see High availability of SAP HANA on Azure VMs on Red Hat Enterprise Linux. For a list of supported databases, see SAP Note 1928533.
+  In this example, SAP NetWeaver is installed on SAP HANA. You can use every supported database for this installation. For more information on how to install SAP HANA in Azure, see High availability of SAP HANA on Azure VMs on Red Hat Enterprise Linux. For a list of supported databases, see SAP Note [1928533](https://launchpad.support.sap.com/#/notes/1928533).
 
   Run the SAP database instance installation
 
