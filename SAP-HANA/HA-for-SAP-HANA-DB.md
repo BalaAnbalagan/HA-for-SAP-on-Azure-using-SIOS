@@ -2,7 +2,7 @@
 
 On Azure virtual machines (VMs), HANA System Replication is the only supported high availability solution. SAP HANA Replication consists of one primary node and at least one secondary node. Changes to the data on the primary node are replicated to the secondary node synchronously or asynchronously.
 
-This article describes how to deploy and configure the virtual machines, install the cluster framework, and install and configure SAP HANA System Replication. In the example configurations, installation commands, instance number 00, and HANA System ID S4D are used.
+This article describes how to deploy and configure the virtual machines, install the cluster framework, and install and configure SAP HANA System Replication. In the example configuration, the instance number is 00, and the HANA System ID S4D is used.
 
 Read the following SAP Notes and papers first:
 SAP Note [1662610](https://launchpad.support.sap.com/#/notes/1662610) Support details for SIOS Protection Suite for Linux
@@ -67,7 +67,7 @@ The following list shows the configuration of the (A)SCS and ERS IP addresses & 
 
 ## 2. Provission SAP HANA and Witness Infrastructure
 
-Use an terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using Load Balancer. You can also deploy the resources manually.
+Use the Terraform script from [Proving Ground Infrastructure Provisioning Git](https://github.com/BalaAnbalagan/SAP-on-Azure-Proving-Ground) to deploy all required Azure resources, including the virtual machines, availability set etc., and in this example we are not using a Load Balancer. You can also deploy the resources manually.
 
 Please follow the respective document in the Proving Ground Infrastructure Provisioning Git
 
@@ -121,9 +121,9 @@ Please refer the screenshots on [how to create communication path](Create-Comm-p
 
 ## 6. Create Floating IP for HANA cluster
 
-In this section we will be using SIOS Enhanced Azure IP Generic Application which creates the secondary IP Configuration for the given NIC on the VM
+In this section we will be using the SIOS Enhanced Azure IP Generic Application which creates the secondary IP Configuration for the given NIC on the VM
 
- Azure IP GenApp run the following Azure CLI command to Switch the Secondary IP from one node to the other in a cluster.
+ To use the Azure IP Generic Application, run the following Azure CLI command to Switch the Secondary IP from one node to the other in a cluster.
 
  ```bash
  az network nic ip-config create --resource-group SIOS-SUSE --nic-name NIC_APP-azsuhana1 --private-ip-address 11.1.2.50 --name S4DDB
