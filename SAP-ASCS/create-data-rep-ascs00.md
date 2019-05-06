@@ -2,36 +2,60 @@
 
    Click create resoure from the lkGUIapp
 
-  ![ ](/99_images/image107.png "select Data Replication and click next")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-1.png)
 
-  ![ ](/99_images/image108.png "select intelligent and click next")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-2.png)
 
-  ![ ](/99_images/image109.png "select the primary node from which the (A)SCS mount to be replicated to secodary node")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-3.png)
 
-  ![ ](/99_images/image110.png "select Replicate Existing Filesystem")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-4.png)
 
-  ![ ](/99_images/image111.png "click continue")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-5.png)
 
-  ![ ](/99_images/image112.png "select the existing mount point")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-6.png)
 
-  ![ ](/99_images/image113.png "click next with replication resource tag")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-7.png)
 
-  ![ ](/99_images/image114.png "click next for the filesystem resource tag")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-8.png)
 
-  ![ ](/99_images/image115.png "select the bitmap file and click next")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-9.png)
 
-  ![ ](/99_images/image116.png "select no for Asynchronous Replication")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-10.png)
 
-  ![ ](/99_images/image117.png "click next")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-11.png)
 
-  ![ ](/99_images/image118.png "select the secondary node and click next")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-12.png)
 
-  ![ ](/99_images/image119.png "select intelligent and click next")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-13.png)
 
-  ![ ](/99_images/image120.png "select priority 1 and click next")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-14.png)
 
-  ![ ](/99_images/image121.png "select priority 10 and click next")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-15.png)
 
-  ![ ](/99_images/image122.png "click next")
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-16.png)
 
-  Click close and do not click next to extent the resource to the target side yet.
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-17.png)
+
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-18.png)
+
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-19.png)
+
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-20.png)
+
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-21.png)
+
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-22.png)
+
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-23.png)
+
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-24.png)
+
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-25.png)
+
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-26.png)
+
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-27.png)
+
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-28.png)
+
+![ ](/SAP-ASCS/Images/create-data-rep-ascs-29.png)
