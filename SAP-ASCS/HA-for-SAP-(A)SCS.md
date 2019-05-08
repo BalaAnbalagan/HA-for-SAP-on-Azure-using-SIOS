@@ -325,11 +325,11 @@ Please find the screenshots on [how to failback VIP to node-1](Switch-VIP-Node-1
 
 ## 14. Create SAP Resource for (A)SCS
 
-Pleas find the screenshots on [how to create SAP A(SCS) Resource](Create-sap-ascs00.md)
+Pleas find the screenshots on [how to create SAP (A)SCS Resource](Create-sap-ascs00.md)
 
 ## 15. Create SAP Resource for ERS
 
-Pleas find the screenshots on [how to create SAP A(SCS) Resource](Create-sap-ascs00.md)
+Pleas find the screenshots on [how to create SAP ERS Resource](Create-sap-ers10.md)
 
 ![SIOS SAP (A)SCS/ERS Cluster](/99_images/create-sap-res-s4d-ers10-22.png)
 
