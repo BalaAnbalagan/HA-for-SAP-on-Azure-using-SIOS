@@ -129,7 +129,7 @@ To create the communication path between a pair of servers, you must define the 
 
 Please refer the screenshots on [how to create communication path](Create-Comm-path-SCS.md)
 
-## 6. Create Floating IP for (A)SCS & ERS cluster
+## 6. Create Floating IP for (A)SCS
 
 In this section we will be using the SIOS Enhanced Azure IP Generic Application which creates the secondary IP Configuration for the given NIC on the VM
 
@@ -195,7 +195,7 @@ Please take backup of the profile before proceeding with installing on the secon
 
  Install SAP NetWeaver ERS as root on the First node using a physical hostname and the instance number is 10.
 
- You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst. You can use parameter SAPINST_USE_HOSTNAME to install SAP, using  virtual hostname.
+ You can use the sapinst parameter SAPINST_REMOTE_ACCESS_USER to allow a non-root user to connect to sapinst.
 
  ```bash
  sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
