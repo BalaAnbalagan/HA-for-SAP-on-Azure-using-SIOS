@@ -43,8 +43,6 @@ This document describes how to achieve High Availability for SAP, using the SIOS
 
 ![ASCS](/SAP-ASCS/images/ASCS-cluster-avset.png)  
 
-Each pair of servers are grouped into respective Availability Sets as per the above Architecture Diagram. Availability Zones can also be used.
-
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address (it is not mandatory to use it). Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
   
 The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
