@@ -21,6 +21,14 @@ Version Table
   |SIOS HANA2.0 ARK                |  2.0    |           |
   |SIOS Enhanced Azure Gen App     |  2.4    |           |
 
-## 2. [SAP (A)SCS Cluster Configuration](/SAP-ASCS/HA-for-SAP-(A)SCS.md)
+## 2. SAP (A)SCS Cluster Configuration
 
-## 3. [SAP HANA Database Cluster Configuration](/SAP-HANA/HA-for-SAP-HANA-DB.md)
+### 1. [without Azure Internal Load Balancer](/SAP-ASCS/HA-for-SAP-(A)SCS.md)
+
+### 2. [With Azure Internal Load Balancer](/SAP-ASCS-LB-SS/HA-for-SAP-(A)SCS.md)
+
+## 3. SAP HANA Database Cluster Configuration.
+
+### 1. [Without ILB](/SAP-HANA/HA-for-SAP-HANA-DB.md)
+
+### 2. [With ILB](/SAP-HANA-LB/HA-for-SAP-HANA-DB.md)

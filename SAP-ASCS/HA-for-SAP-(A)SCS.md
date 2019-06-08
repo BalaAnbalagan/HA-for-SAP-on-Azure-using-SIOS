@@ -41,27 +41,9 @@
 
 This document describes how to achieve High Availability for SAP, using the SIOS Protection Suite for a Linux VM. SIOS provides High Availability for SAP (A)SCS **with or without** shared storage. When shared storage is not availble, SIOS Datakeeper is used to replicate the volumes/disks between cluster nodes. The SIOS Protection Suite can also used with Azure NetApp Files which eleminates the need for SIOS Datakeeper.
 
-![ASCS](/99_images/Architecture_Diragram_ASCS.png)  
+![ASCS](/SAP-ASCS/images/ASCS-cluster-avset.png)  
 
 Each pair of servers are grouped into respective Availability Sets as per the above Architecture Diagram. Availability Zones can also be used.
-
-![Availability Sets](/99_images/Availability-Sets.png)
-
-In the (A)SCS HA configuration shown below, The SAP System S4D's ASCS is running on the virutal hostname for Node-1 (S4DASCS) using the instance profile (S4D_ASCS00_S4DASCS) and the SAP ERS is running on the local hostname for Node-2 (AZSUASCS2) using the instance profile (S4D_ERS10_AZSUASCS2). The File System required to failover the SAP ASCS /usr/sap/S4D/ASCS00 is being replicated from Node-1 to Node-2.
-
-![ASCS-SIOS](/99_images/Slide1.png)
-
-Upon AZSUASCS1 node-1 Failure
-
-![ASCS-SIOS](/99_images/Slide2.png)
-
-Upon AZSUASCS1 node-1 Comes back
-
-![ASCS-SIOS](/99_images/Slide3.png)
-
-Upon AZSUASCS2 node-2 Failure
-
-![ASCS-SIOS](/99_images/Slide4.png)
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address (it is not mandatory to use it). Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
   

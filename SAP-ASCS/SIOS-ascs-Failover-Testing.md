@@ -1,5 +1,21 @@
 # SAP ASCS Failover
 
+In the (A)SCS HA configuration shown below, The SAP System S4D's ASCS is running on the virutal hostname for Node-1 (S4DASCS) using the instance profile (S4D_ASCS00_S4DASCS) and the SAP ERS is running on the local hostname for Node-2 (AZSUASCS2) using the instance profile (S4D_ERS10_AZSUASCS2). The File System required to failover the SAP ASCS /usr/sap/S4D/ASCS00 is being replicated from Node-1 to Node-2.
+
+![ASCS-SIOS](/99_images/Slide1.png)
+
+Upon AZSUASCS1 node-1 Failure
+
+![ASCS-SIOS](/99_images/Slide2.png)
+
+Upon AZSUASCS1 node-1 Comes back
+
+![ASCS-SIOS](/99_images/Slide3.png)
+
+Upon AZSUASCS2 node-2 Failure
+
+![ASCS-SIOS](/99_images/Slide4.png)
+
 ![ ](/SAP-ASCS/Images/failover-ascs-1.png)
 
 ![ ](/SAP-ASCS/Images/failover-ascs-2.png)
