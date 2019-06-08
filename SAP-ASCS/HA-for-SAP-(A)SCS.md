@@ -41,7 +41,7 @@
 
 This document describes how to achieve High Availability for SAP, using the SIOS Protection Suite for a Linux VM. SIOS provides High Availability for SAP (A)SCS **with or without** shared storage. When shared storage is not availble, SIOS Datakeeper is used to replicate the volumes/disks between cluster nodes. The SIOS Protection Suite can also used with Azure NetApp Files which eleminates the need for SIOS Datakeeper.
 
-![ASCS](/SAP-ASCS/images/ASCS-cluster-avset.png)  
+![ASCS](/SAP-ASCS/Images/ASCS-cluster-avset.png)  
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address (it is not mandatory to use it). Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
   
