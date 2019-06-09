@@ -39,21 +39,38 @@
 
 ## 1. Overview
 
-This document describes how to achieve High Availability for SAP, using the SIOS Protection Suite for a Linux VM. SIOS provides High Availability for SAP (A)SCS **with or without** shared storage. When shared storage is not availble, SIOS Datakeeper is used to replicate the volumes/disks between cluster nodes. The SIOS Protection Suite can also used with Azure NetApp Files which eleminates the need for SIOS Datakeeper.
+High availability(HA) for SAP Netweaver central services requires shared storage. To achieve that on Linux so far it was necessary to build separate highly available NFS cluster.
+This document describes how to achieve High Availability for SAP, using the SIOS Protection Suite for a Linux VM. SIOS provides High Availability for SAP (A)SCS shared storage. SIOS Datakeeper is used to replicate the volumes/disks between cluster nodes. The SIOS Protection Suite can also used with Azure NetApp Files which eleminates the need for SIOS Datakeeper.
 
 ![ASCS](/SAP-ASCS/Images/ASCS-cluster-avset.png)  
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. SIOS Enhanced IP GenApp is used to failover virtual IP address (it is not mandatory to use it). Azure [Load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) can also be used.  
-  
-The following list shows the configuration of the (A)SCS and ERS IP addresses & Virtual Hostnames configured in DNS.
+![SIOS-Components](/SAP-ASCS/Images/SIOS-Components-Functions-1.png)
 
-   |Components     | hostname     | IP address |  VIP       |  VHOSTNAME |
-   | --------------| -------------|------------| -----------|----------- |
-   |SAP ASCS Pool  | azsuascs1    | 11.1.2.61  |  11.1.2.60 |  s4dascs   |
-   |               | azsuascs2    | 11.1.2.62  |            |            |  
-   |SAP App Pool   | azsusap1     | 11.1.2.53  |            |            |
-   |               | azsusap2     | 11.1.2.54  |            |            |
-   |SIOS Witness   | azsusapwit1  | 11.1.2.65  |            |            |
+The NFS server, SAP NetWeaver ASCS, SAP NetWeaver SCS and the SAP HANA database use virtual hostname and virtual IP addresses. On Azure, a load balancer is required to use a virtual IP address. The following list shows the configuration of the (A)SCS and ERS load balancer.
+
+(A)SCS
+
+Frontend configuration
+
+- IP address 11.1.2.60
+
+Backend configuration
+
+- Connected to primary network interfaces of all virtual machines that should be part of the (A)SCS/ERS cluster
+
+Probe Port
+
+- Port 36<nr>
+
+Load balancing rules
+
+- 32<nr> TCP
+- 36<nr> TCP
+- 39<nr> TCP
+- 81<nr> TCP
+- 5<nr>13 TCP
+- 5<nr>14 TCP
+- 5<nr>16 TCP
 
 ## 2. Provission SAP (A)SCS, ERS and Witness Infrastructure
 
@@ -80,7 +97,7 @@ Please follow the respective document in the Proving Ground Infrastructure Provi
 
 ## 4. Install SIOS Protection Suite & Recovery Kits
 
-![ ](/99_images/SIOS-Components-Functions-1.png)
+
 
 The following SIOS components are installed in respective nodes.
 
